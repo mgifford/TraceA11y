@@ -1,0 +1,9 @@
+[
+  {
+    "url": "https://mgifford.github.io/TraceA11y/",
+    "ruleId": "button-name",
+    "xpath": "button#sample",
+    "snippet": "<button id='sample'></button>",
+    "error": "Buttons should have discernible text"
+  }
+]
