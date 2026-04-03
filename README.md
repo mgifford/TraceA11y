@@ -64,18 +64,40 @@ The first development iteration now includes:
 
   * **Engine:** `src/attribute-engine.js`
   * **ARRM Relationship Mapper:** `src/arrm-map.js`
+  * **WCAG Spine Relationship Mapper:** `src/wcag-spine-map.js`
+  * **Learning Registry:** `src/learning-registry.js`
   * **Signature Dictionary:** `src/signatures.js`
   * **AI Ambiguity Module:** `src/ai-classifier.js`
   * **Workflow Dispatch Action:** `.github/workflows/attribution-engine.yml`
   * **Generated Output:** `dist/data/attributed-report.json`
   * **ARRM Source Data:** `data/reference/arrm-all-tasks.csv`
+  * **WCAG Spine Source Data:** `data/reference/wcag-spine-master.json`
 
 The Step 1 example (`article` + `image-alt`) is explicitly mapped to **Content Author** in the engine logic.
 
-When ARRM data is present, each issue is enriched with:
+When ARRM and WCAG Spine data are present, each issue can be enriched with:
 
-  * `arrmTaskIds`
-  * `arrmReferences` (task-level context)
+  * `arrmTaskIds` and `arrmReferences`
+  * `wcagSc`, `trustedTesterSteps`, and `wcagSpineReferences`
+
+-----
+
+## 🧠 Learning Registry
+
+TraceA11y now supports a JSON-first learning workflow.
+
+  * **Candidate store:** `data/learning/candidate-patterns.json`
+  * **Trusted store:** `data/learning/trusted-patterns.json`
+  * **Decision log:** `data/learning/decision-log.json`
+
+Review workflow commands:
+
+```bash
+npm run learning:promote -- --promote <candidateId> --owner "Content Author"
+npm run learning:reject -- --reject <candidateId> --note "False positive"
+```
+
+Detailed guide: `docs/learning-registry.md`
 
 -----
 

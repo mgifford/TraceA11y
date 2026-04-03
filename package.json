@@ -9,6 +9,8 @@
   },
   "scripts": {
     "attribute": "node src/attribute-engine.js",
-    "attribute:sample": "node src/attribute-engine.js --input ./reports/sample-report.json"
+    "attribute:sample": "node src/attribute-engine.js --input ./reports/sample-report.json",
+    "learning:promote": "node src/promote-learning.js",
+    "learning:reject": "node src/promote-learning.js"
   }
 }

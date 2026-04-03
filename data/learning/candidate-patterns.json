@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-03T02:23:46.130Z",
+  "candidates": [
+    {
+      "id": "cand-20260403022159-1",
+      "key": "custom-unknown-rule::.mystery-widget::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "custom-unknown-rule",
+      "selectors": [
+        ".mystery-widget",
+        "<div>"
+      ],
+      "rationale": "AI classification failed: GitHub Models request failed with status 400",
+      "firstSeenAt": "2026-04-03T02:21:59.676Z",
+      "lastSeenAt": "2026-04-03T02:21:59.676Z",
+      "matchCount": 1,
+      "exampleUrls": [
+        "https://example.com/unknown"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260403022346-2",
+      "key": "aria-required-children::.image-content-queue::Developer",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Developer",
+      "confidence": 0.768,
+      "ruleId": "aria-required-children",
+      "selectors": [
+        ".image-content-queue",
+        ".view-content",
+        ".slick-dots",
+        "<ul>"
+      ],
+      "rationale": "Weighted match: arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "firstSeenAt": "2026-04-03T02:23:46.130Z",
+      "lastSeenAt": "2026-04-03T02:23:46.130Z",
+      "matchCount": 1,
+      "exampleUrls": [
+        "https://www.uscis.gov/"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    }
+  ]
+}

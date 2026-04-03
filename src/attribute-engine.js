@@ -12,6 +12,17 @@ import {
   getArrmOwnerSignals,
   loadArrmTasks
 } from "./arrm-map.js";
+import {
+  findWcagSpineMatches,
+  getWcagSpineOwnerSignals,
+  loadWcagSpineData,
+  summarizeWcagSpineMatches
+} from "./wcag-spine-map.js";
+import {
+  appendCandidatePatterns,
+  loadTrustedPatterns,
+  trustedPatternsToSignatures
+} from "./learning-registry.js";
 
 const REPORTS_DIR = "./reports";
 const OUTPUT_DIR = "./dist/data";
@@ -60,25 +71,30 @@ function applyStepOneOverride(issue) {
   return null;
 }
 
-async function classifyIssue(issue, arrmTasks) {
+async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
   const override = applyStepOneOverride(issue);
   if (override) {
-    return override;
+    return { ...override, usedAiFallback: false };
   }
 
   const arrmOwnerSignals = getArrmOwnerSignals(issue, arrmTasks);
+  const wcagSpineOwnerSignals = getWcagSpineOwnerSignals(issue, wcagSpineData);
 
-  const scoredRoles = ROLE_SIGNATURES.map((signature) => {
+  const scoredRoles = signatures.map((signature) => {
     const heuristic = scoreIssueAgainstRole(issue, signature);
     const arrmSignalCount = arrmOwnerSignals[signature.owner] || 0;
+    const wcagSpineSignalCount = wcagSpineOwnerSignals[signature.owner] || 0;
     const arrmBonus = Math.min(arrmSignalCount * 0.35, 1.5);
+    const wcagSpineBonus = Math.min(wcagSpineSignalCount * 0.3, 1.2);
 
     return {
       owner: signature.owner,
       heuristicScore: heuristic.score,
       arrmSignalCount,
+      wcagSpineSignalCount,
       arrmBonus,
-      score: heuristic.score + arrmBonus,
+      wcagSpineBonus,
+      score: heuristic.score + arrmBonus + wcagSpineBonus,
       matchedSignals: heuristic.matchedSignals
     };
   });
@@ -94,7 +110,9 @@ async function classifyIssue(issue, arrmTasks) {
       owner: aiResult.owner,
       confidence: aiResult.confidence,
       rationale: aiResult.rationale,
-      arrmOwnerSignals
+      arrmOwnerSignals,
+      wcagSpineOwnerSignals,
+      usedAiFallback: true
     };
   }
 
@@ -103,6 +121,9 @@ async function classifyIssue(issue, arrmTasks) {
     top.matchedSignals.length > 0 ? `heuristics=${top.matchedSignals.join("|")}` : null,
     top.arrmSignalCount > 0
       ? `arrm-support=${top.arrmSignalCount} (bonus=${top.arrmBonus.toFixed(2)})`
+      : null,
+    top.wcagSpineSignalCount > 0
+      ? `wcag-spine-support=${top.wcagSpineSignalCount} (bonus=${top.wcagSpineBonus.toFixed(2)})`
       : null
   ]
     .filter(Boolean)
@@ -112,7 +133,9 @@ async function classifyIssue(issue, arrmTasks) {
     owner: top.owner,
     confidence,
     rationale: `Weighted match: ${signalSummary || "signature score"}`,
-    arrmOwnerSignals
+    arrmOwnerSignals,
+    wcagSpineOwnerSignals,
+    usedAiFallback: false
   };
 }
 
@@ -151,23 +174,34 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const reports = await readInputReports(args.input);
   const arrmTasks = await loadArrmTasks();
+  const wcagSpineData = await loadWcagSpineData();
+  const trustedPatterns = await loadTrustedPatterns();
+  const learnedSignatures = trustedPatternsToSignatures(trustedPatterns);
+  const signatures = [...ROLE_SIGNATURES, ...learnedSignatures];
 
   const owners = initializeOwnerBuckets();
   const allAttributedIssues = [];
 
   for (const report of reports) {
     for (const issue of report.issues) {
-      const attribution = await classifyIssue(issue, arrmTasks);
+      const attribution = await classifyIssue(issue, signatures, arrmTasks, wcagSpineData);
       const owner = attribution.owner;
       const relatedArrmTasks = findRelatedArrmTasks(issue, owner, arrmTasks);
+      const wcagSpineMatches = findWcagSpineMatches(issue, wcagSpineData);
+      const wcagSpineSummary = summarizeWcagSpineMatches(wcagSpineMatches);
       const attributedIssue = {
         ...issue,
         sourceFile: report.file,
         owner,
         confidence: attribution.confidence,
         rationale: attribution.rationale,
+        usedAiFallback: attribution.usedAiFallback,
         suggestedFixLocation: mapFixLocation(owner),
         arrmOwnerSignals: attribution.arrmOwnerSignals || {},
+        wcagSpineOwnerSignals: attribution.wcagSpineOwnerSignals || {},
+        wcagSc: wcagSpineSummary.wcagSc,
+        wcagSpineManualRoles: wcagSpineSummary.manualRoles,
+        trustedTesterSteps: wcagSpineSummary.trustedTesterSteps,
         arrmTaskIds: relatedArrmTasks.map((task) => task.id),
         arrmReferences: relatedArrmTasks.map((task) => ({
           id: task.id,
@@ -177,6 +211,14 @@ async function main() {
           mainRole: task.mainRole,
           primaryOwnership: task.primaryOwnership,
           secondaryOwnership: task.secondaryOwnership
+        })),
+        wcagSpineReferences: wcagSpineMatches.map((match) => ({
+          sc: match.scId,
+          title: match.title,
+          level: match.level,
+          principle: match.principle,
+          url: match.url,
+          manualRoles: match.manualRoles
         }))
       };
 
@@ -196,11 +238,33 @@ async function main() {
     count: issues.length
   }));
 
+  const learningCandidates = allAttributedIssues.filter(
+    (issue) => issue.owner === "Ambiguous" || Number(issue.confidence || 0) < 0.8 || issue.usedAiFallback
+  );
+
+  await appendCandidatePatterns(learningCandidates, {
+    source: "attribute-engine"
+  });
+
   const output = {
     generatedAt: new Date().toISOString(),
     arrm: {
       source: "./data/reference/arrm-all-tasks.csv",
       loadedTaskCount: arrmTasks.length
+    },
+    wcagSpine: {
+      source: "./data/reference/wcag-spine-master.json",
+      loadedScCount: Object.keys(wcagSpineData.successCriteria || {}).length,
+      generatedAt: wcagSpineData.meta?.generated || null,
+      wcagVersion: wcagSpineData.meta?.wcag_version || null,
+      axeVersion: wcagSpineData.meta?.axe_version || null
+    },
+    learning: {
+      trustedPatternsLoaded: trustedPatterns.length,
+      learningCandidateCount: learningCandidates.length,
+      candidateStore: "./data/learning/candidate-patterns.json",
+      trustedStore: "./data/learning/trusted-patterns.json",
+      decisionLogStore: "./data/learning/decision-log.json"
     },
     totals: {
       totalIssues: allAttributedIssues.length,

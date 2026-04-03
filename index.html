@@ -55,7 +55,9 @@
               <tr>
                 <th class="px-3 py-2 text-left font-semibold">Owner</th>
                 <th class="px-3 py-2 text-left font-semibold">Rule</th>
+                <th class="px-3 py-2 text-left font-semibold">WCAG SC</th>
                 <th class="px-3 py-2 text-left font-semibold">XPath</th>
+                <th class="px-3 py-2 text-left font-semibold">Trusted Tester Steps</th>
                 <th class="px-3 py-2 text-left font-semibold">ARRM Tasks</th>
                 <th class="px-3 py-2 text-left font-semibold">Suggested Fix Location</th>
               </tr>
@@ -258,7 +260,9 @@
             const cells = [
               issue.owner || "Ambiguous",
               issue.ruleId || "",
+              (issue.wcagSc || []).join(", ") || "-",
               issue.xpath || "",
+              (issue.trustedTesterSteps || []).slice(0, 2).join(" | ") || "-",
               (issue.arrmTaskIds || []).join(", ") || "-",
               issue.suggestedFixLocation || ""
             ];
