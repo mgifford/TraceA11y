@@ -6,52 +6,62 @@
     <title>TraceA11y Responsibility Heatmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      :root {
+        --ta-navy: #0b1f3a;
+        --ta-blue: #1f4f99;
+        --ta-sky: #54a8ff;
+        --ta-orange: #f28f3b;
+        --ta-gold: #f5b700;
+        --ta-ink: #122033;
+      }
+    </style>
   </head>
-  <body class="min-h-screen bg-slate-100 text-slate-900">
+  <body class="min-h-screen bg-gradient-to-br from-sky-50 via-slate-100 to-amber-50 text-slate-900">
     <main class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-      <header class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+      <header class="mb-8 rounded-2xl border border-slate-200 bg-gradient-to-r from-[#0b1f3a] via-[#1f4f99] to-[#3178c6] p-6 text-white shadow-lg">
         <h1 class="text-2xl font-bold tracking-tight">TraceA11y Responsibility Heatmap</h1>
-        <p class="mt-2 text-sm text-slate-600">
+        <p class="mt-2 text-sm text-slate-100">
           Upload accessibility JSON files or use the bundled dist/data/attributed-report.json.
         </p>
       </header>
 
-      <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <h2 class="text-lg font-semibold">Data Source</h2>
-        <p class="mt-1 text-sm text-slate-600">
+      <section class="mb-8 rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm ring-1 ring-sky-100">
+        <h2 class="text-lg font-semibold text-slate-900">Data Source</h2>
+        <p class="mt-1 text-sm text-slate-700">
           Supported formats: attributed report JSON (with issues array) or raw scan JSON array with url/xpath/snippet/ruleId fields.
         </p>
         <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <label class="inline-flex cursor-pointer items-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">
+          <label class="inline-flex cursor-pointer items-center rounded-md bg-[#1f4f99] px-4 py-2 text-sm font-medium text-white shadow hover:bg-[#173f7f]">
             Upload JSON
             <input id="jsonUpload" type="file" accept="application/json,.json" class="sr-only" />
           </label>
-          <button id="useBundled" class="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+          <button id="useBundled" class="rounded-md border border-[#1f4f99] bg-white px-4 py-2 text-sm font-medium text-[#1f4f99] hover:bg-blue-50">
             Use Bundled Data
           </button>
           <span id="dataStatus" class="text-sm text-slate-600" aria-live="polite">Waiting for data source.</span>
         </div>
       </section>
 
-      <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <h2 class="mb-4 text-lg font-semibold">Errors by Role</h2>
+      <section class="mb-8 rounded-2xl border border-blue-200 bg-white/95 p-6 shadow-sm ring-1 ring-blue-100">
+        <h2 class="mb-4 text-lg font-semibold text-slate-900">Errors by Role</h2>
         <canvas id="ownerChart" aria-label="Errors by role chart" role="img"></canvas>
       </section>
 
-      <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <h2 class="mb-1 text-lg font-semibold">Shared Ownership Load</h2>
-        <p class="mb-4 text-sm text-slate-600">
+      <section class="mb-8 rounded-2xl border border-amber-200 bg-white/95 p-6 shadow-sm ring-1 ring-amber-100">
+        <h2 class="mb-1 text-lg font-semibold text-slate-900">Shared Ownership Load</h2>
+        <p class="mb-4 text-sm text-slate-700">
           Fractional counts based on per-issue owner probabilities. This surfaces co-ownership across teams.
         </p>
         <canvas id="sharedOwnerChart" aria-label="Shared ownership load chart" role="img"></canvas>
       </section>
 
-      <section class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+      <section class="rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-sm ring-1 ring-slate-200">
         <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <h2 class="text-lg font-semibold">Attributed Findings</h2>
+          <h2 class="text-lg font-semibold text-slate-900">Attributed Findings</h2>
           <label class="text-sm font-medium text-slate-700">
             Filter by owner
-            <select id="ownerFilter" class="ml-2 rounded-md border border-slate-300 px-2 py-1">
+            <select id="ownerFilter" class="ml-2 rounded-md border border-slate-300 bg-white px-2 py-1">
               <option value="All">All</option>
             </select>
           </label>
@@ -59,7 +69,7 @@
 
         <div class="overflow-x-auto">
           <table class="min-w-full divide-y divide-slate-200 text-sm">
-            <thead class="bg-slate-50">
+            <thead class="bg-gradient-to-r from-blue-50 to-amber-50">
               <tr>
                 <th class="px-3 py-2 text-left font-semibold">Owner</th>
                 <th class="px-3 py-2 text-left font-semibold">Owner Probabilities</th>
@@ -87,6 +97,13 @@
         "Developer",
         "Ambiguous"
       ];
+      const ROLE_COLORS = {
+        "Content Author": "rgba(31, 79, 153, 0.85)",
+        "Site Builder": "rgba(84, 168, 255, 0.85)",
+        "Themer / Visual Designer": "rgba(242, 143, 59, 0.9)",
+        Developer: "rgba(245, 183, 0, 0.85)",
+        Ambiguous: "rgba(100, 116, 139, 0.85)"
+      };
       const ROLE_REMEDIATION_PATHS = {
         "Content Author": "CMS content editing workflow (node/paragraph/field content)",
         "Site Builder": "Drupal configuration (Views, Layout Builder, Blocks)",
@@ -245,6 +262,7 @@
       function renderChart(byOwner) {
         const labels = Object.keys(byOwner);
         const values = Object.values(byOwner);
+        const backgroundColors = labels.map((label) => ROLE_COLORS[label] || "rgba(71, 85, 105, 0.85)");
 
         if (chartInstance) {
           chartInstance.destroy();
@@ -258,7 +276,7 @@
               {
                 label: "Errors",
                 data: values,
-                backgroundColor: "rgba(15, 23, 42, 0.85)",
+                backgroundColor: backgroundColors,
                 borderRadius: 8
               }
             ]
@@ -304,6 +322,7 @@
       function renderSharedOwnershipChart(sharedLoad) {
         const labels = Object.keys(sharedLoad);
         const values = Object.values(sharedLoad).map((value) => Number(value.toFixed(2)));
+        const backgroundColors = labels.map((label) => ROLE_COLORS[label] || "rgba(71, 85, 105, 0.85)");
 
         if (sharedChartInstance) {
           sharedChartInstance.destroy();
@@ -317,7 +336,7 @@
               {
                 label: "Weighted Issues",
                 data: values,
-                backgroundColor: "rgba(14, 116, 144, 0.85)",
+                backgroundColor: backgroundColors,
                 borderRadius: 8
               }
             ]
