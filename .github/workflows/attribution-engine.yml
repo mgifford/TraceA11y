@@ -86,6 +86,7 @@ jobs:
           path: dist/data/attributed-report.json
 
       - name: Upload axe accessibility report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: axe-accessibility-report
