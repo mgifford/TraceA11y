@@ -1,0 +1,9 @@
+[
+  {
+    "url": "https://mgifford.github.io/TraceA11y/",
+    "ruleId": "image-alt",
+    "xpath": "main img.hero",
+    "snippet": "<img class='hero' src='hero.png'>",
+    "error": "Element does not have an alt attribute"
+  }
+]
