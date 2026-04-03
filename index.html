@@ -385,7 +385,20 @@
           if (list.length === 0) {
             return "-";
           }
-          return list
+
+          const byOwner = list.reduce((acc, entry) => {
+            const owner = String(entry?.owner || "").trim();
+            const probability = Number(entry?.probability || 0);
+            if (!owner || probability <= 0) {
+              return acc;
+            }
+            acc[owner] = (acc[owner] || 0) + probability;
+            return acc;
+          }, {});
+
+          return Object.entries(byOwner)
+            .map(([owner, probability]) => ({ owner, probability }))
+            .sort((a, b) => b.probability - a.probability)
             .slice(0, 3)
             .map((entry) => `${entry.owner}:${Math.round(Number(entry.probability || 0) * 100)}%`)
             .join(" | ");
