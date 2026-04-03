@@ -11,6 +11,8 @@
     "attribute": "node src/attribute-engine.js",
     "attribute:sample": "node src/attribute-engine.js --input ./reports/sample-report.json",
     "export:dashboard": "node src/export-dashboard.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
     "learning:promote": "node src/promote-learning.js",
     "learning:reject": "node src/promote-learning.js"
   }
