@@ -1,0 +1,212 @@
+[
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "button-name",
+    "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button#global-navigation-trigger--mobile",
+    "snippet": "<button id=\"global-navigation-trigger--mobile\" class=\"hds-global-menu-toggle menu-toggle menu-mobile-toggle\" aria-expanded=\"false\" data-menu-action=\"open\" data-menu-location=\"left\">",
+    "error": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "button-name",
+    "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button.hds-search-panel-mobile-trigger",
+    "snippet": "<button class=\"hds-search-panel-mobile-trigger search-mobile color-carbon-20 menu-toggle\" data-menu-action=\"open\" data-menu-location=\"right\">",
+    "error": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+    "snippet": "<p>",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+    "snippet": "<span class=\"label\">",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+    "snippet": "<p>",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+    "snippet": "<span class=\"label\">",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+    "snippet": "<p>",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+    "snippet": "<span class=\"label\">",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+    "snippet": "<p>",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+    "snippet": "<span class=\"label\">",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "color-contrast",
+    "xpath": "div.hds-nasa-live-main > div.grid-container > div.w-full > div.hds-live-tag",
+    "snippet": "<div class=\"hds-live-tag label bg-nasa-red color-spacesuit-white padding-left-105 padd…\">",
+    "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.66 (foreground color: #ffffff, background color: #f64137, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "link-name",
+    "xpath": "div.slick-track > div.hds-meet-the-card > div.hds-meet-the-inner > a.hds-meet-the-image",
+    "snippet": "<a href=\"https://plus.nasa.gov/scheduled-events/\" target=\"_blank\" class=\"hds-meet-the-image padding-right-3\" rel=\"noopener\" tabindex=\"0\">",
+    "error": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "link-name",
+    "xpath": "div.grid-row > div.grid-col-12 > div.hds-image-download-wrapper > a.hds-image-download-link",
+    "snippet": "<a class=\"hds-image-download-link\" href=\"https://www.nasa.gov/wp-content/uploads/2026/04/55182924516-9d78d1e3ef-o.j…\">",
+    "error": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "label-content-name-mismatch",
+    "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+    "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-ori…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+    "error": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+  },
+  {
+    "url": "https://nasa.gov",
+    "ruleId": "label-content-name-mismatch",
+    "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+    "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-cre…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+    "error": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+  },
+  {
+    "url": "https://labor.maryland.gov/",
+    "ruleId": "region",
+    "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+    "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNav__logo",
+    "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNavList",
+    "snippet": "<ul class=\"mdgov-entNavList\">",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/",
+    "ruleId": "region",
+    "xpath": ".col-md-12",
+    "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/",
+    "ruleId": "region",
+    "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+    "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNav__logo",
+    "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNavList",
+    "snippet": "<ul class=\"mdgov-entNavList\">",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/",
+    "ruleId": "region",
+    "xpath": ".col-md-12",
+    "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+    "ruleId": "region",
+    "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+    "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNav__logo",
+    "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNavList",
+    "snippet": "<ul class=\"mdgov-entNavList\">",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+    "ruleId": "region",
+    "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+    "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNav__logo",
+    "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+    "ruleId": "region",
+    "xpath": ".mdgov-entNavList",
+    "snippet": "<ul class=\"mdgov-entNavList\">",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  },
+  {
+    "url": "https://labor.maryland.gov/aboutdllr/privacystatement.shtml",
+    "ruleId": "region",
+    "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+    "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+    "error": "Fix any of the following:\n  Some page content is not contained by landmarks"
+  }
+]
