@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T13:19:53.084Z",
+  "generatedAt": "2026-04-03T13:24:58.751Z",
   "arrm": {
     "source": "./data/reference/arrm-all-tasks.csv",
     "loadedTaskCount": 264
@@ -19,26 +19,27 @@
     "decisionLogStore": "./data/learning/decision-log.json"
   },
   "totals": {
-    "totalIssues": 1,
+    "totalIssues": 4,
     "byOwner": {
       "Content Author": 1,
       "Site Builder": 0,
       "Themer / Visual Designer": 0,
-      "Developer": 0,
+      "Developer": 3,
       "Ambiguous": 0
     }
   },
   "platformDetection": {
     "mode": "issue-level",
     "byPlatform": {
-      "Unknown": 1
+      "Unknown": 4
     }
   },
   "attributionUncertainty": {
     "byFlag": {}
   },
   "inputs": [
-    "reports/sample-report.json"
+    "reports/sample-report.json",
+    "reports/workflow-sample-report.json"
   ],
   "byOwner": {
     "Content Author": [
@@ -170,7 +171,404 @@
     ],
     "Site Builder": [],
     "Themer / Visual Designer": [],
-    "Developer": [],
+    "Developer": [
+      {
+        "url": "https://fdic.gov",
+        "ruleId": "aria-allowed-attr",
+        "xpath": "div.field__item > div.paragraph > div.tabs-container > input#consumers",
+        "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"consumers\" checked=\"checked\" aria-expanded=\"false\" data-once=\"tab-click\">",
+        "error": "ARIA attribute is not allowed: aria-expanded=\"false\"",
+        "sourceFile": "reports/workflow-sample-report.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Developer",
+        "confidence": 0.9039999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.365
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.173
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.173
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.144
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.144
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:aria-allowed-attr; arrm-support=51 (bonus=1.50); wcag-spine-support=1 (bonus=0.30)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 51,
+          "Developer": 51,
+          "Content Author": 6
+        },
+        "wcagSpineOwnerSignals": {
+          "Developer": 1
+        },
+        "wcagSc": [
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [
+          "INP-001",
+          "INP-002",
+          "INP-003",
+          "INP-004",
+          "INP-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "INP-001",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-002",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-003",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-004",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All actionable elements can be reached, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "INP-005",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All active elements can be triggered, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://fdic.gov",
+        "ruleId": "aria-allowed-attr",
+        "xpath": "div.field__item > div.paragraph > div.tabs-container > input#bankers",
+        "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"bankers\" aria-expanded=\"false\" data-once=\"tab-click\">",
+        "error": "ARIA attribute is not allowed: aria-expanded=\"false\"",
+        "sourceFile": "reports/workflow-sample-report.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Developer",
+        "confidence": 0.9039999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.365
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.173
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.173
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.144
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.144
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:aria-allowed-attr; arrm-support=51 (bonus=1.50); wcag-spine-support=1 (bonus=0.30)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 51,
+          "Developer": 51,
+          "Content Author": 6
+        },
+        "wcagSpineOwnerSignals": {
+          "Developer": 1
+        },
+        "wcagSc": [
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [
+          "INP-001",
+          "INP-002",
+          "INP-003",
+          "INP-004",
+          "INP-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "INP-001",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-002",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-003",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-004",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All actionable elements can be reached, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "INP-005",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All active elements can be triggered, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://fdic.gov",
+        "ruleId": "aria-allowed-attr",
+        "xpath": "div.field__item > div.paragraph > div.tabs-container > input#analysts",
+        "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"analysts\" aria-expanded=\"false\" data-once=\"tab-click\">",
+        "error": "ARIA attribute is not allowed: aria-expanded=\"false\"",
+        "sourceFile": "reports/workflow-sample-report.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Developer",
+        "confidence": 0.9039999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.365
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.173
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.173
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.144
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.144
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:aria-allowed-attr; arrm-support=51 (bonus=1.50); wcag-spine-support=1 (bonus=0.30)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 51,
+          "Developer": 51,
+          "Content Author": 6
+        },
+        "wcagSpineOwnerSignals": {
+          "Developer": 1
+        },
+        "wcagSc": [
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [
+          "INP-001",
+          "INP-002",
+          "INP-003",
+          "INP-004",
+          "INP-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "INP-001",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-002",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-003",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-004",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All actionable elements can be reached, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "INP-005",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All active elements can be triggered, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      }
+    ],
     "Ambiguous": []
   },
   "remediationPaths": [
@@ -192,7 +590,7 @@
     {
       "owner": "Developer",
       "path": "Custom code/module fixes (templates, JS, backend forms)",
-      "count": 0
+      "count": 3
     },
     {
       "owner": "Ambiguous",
@@ -314,6 +712,402 @@
             "UX Design"
           ]
         },
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://fdic.gov",
+      "ruleId": "aria-allowed-attr",
+      "xpath": "div.field__item > div.paragraph > div.tabs-container > input#consumers",
+      "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"consumers\" checked=\"checked\" aria-expanded=\"false\" data-once=\"tab-click\">",
+      "error": "ARIA attribute is not allowed: aria-expanded=\"false\"",
+      "sourceFile": "reports/workflow-sample-report.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Developer",
+      "confidence": 0.9039999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.365
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.173
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.173
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.144
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.144
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:aria-allowed-attr; arrm-support=51 (bonus=1.50); wcag-spine-support=1 (bonus=0.30)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 51,
+        "Developer": 51,
+        "Content Author": 6
+      },
+      "wcagSpineOwnerSignals": {
+        "Developer": 1
+      },
+      "wcagSc": [
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [
+        "INP-001",
+        "INP-002",
+        "INP-003",
+        "INP-004",
+        "INP-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "INP-001",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-002",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-003",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-004",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All actionable elements can be reached, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "INP-005",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All active elements can be triggered, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://fdic.gov",
+      "ruleId": "aria-allowed-attr",
+      "xpath": "div.field__item > div.paragraph > div.tabs-container > input#bankers",
+      "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"bankers\" aria-expanded=\"false\" data-once=\"tab-click\">",
+      "error": "ARIA attribute is not allowed: aria-expanded=\"false\"",
+      "sourceFile": "reports/workflow-sample-report.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Developer",
+      "confidence": 0.9039999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.365
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.173
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.173
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.144
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.144
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:aria-allowed-attr; arrm-support=51 (bonus=1.50); wcag-spine-support=1 (bonus=0.30)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 51,
+        "Developer": 51,
+        "Content Author": 6
+      },
+      "wcagSpineOwnerSignals": {
+        "Developer": 1
+      },
+      "wcagSc": [
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [
+        "INP-001",
+        "INP-002",
+        "INP-003",
+        "INP-004",
+        "INP-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "INP-001",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-002",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-003",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-004",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All actionable elements can be reached, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "INP-005",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All active elements can be triggered, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://fdic.gov",
+      "ruleId": "aria-allowed-attr",
+      "xpath": "div.field__item > div.paragraph > div.tabs-container > input#analysts",
+      "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"analysts\" aria-expanded=\"false\" data-once=\"tab-click\">",
+      "error": "ARIA attribute is not allowed: aria-expanded=\"false\"",
+      "sourceFile": "reports/workflow-sample-report.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Developer",
+      "confidence": 0.9039999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.365
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.173
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.173
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.144
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.144
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:aria-allowed-attr; arrm-support=51 (bonus=1.50); wcag-spine-support=1 (bonus=0.30)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 51,
+        "Developer": 51,
+        "Content Author": 6
+      },
+      "wcagSpineOwnerSignals": {
+        "Developer": 1
+      },
+      "wcagSc": [
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [
+        "INP-001",
+        "INP-002",
+        "INP-003",
+        "INP-004",
+        "INP-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "INP-001",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-002",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-003",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-004",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All actionable elements can be reached, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "INP-005",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All active elements can be triggered, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        }
+      ],
+      "wcagSpineReferences": [
         {
           "sc": "4.1.2",
           "title": "Name, Role, Value",
