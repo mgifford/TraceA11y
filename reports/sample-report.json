@@ -1,0 +1,8 @@
+[
+  {
+    "url": "https://example.com/node/123",
+    "xpath": "/html/body/div[1]/main/article/div/div[2]/p/img",
+    "snippet": "<img src='photo.jpg'>",
+    "ruleId": "image-alt"
+  }
+]

@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-04-03T02:04:54.488Z",
+  "arrm": {
+    "source": "./data/reference/arrm-all-tasks.csv",
+    "loadedTaskCount": 264
+  },
+  "totals": {
+    "totalIssues": 1,
+    "byOwner": {
+      "Content Author": 1,
+      "Site Builder": 0,
+      "Themer / Visual Designer": 0,
+      "Developer": 0,
+      "Ambiguous": 0
+    }
+  },
+  "inputs": [
+    "./reports/sample-report.json"
+  ],
+  "byOwner": {
+    "Content Author": [
+      {
+        "url": "https://example.com/node/123",
+        "xpath": "/html/body/div[1]/main/article/div/div[2]/p/img",
+        "snippet": "<img src='photo.jpg'>",
+        "ruleId": "image-alt",
+        "sourceFile": "./reports/sample-report.json",
+        "owner": "Content Author",
+        "confidence": 0.95,
+        "rationale": "Step 1 override: image-alt inside article context maps to Content Author",
+        "suggestedFixLocation": "CMS content editing workflow (node/paragraph/field content)",
+        "arrmTaskIds": [
+          "IMG-001",
+          "IMG-002",
+          "IMG-003",
+          "IMG-004",
+          "IMG-006"
+        ],
+        "arrmReferences": [
+          {
+            "id": "IMG-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Informative alternate text is provided for images (i.e. not \"spacer\" or image file name).",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "IMG-002",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Informative images are described with a clear and meaningful text equivalent (alt attribute or other equivalent means).",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "none"
+          },
+          {
+            "id": "IMG-003",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Purely decorative images are provided with null alt attribute values (or other equivalent means).",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "IMG-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Null alt attribute values are used for images that are already described in text in adjacent page content.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "IMG-006",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Alt text used for images of text include all relevant text found in the image.",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "none"
+          }
+        ]
+      }
+    ],
+    "Site Builder": [],
+    "Themer / Visual Designer": [],
+    "Developer": [],
+    "Ambiguous": []
+  },
+  "remediationPaths": [
+    {
+      "owner": "Content Author",
+      "path": "CMS content editing workflow (node/paragraph/field content)",
+      "count": 1
+    },
+    {
+      "owner": "Site Builder",
+      "path": "Drupal configuration (Views, Layout Builder, Blocks)",
+      "count": 0
+    },
+    {
+      "owner": "Themer / Visual Designer",
+      "path": "Theme and design system layer (global CSS/components)",
+      "count": 0
+    },
+    {
+      "owner": "Developer",
+      "path": "Custom code/module fixes (templates, JS, backend forms)",
+      "count": 0
+    },
+    {
+      "owner": "Ambiguous",
+      "path": "Manual triage needed (run AI classifier or human review)",
+      "count": 0
+    }
+  ],
+  "issues": [
+    {
+      "url": "https://example.com/node/123",
+      "xpath": "/html/body/div[1]/main/article/div/div[2]/p/img",
+      "snippet": "<img src='photo.jpg'>",
+      "ruleId": "image-alt",
+      "sourceFile": "./reports/sample-report.json",
+      "owner": "Content Author",
+      "confidence": 0.95,
+      "rationale": "Step 1 override: image-alt inside article context maps to Content Author",
+      "suggestedFixLocation": "CMS content editing workflow (node/paragraph/field content)",
+      "arrmTaskIds": [
+        "IMG-001",
+        "IMG-002",
+        "IMG-003",
+        "IMG-004",
+        "IMG-006"
+      ],
+      "arrmReferences": [
+        {
+          "id": "IMG-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Informative alternate text is provided for images (i.e. not \"spacer\" or image file name).",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "IMG-002",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Informative images are described with a clear and meaningful text equivalent (alt attribute or other equivalent means).",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "none"
+        },
+        {
+          "id": "IMG-003",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Purely decorative images are provided with null alt attribute values (or other equivalent means).",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "IMG-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Null alt attribute values are used for images that are already described in text in adjacent page content.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "IMG-006",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Alt text used for images of text include all relevant text found in the image.",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "none"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TraceA11y Responsibility Heatmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="min-h-screen bg-slate-100 text-slate-900">
+    <main class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+      <header class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <h1 class="text-2xl font-bold tracking-tight">TraceA11y Responsibility Heatmap</h1>
+        <p class="mt-2 text-sm text-slate-600">
+          Accessibility forensics dashboard generated from dist/data/attributed-report.json.
+        </p>
+      </header>
+
+      <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <h2 class="mb-4 text-lg font-semibold">Errors by Role</h2>
+        <canvas id="ownerChart" aria-label="Errors by role chart" role="img"></canvas>
+      </section>
+
+      <section class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <h2 class="text-lg font-semibold">Attributed Findings</h2>
+          <label class="text-sm font-medium text-slate-700">
+            Filter by owner
+            <select id="ownerFilter" class="ml-2 rounded-md border border-slate-300 px-2 py-1">
+              <option value="All">All</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-slate-200 text-sm">
+            <thead class="bg-slate-50">
+              <tr>
+                <th class="px-3 py-2 text-left font-semibold">Owner</th>
+                <th class="px-3 py-2 text-left font-semibold">Rule</th>
+                <th class="px-3 py-2 text-left font-semibold">XPath</th>
+                <th class="px-3 py-2 text-left font-semibold">ARRM Tasks</th>
+                <th class="px-3 py-2 text-left font-semibold">Suggested Fix Location</th>
+              </tr>
+            </thead>
+            <tbody id="issuesTable" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const DATA_PATH = "./dist/data/attributed-report.json";
+
+      function renderChart(byOwner) {
+        const labels = Object.keys(byOwner);
+        const values = Object.values(byOwner);
+
+        new Chart(document.getElementById("ownerChart"), {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "Errors",
+                data: values,
+                backgroundColor: "rgba(15, 23, 42, 0.85)",
+                borderRadius: 8
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: { precision: 0 }
+              }
+            }
+          }
+        });
+      }
+
+      function appendFilterOptions(ownerCounts) {
+        const select = document.getElementById("ownerFilter");
+        Object.keys(ownerCounts).forEach((owner) => {
+          const option = document.createElement("option");
+          option.value = owner;
+          option.textContent = owner;
+          select.appendChild(option);
+        });
+      }
+
+      function renderTable(issues, filterValue = "All") {
+        const tbody = document.getElementById("issuesTable");
+        tbody.innerHTML = "";
+
+        issues
+          .filter((issue) => filterValue === "All" || issue.owner === filterValue)
+          .forEach((issue) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td class="whitespace-nowrap px-3 py-2">${issue.owner}</td>
+              <td class="whitespace-nowrap px-3 py-2">${issue.ruleId || ""}</td>
+              <td class="max-w-lg truncate px-3 py-2" title="${issue.xpath || ""}">${issue.xpath || ""}</td>
+              <td class="whitespace-nowrap px-3 py-2">${(issue.arrmTaskIds || []).join(", ") || "-"}</td>
+              <td class="px-3 py-2">${issue.suggestedFixLocation || ""}</td>
+            `;
+            tbody.appendChild(row);
+          });
+      }
+
+      async function main() {
+        try {
+          const response = await fetch(DATA_PATH);
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${DATA_PATH} (${response.status})`);
+          }
+
+          const data = await response.json();
+          const ownerCounts = data?.totals?.byOwner || {};
+          const issues = data?.issues || [];
+
+          renderChart(ownerCounts);
+          appendFilterOptions(ownerCounts);
+          renderTable(issues);
+
+          const filter = document.getElementById("ownerFilter");
+          filter.addEventListener("change", () => {
+            renderTable(issues, filter.value);
+          });
+        } catch (error) {
+          const container = document.querySelector("main");
+          const message = document.createElement("p");
+          message.className = "rounded-md bg-rose-50 p-3 text-sm text-rose-700";
+          message.textContent = `Could not load dashboard data: ${error.message}`;
+          container.prepend(message);
+        }
+      }
+
+      main();
+    </script>
+  </body>
+</html>

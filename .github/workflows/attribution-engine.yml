@@ -1,0 +1,45 @@
+name: Accessibility Forensic Attribution
+
+on:
+  workflow_dispatch:
+    inputs:
+      reportFile:
+        description: "Optional report file path (inside repository)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - "reports/**"
+
+permissions:
+  contents: read
+
+jobs:
+  attribute:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run attribution engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_MODELS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -n "${{ github.event.inputs.reportFile }}" ]; then
+            node src/attribute-engine.js --input "${{ github.event.inputs.reportFile }}"
+          else
+            node src/attribute-engine.js
+          fi
+
+      - name: Upload attributed report
+        uses: actions/upload-artifact@v4
+        with:
+          name: attributed-report
+          path: dist/data/attributed-report.json

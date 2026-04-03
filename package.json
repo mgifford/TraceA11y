@@ -1,0 +1,14 @@
+{
+  "name": "tracea11y",
+  "version": "0.1.0",
+  "description": "Accessibility forensic attribution engine",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "attribute": "node src/attribute-engine.js",
+    "attribute:sample": "node src/attribute-engine.js --input ./reports/sample-report.json"
+  }
+}
