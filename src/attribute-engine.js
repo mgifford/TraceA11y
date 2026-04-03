@@ -7,7 +7,11 @@ import {
   ROLE_SIGNATURES
 } from "./signatures.js";
 import { classifyAmbiguousWithAi } from "./ai-classifier.js";
-import { findRelatedArrmTasks, loadArrmTasks } from "./arrm-map.js";
+import {
+  findRelatedArrmTasks,
+  getArrmOwnerSignals,
+  loadArrmTasks
+} from "./arrm-map.js";
 
 const REPORTS_DIR = "./reports";
 const OUTPUT_DIR = "./dist/data";
@@ -56,35 +60,59 @@ function applyStepOneOverride(issue) {
   return null;
 }
 
-async function classifyIssue(issue) {
+async function classifyIssue(issue, arrmTasks) {
   const override = applyStepOneOverride(issue);
   if (override) {
     return override;
   }
 
-  const scoredRoles = ROLE_SIGNATURES.map((signature) => ({
-    owner: signature.owner,
-    ...scoreIssueAgainstRole(issue, signature)
-  }));
+  const arrmOwnerSignals = getArrmOwnerSignals(issue, arrmTasks);
+
+  const scoredRoles = ROLE_SIGNATURES.map((signature) => {
+    const heuristic = scoreIssueAgainstRole(issue, signature);
+    const arrmSignalCount = arrmOwnerSignals[signature.owner] || 0;
+    const arrmBonus = Math.min(arrmSignalCount * 0.35, 1.5);
+
+    return {
+      owner: signature.owner,
+      heuristicScore: heuristic.score,
+      arrmSignalCount,
+      arrmBonus,
+      score: heuristic.score + arrmBonus,
+      matchedSignals: heuristic.matchedSignals
+    };
+  });
 
   scoredRoles.sort((a, b) => b.score - a.score);
   const top = scoredRoles[0];
   const second = scoredRoles[1];
+  const tied = second && Math.abs(top.score - second.score) < 0.01;
 
-  if (!top || top.score === 0 || (second && top.score === second.score)) {
+  if (!top || top.score === 0 || tied) {
     const aiResult = await classifyAmbiguousWithAi(issue);
     return {
       owner: aiResult.owner,
       confidence: aiResult.confidence,
-      rationale: aiResult.rationale
+      rationale: aiResult.rationale,
+      arrmOwnerSignals
     };
   }
 
   const confidence = Math.min(0.6 + top.score * 0.08, 0.95);
+  const signalSummary = [
+    top.matchedSignals.length > 0 ? `heuristics=${top.matchedSignals.join("|")}` : null,
+    top.arrmSignalCount > 0
+      ? `arrm-support=${top.arrmSignalCount} (bonus=${top.arrmBonus.toFixed(2)})`
+      : null
+  ]
+    .filter(Boolean)
+    .join("; ");
+
   return {
     owner: top.owner,
     confidence,
-    rationale: `Heuristic match: ${top.matchedSignals.join(", ") || "signature score"}`
+    rationale: `Weighted match: ${signalSummary || "signature score"}`,
+    arrmOwnerSignals
   };
 }
 
@@ -129,7 +157,7 @@ async function main() {
 
   for (const report of reports) {
     for (const issue of report.issues) {
-      const attribution = await classifyIssue(issue);
+      const attribution = await classifyIssue(issue, arrmTasks);
       const owner = attribution.owner;
       const relatedArrmTasks = findRelatedArrmTasks(issue, owner, arrmTasks);
       const attributedIssue = {
@@ -139,6 +167,7 @@ async function main() {
         confidence: attribution.confidence,
         rationale: attribution.rationale,
         suggestedFixLocation: mapFixLocation(owner),
+        arrmOwnerSignals: attribution.arrmOwnerSignals || {},
         arrmTaskIds: relatedArrmTasks.map((task) => task.id),
         arrmReferences: relatedArrmTasks.map((task) => ({
           id: task.id,

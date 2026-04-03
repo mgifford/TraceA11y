@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T02:04:54.488Z",
+  "generatedAt": "2026-04-03T02:07:45.351Z",
   "arrm": {
     "source": "./data/reference/arrm-all-tasks.csv",
     "loadedTaskCount": 264
@@ -29,6 +29,7 @@
         "confidence": 0.95,
         "rationale": "Step 1 override: image-alt inside article context maps to Content Author",
         "suggestedFixLocation": "CMS content editing workflow (node/paragraph/field content)",
+        "arrmOwnerSignals": {},
         "arrmTaskIds": [
           "IMG-001",
           "IMG-002",
@@ -128,6 +129,7 @@
       "confidence": 0.95,
       "rationale": "Step 1 override: image-alt inside article context maps to Content Author",
       "suggestedFixLocation": "CMS content editing workflow (node/paragraph/field content)",
+      "arrmOwnerSignals": {},
       "arrmTaskIds": [
         "IMG-001",
         "IMG-002",

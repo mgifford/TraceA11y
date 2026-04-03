@@ -12,9 +12,26 @@
       <header class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
         <h1 class="text-2xl font-bold tracking-tight">TraceA11y Responsibility Heatmap</h1>
         <p class="mt-2 text-sm text-slate-600">
-          Accessibility forensics dashboard generated from dist/data/attributed-report.json.
+          Upload accessibility JSON files or use the bundled dist/data/attributed-report.json.
         </p>
       </header>
+
+      <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <h2 class="text-lg font-semibold">Data Source</h2>
+        <p class="mt-1 text-sm text-slate-600">
+          Supported formats: attributed report JSON (with issues array) or raw scan JSON array with url/xpath/snippet/ruleId fields.
+        </p>
+        <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <label class="inline-flex cursor-pointer items-center rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">
+            Upload JSON
+            <input id="jsonUpload" type="file" accept="application/json,.json" class="sr-only" />
+          </label>
+          <button id="useBundled" class="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            Use Bundled Data
+          </button>
+          <span id="dataStatus" class="text-sm text-slate-600" aria-live="polite">Waiting for data source.</span>
+        </div>
+      </section>
 
       <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
         <h2 class="mb-4 text-lg font-semibold">Errors by Role</h2>
@@ -51,12 +68,146 @@
 
     <script>
       const DATA_PATH = "./dist/data/attributed-report.json";
+      const OWNER_ORDER = [
+        "Content Author",
+        "Site Builder",
+        "Themer / Visual Designer",
+        "Developer",
+        "Ambiguous"
+      ];
+      const ROLE_REMEDIATION_PATHS = {
+        "Content Author": "CMS content editing workflow (node/paragraph/field content)",
+        "Site Builder": "Drupal configuration (Views, Layout Builder, Blocks)",
+        "Themer / Visual Designer": "Theme and design system layer (global CSS/components)",
+        "Developer": "Custom code/module fixes (templates, JS, backend forms)",
+        Ambiguous: "Manual triage needed"
+      };
+      const ROLE_SIGNATURES = [
+        {
+          owner: "Content Author",
+          patterns: [
+            /\.field--name-field-/i,
+            /\.paragraph--type-/i,
+            /\.node-content/i,
+            /\.ck-content/i,
+            /\/article\b/i
+          ],
+          ruleHints: ["image-alt", "heading-order", "empty-link", "color-contrast"]
+        },
+        {
+          owner: "Site Builder",
+          patterns: [/\.view-id-/i, /\.view-display-id-/i, /\.block-system-main-block/i, /\.layout-builder/i],
+          ruleHints: ["duplicate-id", "landmark-one-main", "landmark-no-duplicate-main"]
+        },
+        {
+          owner: "Themer / Visual Designer",
+          patterns: [/header\.site-header/i, /<footer\b/i, /\.nav-primary/i, /\.ds-/i],
+          ruleHints: ["color-contrast", "focus-visible", "meta-viewport"]
+        },
+        {
+          owner: "Developer",
+          patterns: [/\.form-item/i, /aria-[a-z-]+/i, /<input\b/i, /<button\b/i, /\.webform-client-form/i],
+          ruleHints: ["aria-allowed-attr", "aria-valid-attr", "keyboard", "label", "form-field-multiple-labels"]
+        }
+      ];
+
+      let chartInstance = null;
+      let allIssues = [];
+
+      function setStatus(message, isError = false) {
+        const el = document.getElementById("dataStatus");
+        el.textContent = message;
+        el.className = isError ? "text-sm text-rose-700" : "text-sm text-slate-600";
+      }
+
+      function initializeOwnerCounts() {
+        return OWNER_ORDER.reduce((acc, owner) => {
+          acc[owner] = 0;
+          return acc;
+        }, {});
+      }
+
+      function isAttributedFormat(data) {
+        return Array.isArray(data?.issues) || Array.isArray(data);
+      }
+
+      function normalizeAttributedIssues(data) {
+        if (Array.isArray(data?.issues)) {
+          return data.issues;
+        }
+        if (Array.isArray(data)) {
+          return data;
+        }
+        return [];
+      }
+
+      function classifyRawIssue(issue) {
+        const xpath = issue?.xpath || "";
+        const snippet = issue?.snippet || "";
+        const ruleId = issue?.ruleId || "";
+        const haystack = `${xpath} ${snippet}`;
+
+        if ((/\/article\b/i.test(xpath) || /<article\b/i.test(snippet)) && ruleId === "image-alt") {
+          return {
+            owner: "Content Author",
+            rationale: "Step 1 override: image-alt inside article context"
+          };
+        }
+
+        const scored = ROLE_SIGNATURES.map((signature) => {
+          let score = 0;
+          for (const pattern of signature.patterns) {
+            if (pattern.test(haystack)) {
+              score += 2;
+            }
+          }
+          if (signature.ruleHints.includes(ruleId)) {
+            score += 2;
+          }
+          return { owner: signature.owner, score };
+        }).sort((a, b) => b.score - a.score);
+
+        if (!scored[0] || scored[0].score === 0) {
+          return { owner: "Ambiguous", rationale: "No signature match" };
+        }
+
+        return { owner: scored[0].owner, rationale: "Client-side signature match" };
+      }
+
+      function normalizeRawIssues(rawIssues) {
+        return rawIssues.map((issue) => {
+          const classification = classifyRawIssue(issue);
+          return {
+            url: issue.url || "",
+            xpath: issue.xpath || "",
+            snippet: issue.snippet || "",
+            ruleId: issue.ruleId || "",
+            owner: classification.owner,
+            rationale: classification.rationale,
+            suggestedFixLocation: ROLE_REMEDIATION_PATHS[classification.owner] || ROLE_REMEDIATION_PATHS.Ambiguous,
+            arrmTaskIds: issue.arrmTaskIds || []
+          };
+        });
+      }
+
+      function buildDatasetFromIssues(issues) {
+        const byOwner = initializeOwnerCounts();
+        issues.forEach((issue) => {
+          const owner = issue.owner && byOwner[issue.owner] !== undefined ? issue.owner : "Ambiguous";
+          byOwner[owner] += 1;
+        });
+        return byOwner;
+      }
 
       function renderChart(byOwner) {
         const labels = Object.keys(byOwner);
         const values = Object.values(byOwner);
 
-        new Chart(document.getElementById("ownerChart"), {
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+
+        chartInstance = new Chart(document.getElementById("ownerChart"), {
           type: "bar",
           data: {
             labels,
@@ -86,6 +237,7 @@
 
       function appendFilterOptions(ownerCounts) {
         const select = document.getElementById("ownerFilter");
+        select.innerHTML = '<option value="All">All</option>';
         Object.keys(ownerCounts).forEach((owner) => {
           const option = document.createElement("option");
           option.value = owner;
@@ -102,42 +254,99 @@
           .filter((issue) => filterValue === "All" || issue.owner === filterValue)
           .forEach((issue) => {
             const row = document.createElement("tr");
-            row.innerHTML = `
-              <td class="whitespace-nowrap px-3 py-2">${issue.owner}</td>
-              <td class="whitespace-nowrap px-3 py-2">${issue.ruleId || ""}</td>
-              <td class="max-w-lg truncate px-3 py-2" title="${issue.xpath || ""}">${issue.xpath || ""}</td>
-              <td class="whitespace-nowrap px-3 py-2">${(issue.arrmTaskIds || []).join(", ") || "-"}</td>
-              <td class="px-3 py-2">${issue.suggestedFixLocation || ""}</td>
-            `;
+
+            const cells = [
+              issue.owner || "Ambiguous",
+              issue.ruleId || "",
+              issue.xpath || "",
+              (issue.arrmTaskIds || []).join(", ") || "-",
+              issue.suggestedFixLocation || ""
+            ];
+
+            cells.forEach((value, index) => {
+              const td = document.createElement("td");
+              td.textContent = value;
+              td.className = index === 2 ? "max-w-lg truncate px-3 py-2" : "px-3 py-2";
+              if (index === 2) {
+                td.title = value;
+              }
+              row.appendChild(td);
+            });
+
             tbody.appendChild(row);
           });
       }
 
+      function renderDataset(issues) {
+        allIssues = issues;
+        const ownerCounts = buildDatasetFromIssues(issues);
+        renderChart(ownerCounts);
+        appendFilterOptions(ownerCounts);
+        renderTable(issues);
+        document.getElementById("ownerFilter").value = "All";
+      }
+
+      async function loadBundledData() {
+        const response = await fetch(DATA_PATH);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch ${DATA_PATH} (${response.status})`);
+        }
+
+        const data = await response.json();
+        const issues = normalizeAttributedIssues(data);
+        renderDataset(issues);
+        setStatus(`Loaded bundled data (${issues.length} issues).`);
+      }
+
+      async function loadUploadedFile(file) {
+        const text = await file.text();
+        const parsed = JSON.parse(text);
+
+        const normalized = normalizeAttributedIssues(parsed);
+        if (!Array.isArray(normalized) || normalized.length === 0) {
+          throw new Error("JSON file must contain an issues array or a root array.");
+        }
+
+        const hasOwner = normalized.some((item) => typeof item?.owner === "string" && item.owner.length > 0);
+        const issues = hasOwner ? normalized : normalizeRawIssues(normalized);
+        renderDataset(issues);
+        setStatus(`Loaded ${file.name} (${issues.length} issues).`);
+      }
+
       async function main() {
-        try {
-          const response = await fetch(DATA_PATH);
-          if (!response.ok) {
-            throw new Error(`Failed to fetch ${DATA_PATH} (${response.status})`);
+        const filter = document.getElementById("ownerFilter");
+        const uploader = document.getElementById("jsonUpload");
+        const useBundledButton = document.getElementById("useBundled");
+
+        filter.addEventListener("change", () => {
+          renderTable(allIssues, filter.value);
+        });
+
+        uploader.addEventListener("change", async (event) => {
+          const file = event.target.files && event.target.files[0];
+          if (!file) {
+            return;
           }
 
-          const data = await response.json();
-          const ownerCounts = data?.totals?.byOwner || {};
-          const issues = data?.issues || [];
+          try {
+            await loadUploadedFile(file);
+          } catch (error) {
+            setStatus(`Could not load ${file.name}: ${error.message}`, true);
+          }
+        });
 
-          renderChart(ownerCounts);
-          appendFilterOptions(ownerCounts);
-          renderTable(issues);
+        useBundledButton.addEventListener("click", async () => {
+          try {
+            await loadBundledData();
+          } catch (error) {
+            setStatus(`Could not load bundled data: ${error.message}`, true);
+          }
+        });
 
-          const filter = document.getElementById("ownerFilter");
-          filter.addEventListener("change", () => {
-            renderTable(issues, filter.value);
-          });
+        try {
+          await loadBundledData();
         } catch (error) {
-          const container = document.querySelector("main");
-          const message = document.createElement("p");
-          message.className = "rounded-md bg-rose-50 p-3 text-sm text-rose-700";
-          message.textContent = `Could not load dashboard data: ${error.message}`;
-          container.prepend(message);
+          setStatus(`Could not auto-load bundled data: ${error.message}. Upload a JSON file to continue.`, true);
         }
       }
 

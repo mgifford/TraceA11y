@@ -178,3 +178,27 @@ export function findRelatedArrmTasks(issue, owner, arrmTasks, maxItems = 5) {
 
   return selected.slice(0, maxItems);
 }
+
+export function getArrmOwnerSignals(issue, arrmTasks, maxTasks = 40) {
+  if (!Array.isArray(arrmTasks) || arrmTasks.length === 0) {
+    return {};
+  }
+
+  const targetPrefixes = mapRuleToPrefixes(issue.ruleId);
+  if (targetPrefixes.length === 0) {
+    return {};
+  }
+
+  const candidates = arrmTasks
+    .filter((task) => targetPrefixes.includes(task.idPrefix))
+    .slice(0, maxTasks);
+
+  const signals = {};
+  for (const task of candidates) {
+    for (const owner of task.mappedOwners) {
+      signals[owner] = (signals[owner] || 0) + 1;
+    }
+  }
+
+  return signals;
+}
