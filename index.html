@@ -38,6 +38,14 @@
         <canvas id="ownerChart" aria-label="Errors by role chart" role="img"></canvas>
       </section>
 
+      <section class="mb-8 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <h2 class="mb-1 text-lg font-semibold">Shared Ownership Load</h2>
+        <p class="mb-4 text-sm text-slate-600">
+          Fractional counts based on per-issue owner probabilities. This surfaces co-ownership across teams.
+        </p>
+        <canvas id="sharedOwnerChart" aria-label="Shared ownership load chart" role="img"></canvas>
+      </section>
+
       <section class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
         <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 class="text-lg font-semibold">Attributed Findings</h2>
@@ -116,6 +124,7 @@
       ];
 
       let chartInstance = null;
+      let sharedChartInstance = null;
       let allIssues = [];
 
       function setStatus(message, isError = false) {
@@ -269,6 +278,64 @@
         });
       }
 
+      function buildFractionalOwnerLoad(issues) {
+        const byOwner = initializeOwnerCounts();
+
+        issues.forEach((issue) => {
+          const probabilities = Array.isArray(issue.ownerProbabilities) ? issue.ownerProbabilities : [];
+          if (probabilities.length === 0) {
+            const owner = issue.owner && byOwner[issue.owner] !== undefined ? issue.owner : "Ambiguous";
+            byOwner[owner] += 1;
+            return;
+          }
+
+          probabilities.forEach((entry) => {
+            const owner = entry?.owner;
+            const probability = Number(entry?.probability || 0);
+            if (owner in byOwner && probability > 0) {
+              byOwner[owner] += probability;
+            }
+          });
+        });
+
+        return byOwner;
+      }
+
+      function renderSharedOwnershipChart(sharedLoad) {
+        const labels = Object.keys(sharedLoad);
+        const values = Object.values(sharedLoad).map((value) => Number(value.toFixed(2)));
+
+        if (sharedChartInstance) {
+          sharedChartInstance.destroy();
+        }
+
+        sharedChartInstance = new Chart(document.getElementById("sharedOwnerChart"), {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "Weighted Issues",
+                data: values,
+                backgroundColor: "rgba(14, 116, 144, 0.85)",
+                borderRadius: 8
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
+
       function appendFilterOptions(ownerCounts) {
         const select = document.getElementById("ownerFilter");
         select.innerHTML = '<option value="All">All</option>';
@@ -284,6 +351,16 @@
         const tbody = document.getElementById("issuesTable");
         tbody.innerHTML = "";
 
+        const createTextCell = (value, className = "px-3 py-2", title = null) => {
+          const td = document.createElement("td");
+          td.className = className;
+          td.textContent = value;
+          if (title) {
+            td.title = title;
+          }
+          return td;
+        };
+
         const formatProbabilities = (entries) => {
           const list = Array.isArray(entries) ? entries : [];
           if (list.length === 0) {
@@ -295,32 +372,128 @@
             .join(" | ");
         };
 
+        const normalizeArrmReferences = (issue) => {
+          if (Array.isArray(issue.arrmReferences) && issue.arrmReferences.length > 0) {
+            return issue.arrmReferences.map((ref) => ({
+              id: ref.id || "",
+              task: ref.task || "ARRM task",
+              wcagSc: ref.wcagSc || "",
+              mainRole: ref.mainRole || "",
+              primaryOwnership: ref.primaryOwnership || "",
+              secondaryOwnership: ref.secondaryOwnership || ""
+            }));
+          }
+
+          return (issue.arrmTaskIds || []).map((id) => ({
+            id,
+            task: "ARRM task detail not present in this dataset",
+            wcagSc: "",
+            mainRole: "",
+            primaryOwnership: "",
+            secondaryOwnership: ""
+          }));
+        };
+
+        const createArrmTaskCell = (issue, rowIndex) => {
+          const td = document.createElement("td");
+          td.className = "px-3 py-2";
+          const refs = normalizeArrmReferences(issue);
+
+          if (refs.length === 0) {
+            td.textContent = "-";
+            return td;
+          }
+
+          const container = document.createElement("div");
+          container.className = "flex flex-wrap gap-2";
+
+          refs.forEach((ref, taskIndex) => {
+            const wrapper = document.createElement("span");
+            wrapper.className = "relative inline-flex";
+
+            const tooltipId = `arrm-tooltip-${rowIndex}-${taskIndex}`;
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className =
+              "rounded border border-slate-300 bg-white px-2 py-1 text-xs font-semibold text-slate-700 hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-800";
+            button.textContent = ref.id || "ARRM";
+            button.setAttribute("aria-describedby", tooltipId);
+            button.setAttribute("aria-expanded", "false");
+
+            const tooltip = document.createElement("div");
+            tooltip.id = tooltipId;
+            tooltip.setAttribute("role", "tooltip");
+            tooltip.className =
+              "pointer-events-none absolute left-0 top-full z-10 mt-2 w-72 rounded-md bg-slate-900 p-3 text-xs leading-5 text-white shadow-lg";
+            tooltip.hidden = true;
+
+            const ownership = [ref.mainRole, ref.primaryOwnership, ref.secondaryOwnership].filter(Boolean).join(" | ");
+            const parts = [
+              ref.id ? `${ref.id}: ${ref.task}` : ref.task,
+              ref.wcagSc ? `WCAG: ${ref.wcagSc}` : "",
+              ownership ? `Ownership: ${ownership}` : ""
+            ].filter(Boolean);
+
+            tooltip.textContent = parts.join("\n");
+
+            const showTooltip = () => {
+              tooltip.hidden = false;
+              button.setAttribute("aria-expanded", "true");
+            };
+
+            const hideTooltip = () => {
+              tooltip.hidden = true;
+              button.setAttribute("aria-expanded", "false");
+            };
+
+            button.addEventListener("focus", showTooltip);
+            button.addEventListener("blur", hideTooltip);
+            button.addEventListener("mouseenter", showTooltip);
+            button.addEventListener("mouseleave", hideTooltip);
+            button.addEventListener("keydown", (event) => {
+              if (event.key === "Escape") {
+                hideTooltip();
+                button.blur();
+              }
+            });
+            button.addEventListener("click", () => {
+              const willShow = tooltip.hidden;
+              if (willShow) {
+                showTooltip();
+              } else {
+                hideTooltip();
+              }
+            });
+
+            wrapper.appendChild(button);
+            wrapper.appendChild(tooltip);
+            container.appendChild(wrapper);
+          });
+
+          td.appendChild(container);
+          return td;
+        };
+
         issues
           .filter((issue) => filterValue === "All" || issue.owner === filterValue)
-          .forEach((issue) => {
+          .forEach((issue, rowIndex) => {
             const row = document.createElement("tr");
 
-            const cells = [
-              issue.owner || "Ambiguous",
-              formatProbabilities(issue.ownerProbabilities),
-              (issue.uncertaintyFlags || []).join(" | ") || "-",
-              issue.ruleId || "",
-              (issue.wcagSc || []).join(", ") || "-",
-              issue.xpath || "",
-              (issue.trustedTesterSteps || []).slice(0, 2).join(" | ") || "-",
-              (issue.arrmTaskIds || []).join(", ") || "-",
-              issue.suggestedFixLocation || ""
-            ];
-
-            cells.forEach((value, index) => {
-              const td = document.createElement("td");
-              td.textContent = value;
-              td.className = index === 2 ? "max-w-lg truncate px-3 py-2" : "px-3 py-2";
-              if (index === 2) {
-                td.title = value;
-              }
-              row.appendChild(td);
-            });
+            row.appendChild(createTextCell(issue.owner || "Ambiguous"));
+            row.appendChild(createTextCell(formatProbabilities(issue.ownerProbabilities)));
+            row.appendChild(
+              createTextCell(
+                (issue.uncertaintyFlags || []).join(" | ") || "-",
+                "max-w-lg truncate px-3 py-2",
+                (issue.uncertaintyFlags || []).join(" | ") || "-"
+              )
+            );
+            row.appendChild(createTextCell(issue.ruleId || ""));
+            row.appendChild(createTextCell((issue.wcagSc || []).join(", ") || "-"));
+            row.appendChild(createTextCell(issue.xpath || ""));
+            row.appendChild(createTextCell((issue.trustedTesterSteps || []).slice(0, 2).join(" | ") || "-"));
+            row.appendChild(createArrmTaskCell(issue, rowIndex));
+            row.appendChild(createTextCell(issue.suggestedFixLocation || ""));
 
             tbody.appendChild(row);
           });
@@ -329,7 +502,9 @@
       function renderDataset(issues) {
         allIssues = issues;
         const ownerCounts = buildDatasetFromIssues(issues);
+        const sharedLoad = buildFractionalOwnerLoad(issues);
         renderChart(ownerCounts);
+        renderSharedOwnershipChart(sharedLoad);
         appendFilterOptions(ownerCounts);
         renderTable(issues);
         document.getElementById("ownerFilter").value = "All";
