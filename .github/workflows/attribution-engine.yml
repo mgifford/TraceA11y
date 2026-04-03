@@ -49,6 +49,7 @@ jobs:
       - name: Run axe-core accessibility scan on site bundle
         run: |
           npm install --no-save @axe-core/cli http-server wait-on
+          npx browser-driver-manager install chrome
 
           npx http-server dist/site -p 4173 -s >/tmp/tracea11y-http-server.log 2>&1 &
           SERVER_PID=$!
