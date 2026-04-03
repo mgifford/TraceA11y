@@ -23,6 +23,7 @@ import {
   loadTrustedPatterns,
   trustedPatternsToSignatures
 } from "./learning-registry.js";
+import { detectSitePlatformForIssue } from "./platform-detector.js";
 
 const REPORTS_DIR = "./reports";
 const OUTPUT_DIR = "./dist/data";
@@ -38,19 +39,23 @@ function parseArgs(argv) {
   return args;
 }
 
-function scoreIssueAgainstRole(issue, roleSignature) {
+function scoreIssueAgainstRole(issue, roleSignature, options = {}) {
+  const enablePatternMatching = options.enablePatternMatching !== false;
+  const enableRuleHints = options.enableRuleHints !== false;
   const haystack = `${issue.xpath || ""} ${issue.snippet || ""}`;
   let score = 0;
   const matchedSignals = [];
 
-  for (const pattern of roleSignature.xpathOrSnippetPatterns) {
-    if (pattern.test(haystack)) {
-      score += 2;
-      matchedSignals.push(`pattern:${pattern}`);
+  if (enablePatternMatching) {
+    for (const pattern of roleSignature.xpathOrSnippetPatterns) {
+      if (pattern.test(haystack)) {
+        score += 2;
+        matchedSignals.push(`pattern:${pattern}`);
+      }
     }
   }
 
-  if (roleSignature.ruleHints.includes(issue.ruleId)) {
+  if (enableRuleHints && roleSignature.ruleHints.includes(issue.ruleId)) {
     score += 2;
     matchedSignals.push(`rule:${issue.ruleId}`);
   }
@@ -72,16 +77,22 @@ function applyStepOneOverride(issue) {
 }
 
 async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
+  const platformProfile = detectSitePlatformForIssue(issue);
   const override = applyStepOneOverride(issue);
   if (override) {
-    return { ...override, usedAiFallback: false };
+    return { ...override, usedAiFallback: false, platformProfile };
   }
 
   const arrmOwnerSignals = getArrmOwnerSignals(issue, arrmTasks);
   const wcagSpineOwnerSignals = getWcagSpineOwnerSignals(issue, wcagSpineData);
 
   const scoredRoles = signatures.map((signature) => {
-    const heuristic = scoreIssueAgainstRole(issue, signature);
+    const shouldUseDrupalPatterns =
+      platformProfile.platform === "Drupal" || signature.signatureSource === "learned";
+    const heuristic = scoreIssueAgainstRole(issue, signature, {
+      enablePatternMatching: shouldUseDrupalPatterns,
+      enableRuleHints: true
+    });
     const arrmSignalCount = arrmOwnerSignals[signature.owner] || 0;
     const wcagSpineSignalCount = wcagSpineOwnerSignals[signature.owner] || 0;
     const arrmBonus = Math.min(arrmSignalCount * 0.35, 1.5);
@@ -112,7 +123,8 @@ async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
       rationale: aiResult.rationale,
       arrmOwnerSignals,
       wcagSpineOwnerSignals,
-      usedAiFallback: true
+      usedAiFallback: true,
+      platformProfile
     };
   }
 
@@ -135,7 +147,8 @@ async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
     rationale: `Weighted match: ${signalSummary || "signature score"}`,
     arrmOwnerSignals,
     wcagSpineOwnerSignals,
-    usedAiFallback: false
+    usedAiFallback: false,
+    platformProfile
   };
 }
 
@@ -176,8 +189,14 @@ async function main() {
   const arrmTasks = await loadArrmTasks();
   const wcagSpineData = await loadWcagSpineData();
   const trustedPatterns = await loadTrustedPatterns();
-  const learnedSignatures = trustedPatternsToSignatures(trustedPatterns);
-  const signatures = [...ROLE_SIGNATURES, ...learnedSignatures];
+  const learnedSignatures = trustedPatternsToSignatures(trustedPatterns).map((signature) => ({
+    ...signature,
+    signatureSource: "learned"
+  }));
+  const signatures = [
+    ...ROLE_SIGNATURES.map((signature) => ({ ...signature, signatureSource: "core-drupal" })),
+    ...learnedSignatures
+  ];
 
   const owners = initializeOwnerBuckets();
   const allAttributedIssues = [];
@@ -192,6 +211,9 @@ async function main() {
       const attributedIssue = {
         ...issue,
         sourceFile: report.file,
+        platform: attribution.platformProfile?.platform || "Unknown",
+        platformConfidence: attribution.platformProfile?.confidence || 0,
+        platformSignals: attribution.platformProfile?.signals || [],
         owner,
         confidence: attribution.confidence,
         rationale: attribution.rationale,
@@ -270,6 +292,16 @@ async function main() {
       totalIssues: allAttributedIssues.length,
       byOwner: Object.fromEntries(
         Object.entries(owners).map(([owner, issues]) => [owner, issues.length])
+      )
+    },
+    platformDetection: {
+      mode: "issue-level",
+      byPlatform: Object.fromEntries(
+        allAttributedIssues.reduce((accumulator, issue) => {
+          const key = issue.platform || "Unknown";
+          accumulator.set(key, (accumulator.get(key) || 0) + 1);
+          return accumulator;
+        }, new Map())
       )
     },
     inputs: reports.map((report) => report.file),

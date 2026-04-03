@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T02:23:46.131Z",
+  "generatedAt": "2026-04-03T02:42:55.806Z",
   "arrm": {
     "source": "./data/reference/arrm-all-tasks.csv",
     "loadedTaskCount": 264
@@ -12,24 +12,24 @@
     "axeVersion": "4.11"
   },
   "learning": {
-    "trustedPatternsLoaded": 0,
+    "trustedPatternsLoaded": 2,
     "learningCandidateCount": 1,
     "candidateStore": "./data/learning/candidate-patterns.json",
     "trustedStore": "./data/learning/trusted-patterns.json",
     "decisionLogStore": "./data/learning/decision-log.json"
   },
   "totals": {
-    "totalIssues": 1,
+    "totalIssues": 2,
     "byOwner": {
       "Content Author": 0,
       "Site Builder": 0,
       "Themer / Visual Designer": 0,
-      "Developer": 1,
+      "Developer": 2,
       "Ambiguous": 0
     }
   },
   "inputs": [
-    "/tmp/uscis-slick-carousel-error.json"
+    "/tmp/test-learning-integration.json"
   ],
   "byOwner": {
     "Content Author": [],
@@ -37,15 +37,15 @@
     "Themer / Visual Designer": [],
     "Developer": [
       {
-        "url": "https://www.uscis.gov/",
-        "xpath": "div > div.image-content-queue > div.view-content > ul.slick-dots",
-        "snippet": "<ul class=\"slick-dots\" style=\"\" role=\"tablist\">",
+        "url": "https://example.com/test",
+        "xpath": "div.slick-dots > li[role='tabpanel']",
+        "snippet": "<li class=\"slick-slide\" role=\"tabpanel\">",
         "ruleId": "aria-required-children",
         "impact": "critical",
-        "sourceFile": "/tmp/uscis-slick-carousel-error.json",
+        "sourceFile": "/tmp/test-learning-integration.json",
         "owner": "Developer",
-        "confidence": 0.768,
-        "rationale": "Weighted match: arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "confidence": 0.95,
+        "rationale": "Weighted match: heuristics=pattern:/.slick-dots/i|rule:aria-required-children; arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
         "usedAiFallback": false,
         "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
         "arrmOwnerSignals": {
@@ -155,6 +155,49 @@
             ]
           }
         ]
+      },
+      {
+        "url": "https://example.com/test2",
+        "xpath": "span[lang='X-NONE']",
+        "snippet": "<span lang='X-NONE'>[1]</span>",
+        "ruleId": "valid-lang",
+        "impact": "minor",
+        "sourceFile": "/tmp/test-learning-integration.json",
+        "owner": "Developer",
+        "confidence": 0.784,
+        "rationale": "Weighted match: heuristics=rule:valid-lang; wcag-spine-support=1 (bonus=0.30)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {
+          "Content Author": 1,
+          "Developer": 1
+        },
+        "wcagSc": [
+          "3.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "3.1.2.A - Language Change Attribute"
+        ],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": [
+          {
+            "sc": "3.1.2",
+            "title": "Language of Parts",
+            "level": "AA",
+            "principle": "Understandable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
+            "manualRoles": [
+              "Content Authoring",
+              "Front-End Development"
+            ]
+          }
+        ]
       }
     ],
     "Ambiguous": []
@@ -178,7 +221,7 @@
     {
       "owner": "Developer",
       "path": "Custom code/module fixes (templates, JS, backend forms)",
-      "count": 1
+      "count": 2
     },
     {
       "owner": "Ambiguous",
@@ -188,15 +231,15 @@
   ],
   "issues": [
     {
-      "url": "https://www.uscis.gov/",
-      "xpath": "div > div.image-content-queue > div.view-content > ul.slick-dots",
-      "snippet": "<ul class=\"slick-dots\" style=\"\" role=\"tablist\">",
+      "url": "https://example.com/test",
+      "xpath": "div.slick-dots > li[role='tabpanel']",
+      "snippet": "<li class=\"slick-slide\" role=\"tabpanel\">",
       "ruleId": "aria-required-children",
       "impact": "critical",
-      "sourceFile": "/tmp/uscis-slick-carousel-error.json",
+      "sourceFile": "/tmp/test-learning-integration.json",
       "owner": "Developer",
-      "confidence": 0.768,
-      "rationale": "Weighted match: arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "confidence": 0.95,
+      "rationale": "Weighted match: heuristics=pattern:/.slick-dots/i|rule:aria-required-children; arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
       "usedAiFallback": false,
       "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
       "arrmOwnerSignals": {
@@ -302,6 +345,49 @@
           "principle": "Robust",
           "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
           "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://example.com/test2",
+      "xpath": "span[lang='X-NONE']",
+      "snippet": "<span lang='X-NONE'>[1]</span>",
+      "ruleId": "valid-lang",
+      "impact": "minor",
+      "sourceFile": "/tmp/test-learning-integration.json",
+      "owner": "Developer",
+      "confidence": 0.784,
+      "rationale": "Weighted match: heuristics=rule:valid-lang; wcag-spine-support=1 (bonus=0.30)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {
+        "Content Author": 1,
+        "Developer": 1
+      },
+      "wcagSc": [
+        "3.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Content Authoring",
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "3.1.2.A - Language Change Attribute"
+      ],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": [
+        {
+          "sc": "3.1.2",
+          "title": "Language of Parts",
+          "level": "AA",
+          "principle": "Understandable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
+          "manualRoles": [
+            "Content Authoring",
             "Front-End Development"
           ]
         }
