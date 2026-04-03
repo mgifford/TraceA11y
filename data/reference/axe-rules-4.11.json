@@ -1,0 +1,1767 @@
+{
+  "version": "4.11",
+  "source": "Deque University",
+  "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/",
+  "generatedAt": "2026-04-03T02:37:09.603Z",
+  "totalRules": 104,
+  "rules": {
+    "area-alt": {
+      "id": "area-alt",
+      "description": "Ensure <area> elements of image maps have alternative text",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.2"
+      ],
+      "actRule": "c487ae",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/area-alt"
+    },
+    "aria-allowed-attr": {
+      "id": "aria-allowed-attr",
+      "description": "Ensure an element's role supports its ARIA attributes",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "5c01ea",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-allowed-attr"
+    },
+    "aria-braille-equivalent": {
+      "id": "aria-braille-equivalent",
+      "description": "Ensure aria-braillelabel and aria-brailleroledescription have a\n          non-braille equivalent",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-braille-equivalent"
+    },
+    "aria-command-name": {
+      "id": "aria-command-name",
+      "description": "Ensure every ARIA button, link and menuitem has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "actRule": "97a4e1",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-command-name"
+    },
+    "aria-conditional-attr": {
+      "id": "aria-conditional-attr",
+      "description": "Ensure ARIA attributes are used as described in the specification of\n          the element's role",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "5c01ea",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-conditional-attr"
+    },
+    "aria-deprecated-role": {
+      "id": "aria-deprecated-role",
+      "description": "Ensure elements do not use deprecated roles",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "674b10",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-deprecated-role"
+    },
+    "aria-hidden-body": {
+      "id": "aria-hidden-body",
+      "description": "Ensure aria-hidden=\"true\" is not present on the document\n          body.",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-hidden-body"
+    },
+    "aria-hidden-focus": {
+      "id": "aria-hidden-focus",
+      "description": "Ensure aria-hidden elements are not focusable nor contain focusable\n          elements",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "6cfa84",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-hidden-focus"
+    },
+    "aria-input-field-name": {
+      "id": "aria-input-field-name",
+      "description": "Ensure every ARIA input field has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "actRule": "e086e5",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-input-field-name"
+    },
+    "aria-meter-name": {
+      "id": "aria-meter-name",
+      "description": "Ensure every ARIA meter node has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-meter-name"
+    },
+    "aria-progressbar-name": {
+      "id": "aria-progressbar-name",
+      "description": "Ensure every ARIA progressbar node has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-progressbar-name"
+    },
+    "aria-prohibited-attr": {
+      "id": "aria-prohibited-attr",
+      "description": "Ensure ARIA attributes are not prohibited for an element's role",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "5c01ea",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-prohibited-attr"
+    },
+    "aria-required-attr": {
+      "id": "aria-required-attr",
+      "description": "Ensure elements with ARIA roles have all required ARIA attributes",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "4e8ab6",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-required-attr"
+    },
+    "aria-required-children": {
+      "id": "aria-required-children",
+      "description": "Ensure elements with an ARIA role that require child roles contain\n          them",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "actRule": "bc4a75",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-required-children"
+    },
+    "aria-required-parent": {
+      "id": "aria-required-parent",
+      "description": "Ensure elements with an ARIA role that require parent roles are\n          contained by them",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "actRule": "ff89c9",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-required-parent"
+    },
+    "aria-roles": {
+      "id": "aria-roles",
+      "description": "Ensure all elements with a role attribute use a valid value",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "674b10",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-roles"
+    },
+    "aria-toggle-field-name": {
+      "id": "aria-toggle-field-name",
+      "description": "Ensure every ARIA toggle field has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "e086e5",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-toggle-field-name"
+    },
+    "aria-tooltip-name": {
+      "id": "aria-tooltip-name",
+      "description": "Ensure every ARIA tooltip node has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-tooltip-name"
+    },
+    "aria-valid-attr-value": {
+      "id": "aria-valid-attr-value",
+      "description": "Ensure all ARIA attributes have valid values",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "6a7281",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr-value"
+    },
+    "aria-valid-attr": {
+      "id": "aria-valid-attr",
+      "description": "Ensure attributes that begin with aria- are valid ARIA attributes",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "5f99a7",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-valid-attr"
+    },
+    "blink": {
+      "id": "blink",
+      "description": "Ensure <blink> elements are not used",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag222",
+        "section508",
+        "section508.22.j",
+        "TTv5",
+        "TT2.b",
+        "EN-301-549",
+        "EN-9.2.2.2",
+        "RGAAv4",
+        "RGAA-13.8.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/blink"
+    },
+    "button-name": {
+      "id": "button-name",
+      "description": "Ensure buttons have discernible text",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "actRule": "97a4e1",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/button-name"
+    },
+    "bypass": {
+      "id": "bypass",
+      "description": "Ensure each page has at least one mechanism for a user to bypass\n          navigation and jump straight to the content",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag241",
+        "section508",
+        "section508.22.o",
+        "TTv5",
+        "TT9.a",
+        "EN-301-549",
+        "EN-9.2.4.1",
+        "RGAAv4",
+        "RGAA-12.7.1"
+      ],
+      "actRule": "cf77f2",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/bypass"
+    },
+    "color-contrast": {
+      "id": "color-contrast",
+      "description": "Ensure the contrast between foreground and background colors meets\n          WCAG 2 AA minimum contrast ratio thresholds",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "actRule": "afw4f7",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast"
+    },
+    "definition-list": {
+      "id": "definition-list",
+      "description": "Ensure <dl> elements are structured correctly",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.3"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/definition-list"
+    },
+    "dlitem": {
+      "id": "dlitem",
+      "description": "Ensure <dt> and <dd> elements are contained by a\n          <dl>",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.3"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/dlitem"
+    },
+    "document-title": {
+      "id": "document-title",
+      "description": "Ensure each HTML document contains a non-empty <title> element",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag242",
+        "TTv5",
+        "TT12.a",
+        "EN-301-549",
+        "EN-9.2.4.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.5.1"
+      ],
+      "actRule": "2779a5",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/document-title"
+    },
+    "duplicate-id-aria": {
+      "id": "duplicate-id-aria",
+      "description": "Ensure every id attribute value used in ARIA and in labels is unique",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-8.2.1"
+      ],
+      "actRule": "3ea0c8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/duplicate-id-aria"
+    },
+    "form-field-multiple-labels": {
+      "id": "form-field-multiple-labels",
+      "description": "Ensure form field does not have multiple label elements",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag332",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.3.3.2",
+        "RGAAv4",
+        "RGAA-11.2.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/form-field-multiple-labels"
+    },
+    "frame-focusable-content": {
+      "id": "frame-focusable-content",
+      "description": "Ensure <frame> and <iframe> elements with focusable\n          content do not have tabindex=-1",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag211",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "actRule": "akn7bn",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/frame-focusable-content"
+    },
+    "frame-title-unique": {
+      "id": "frame-title-unique",
+      "description": "Ensure <iframe> and <frame> elements contain a unique\n          title attribute",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT12.d",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-2.2.1"
+      ],
+      "actRule": "4b1c6c",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/frame-title-unique"
+    },
+    "frame-title": {
+      "id": "frame-title",
+      "description": "Ensure <iframe> and <frame> elements have an accessible\n          name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.i",
+        "TTv5",
+        "TT12.d",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-2.1.1"
+      ],
+      "actRule": "cae760",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/frame-title"
+    },
+    "html-has-lang": {
+      "id": "html-has-lang",
+      "description": "Ensure every HTML document has a lang attribute",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag311",
+        "TTv5",
+        "TT11.a",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.3.1"
+      ],
+      "actRule": "b5c3f8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/html-has-lang"
+    },
+    "html-lang-valid": {
+      "id": "html-lang-valid",
+      "description": "Ensure the lang attribute of the <html> element has a valid\n          value",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag311",
+        "TTv5",
+        "TT11.a",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.4.1"
+      ],
+      "actRule": "bf051a",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/html-lang-valid"
+    },
+    "html-xml-lang-mismatch": {
+      "id": "html-xml-lang-mismatch",
+      "description": "Ensure that HTML elements with both valid lang and xml:lang attributes\n          agree on the base language of the page",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag311",
+        "EN-301-549",
+        "EN-9.3.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.3.1"
+      ],
+      "actRule": "5b7ae0",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/html-xml-lang-mismatch"
+    },
+    "image-alt": {
+      "id": "image-alt",
+      "description": "Ensure <img> elements have alternative text or a role of none or\n          presentation",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "TT7.b",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "actRule": "23a2a8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt"
+    },
+    "input-button-name": {
+      "id": "input-button-name",
+      "description": "Ensure input buttons have discernible text",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.9.1"
+      ],
+      "actRule": "97a4e1",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/input-button-name"
+    },
+    "input-image-alt": {
+      "id": "input-image-alt",
+      "description": "Ensure <input type=\"image\"> elements have alternative\n          text",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.3"
+      ],
+      "actRule": "59796f",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/input-image-alt"
+    },
+    "label": {
+      "id": "label",
+      "description": "Ensure every form element has a label",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.n",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "actRule": "e086e5",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/label"
+    },
+    "link-in-text-block": {
+      "id": "link-in-text-block",
+      "description": "Ensure links are distinguished from surrounding text in a way that\n          does not rely on color",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag141",
+        "TTv5",
+        "TT13.a",
+        "EN-301-549",
+        "EN-9.1.4.1",
+        "RGAAv4",
+        "RGAA-10.6.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block"
+    },
+    "link-name": {
+      "id": "link-name",
+      "description": "Ensure links have discernible text",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag244",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.2.4.4",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-6.2.1"
+      ],
+      "actRule": "c487ae",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name"
+    },
+    "list": {
+      "id": "list",
+      "description": "Ensure that lists are structured correctly",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/list"
+    },
+    "listitem": {
+      "id": "listitem",
+      "description": "Ensure <li> elements are used semantically",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.3.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/listitem"
+    },
+    "marquee": {
+      "id": "marquee",
+      "description": "Ensure <marquee> elements are not used",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag222",
+        "TTv5",
+        "TT2.b",
+        "EN-301-549",
+        "EN-9.2.2.2",
+        "RGAAv4",
+        "RGAA-13.8.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/marquee"
+    },
+    "meta-refresh": {
+      "id": "meta-refresh",
+      "description": "Ensure <meta http-equiv=\"refresh\"> is not used for\n          delayed refresh",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag221",
+        "TTv5",
+        "TT8.a",
+        "EN-301-549",
+        "EN-9.2.2.1",
+        "RGAAv4",
+        "RGAA-13.1.2"
+      ],
+      "actRule": "bc659a",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-refresh"
+    },
+    "meta-viewport": {
+      "id": "meta-viewport",
+      "description": "Ensure <meta name=\"viewport\"> does not disable text\n          scaling and zooming",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "wcag2aa",
+        "wcag144",
+        "EN-301-549",
+        "EN-9.1.4.4",
+        "ACT",
+        "RGAAv4",
+        "RGAA-10.4.2"
+      ],
+      "actRule": "b4f0c3",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-viewport"
+    },
+    "nested-interactive": {
+      "id": "nested-interactive",
+      "description": "Ensure interactive controls are not nested as they are not always\n          announced by screen readers or can cause focus problems for assistive\n          technologies",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "RGAAv4",
+        "RGAA-7.1.1"
+      ],
+      "actRule": "307n5z",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/nested-interactive"
+    },
+    "no-autoplay-audio": {
+      "id": "no-autoplay-audio",
+      "description": "Ensure <video> or <audio> elements do not autoplay audio\n          for more than 3 seconds without a control mechanism to stop or mute\n          the audio",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag142",
+        "TTv5",
+        "TT2.a",
+        "EN-301-549",
+        "EN-9.1.4.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-4.10.1"
+      ],
+      "actRule": "80f0bf",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/no-autoplay-audio"
+    },
+    "object-alt": {
+      "id": "object-alt",
+      "description": "Ensure <object> elements have alternative text",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "RGAAv4",
+        "RGAA-1.1.6"
+      ],
+      "actRule": "8fc3b6",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/object-alt"
+    },
+    "role-img-alt": {
+      "id": "role-img-alt",
+      "description": "Ensure [role=\"img\"] elements have alternative text",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.1"
+      ],
+      "actRule": "23a2a8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/role-img-alt"
+    },
+    "scrollable-region-focusable": {
+      "id": "scrollable-region-focusable",
+      "description": "Ensure elements that have scrollable content are accessible by\n          keyboard",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag211",
+        "wcag213",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "EN-9.2.1.3",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "actRule": "0ssw9k",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/scrollable-region-focusable"
+    },
+    "select-name": {
+      "id": "select-name",
+      "description": "Ensure select element has an accessible name",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.n",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "actRule": "e086e5",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/select-name"
+    },
+    "server-side-image-map": {
+      "id": "server-side-image-map",
+      "description": "Ensure that server-side image maps are not used",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag211",
+        "section508",
+        "section508.22.f",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "RGAAv4",
+        "RGAA-1.1.4"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/server-side-image-map"
+    },
+    "summary-name": {
+      "id": "summary-name",
+      "description": "Ensure summary elements have discernible text",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT6.a",
+        "EN-301-549",
+        "EN-9.4.1.2"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/summary-name"
+    },
+    "svg-img-alt": {
+      "id": "svg-img-alt",
+      "description": "Ensure <svg> elements with an img, graphics-document or\n          graphics-symbol role have accessible text",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag111",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT7.a",
+        "EN-301-549",
+        "EN-9.1.1.1",
+        "ACT",
+        "RGAAv4",
+        "RGAA-1.1.5"
+      ],
+      "actRule": "7d6734",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/svg-img-alt"
+    },
+    "td-headers-attr": {
+      "id": "td-headers-attr",
+      "description": "Ensure that each cell in a table that uses the headers attribute\n          refers only to other <th> elements in that table",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "section508",
+        "section508.22.g",
+        "TTv5",
+        "TT14.b",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-5.7.4"
+      ],
+      "actRule": "a25f45",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/td-headers-attr"
+    },
+    "th-has-data-cells": {
+      "id": "th-has-data-cells",
+      "description": "Ensure that <th> elements and elements with\n          role=columnheader/rowheader have data cells they describe",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "section508",
+        "section508.22.g",
+        "TTv5",
+        "TT14.b",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-5.7.1"
+      ],
+      "actRule": "d0f69e",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/th-has-data-cells"
+    },
+    "valid-lang": {
+      "id": "valid-lang",
+      "description": "Ensure lang attributes have valid values",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2aa",
+        "wcag312",
+        "TTv5",
+        "TT11.b",
+        "EN-301-549",
+        "EN-9.3.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-8.7.1"
+      ],
+      "actRule": "de46e4",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/valid-lang"
+    },
+    "video-caption": {
+      "id": "video-caption",
+      "description": "Ensure <video> elements have captions",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag122",
+        "section508",
+        "section508.22.a",
+        "TTv5",
+        "TT17.a",
+        "EN-301-549",
+        "EN-9.1.2.2",
+        "RGAAv4",
+        "RGAA-4.3.1"
+      ],
+      "actRule": "eac66b",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/video-caption"
+    },
+    "autocomplete-valid": {
+      "id": "autocomplete-valid",
+      "description": "Ensure the autocomplete attribute is correct and suitable for the form\n          field",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag21aa",
+        "wcag135",
+        "EN-301-549",
+        "EN-9.1.3.5",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.13.1"
+      ],
+      "actRule": "73f2c2",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/autocomplete-valid"
+    },
+    "avoid-inline-spacing": {
+      "id": "avoid-inline-spacing",
+      "description": "Ensure that text spacing set through style attributes can be adjusted\n          with custom stylesheets",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag21aa",
+        "wcag1412",
+        "EN-301-549",
+        "EN-9.1.4.12",
+        "ACT"
+      ],
+      "actRule": "24afc2",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/avoid-inline-spacing"
+    },
+    "target-size": {
+      "id": "target-size",
+      "description": "Ensure touch targets have sufficient size and space",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag22aa",
+        "wcag258"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/target-size"
+    },
+    "accesskeys": {
+      "id": "accesskeys",
+      "description": "Ensure every accesskey attribute value is unique",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/accesskeys"
+    },
+    "aria-allowed-role": {
+      "id": "aria-allowed-role",
+      "description": "Ensure role attribute has an appropriate value for the element",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-allowed-role"
+    },
+    "aria-dialog-name": {
+      "id": "aria-dialog-name",
+      "description": "Ensure every ARIA dialog and alertdialog node has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-dialog-name"
+    },
+    "aria-text": {
+      "id": "aria-text",
+      "description": "Ensure role=\"text\" is used on elements with no focusable\n          descendants",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-text"
+    },
+    "aria-treeitem-name": {
+      "id": "aria-treeitem-name",
+      "description": "Ensure every ARIA treeitem node has an accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-treeitem-name"
+    },
+    "empty-heading": {
+      "id": "empty-heading",
+      "description": "Ensure headings have discernible text",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": "ffd0e9",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/empty-heading"
+    },
+    "empty-table-header": {
+      "id": "empty-table-header",
+      "description": "Ensure table headers have discernible text",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/empty-table-header"
+    },
+    "frame-tested": {
+      "id": "frame-tested",
+      "description": "Ensure <iframe> and <frame> elements contain the axe-core\n          script",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "review-item"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/frame-tested"
+    },
+    "heading-order": {
+      "id": "heading-order",
+      "description": "Ensure the order of headings is semantically correct",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/heading-order"
+    },
+    "image-redundant-alt": {
+      "id": "image-redundant-alt",
+      "description": "Ensure image alternative is not repeated as text",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/image-redundant-alt"
+    },
+    "label-title-only": {
+      "id": "label-title-only",
+      "description": "Ensure that every form element has a visible label and is not solely\n          labeled using hidden labels, or the title or aria-describedby\n          attributes",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/label-title-only"
+    },
+    "landmark-banner-is-top-level": {
+      "id": "landmark-banner-is-top-level",
+      "description": "Ensure the banner landmark is at top level",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-banner-is-top-level"
+    },
+    "landmark-complementary-is-top-level": {
+      "id": "landmark-complementary-is-top-level",
+      "description": "Ensure the complementary landmark or aside is at top level",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-complementary-is-top-level"
+    },
+    "landmark-contentinfo-is-top-level": {
+      "id": "landmark-contentinfo-is-top-level",
+      "description": "Ensure the contentinfo landmark is at top level",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-contentinfo-is-top-level"
+    },
+    "landmark-main-is-top-level": {
+      "id": "landmark-main-is-top-level",
+      "description": "Ensure the main landmark is at top level",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-main-is-top-level"
+    },
+    "landmark-no-duplicate-banner": {
+      "id": "landmark-no-duplicate-banner",
+      "description": "Ensure the document has at most one banner landmark",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-no-duplicate-banner"
+    },
+    "landmark-no-duplicate-contentinfo": {
+      "id": "landmark-no-duplicate-contentinfo",
+      "description": "Ensure the document has at most one contentinfo landmark",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-no-duplicate-contentinfo"
+    },
+    "landmark-no-duplicate-main": {
+      "id": "landmark-no-duplicate-main",
+      "description": "Ensure the document has at most one main landmark",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-no-duplicate-main"
+    },
+    "landmark-one-main": {
+      "id": "landmark-one-main",
+      "description": "Ensure the document has a main landmark",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-one-main"
+    },
+    "landmark-unique": {
+      "id": "landmark-unique",
+      "description": "Ensure landmarks are unique",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/landmark-unique"
+    },
+    "meta-viewport-large": {
+      "id": "meta-viewport-large",
+      "description": "Ensure <meta name=\"viewport\"> can scale a significant\n          amount",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-viewport-large"
+    },
+    "page-has-heading-one": {
+      "id": "page-has-heading-one",
+      "description": "Ensure that the page, or at least one of its frames contains a\n          level-one heading",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/page-has-heading-one"
+    },
+    "presentation-role-conflict": {
+      "id": "presentation-role-conflict",
+      "description": "Ensure elements marked as presentational do not have global ARIA or\n          tabindex so that all screen readers ignore them",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "ACT"
+      ],
+      "actRule": "46ca7f",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/presentation-role-conflict"
+    },
+    "region": {
+      "id": "region",
+      "description": "Ensure all page content is contained by landmarks",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "RGAAv4",
+        "RGAA-9.2.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/region"
+    },
+    "scope-attr-valid": {
+      "id": "scope-attr-valid",
+      "description": "Ensure the scope attribute is used correctly on tables",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/scope-attr-valid"
+    },
+    "skip-link": {
+      "id": "skip-link",
+      "description": "Ensure all skip links have a focusable target",
+      "impact": "moderate",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "RGAAv4",
+        "RGAA-12.7.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/skip-link"
+    },
+    "tabindex": {
+      "id": "tabindex",
+      "description": "Ensure tabindex attribute values are not greater than 0",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "best-practice"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/tabindex"
+    },
+    "table-duplicate-name": {
+      "id": "table-duplicate-name",
+      "description": "Ensure the <caption> element does not contain the same text as\n          the summary attribute",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "RGAAv4",
+        "RGAA-5.2.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/table-duplicate-name"
+    },
+    "color-contrast-enhanced": {
+      "id": "color-contrast-enhanced",
+      "description": "Ensure the contrast between foreground and background colors meets\n          WCAG 2 AAA enhanced contrast ratio thresholds",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2aaa",
+        "wcag146",
+        "ACT"
+      ],
+      "actRule": "09o5cg",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast-enhanced"
+    },
+    "identical-links-same-purpose": {
+      "id": "identical-links-same-purpose",
+      "description": "Ensure that links with the same accessible name serve a similar\n          purpose",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "wcag2aaa",
+        "wcag249"
+      ],
+      "actRule": "b20e66",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/identical-links-same-purpose"
+    },
+    "meta-refresh-no-exceptions": {
+      "id": "meta-refresh-no-exceptions",
+      "description": "Ensure <meta http-equiv=\"refresh\"> is not used for\n          delayed refresh",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "wcag2aaa",
+        "wcag224",
+        "wcag325"
+      ],
+      "actRule": "bisz58",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/meta-refresh-no-exceptions"
+    },
+    "css-orientation-lock": {
+      "id": "css-orientation-lock",
+      "description": "Ensure content is not locked to any specific display orientation, and\n          the content is operable in all display orientations",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag134",
+        "wcag21aa",
+        "EN-301-549",
+        "EN-9.1.3.4",
+        "RGAAv4",
+        "RGAA-13.9.1",
+        "experimental"
+      ],
+      "actRule": "b33eff",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/css-orientation-lock"
+    },
+    "focus-order-semantics": {
+      "id": "focus-order-semantics",
+      "description": "Ensure elements in the focus order have a role appropriate for\n          interactive content",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "RGAAv4",
+        "RGAA-12.8.1",
+        "experimental"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/focus-order-semantics"
+    },
+    "hidden-content": {
+      "id": "hidden-content",
+      "description": "Inform users about hidden content.",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "best-practice",
+        "experimental",
+        "review-item"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/hidden-content"
+    },
+    "label-content-name-mismatch": {
+      "id": "label-content-name-mismatch",
+      "description": "Ensure that elements labelled through their content must have their\n          visible text as part of their accessible name",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag21a",
+        "wcag253",
+        "EN-301-549",
+        "EN-9.2.5.3",
+        "RGAAv4",
+        "RGAA-6.1.5",
+        "experimental"
+      ],
+      "actRule": "2ee8b8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/label-content-name-mismatch"
+    },
+    "p-as-heading": {
+      "id": "p-as-heading",
+      "description": "Ensure bold, italic text and font-size is not used to style <p>\n          elements as a heading",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag131",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-9.1.3",
+        "experimental"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/p-as-heading"
+    },
+    "table-fake-caption": {
+      "id": "table-fake-caption",
+      "description": "Ensure that tables with a caption use the <caption> element.",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "experimental",
+        "wcag2a",
+        "wcag131",
+        "section508",
+        "section508.22.g",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-5.4.1"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/table-fake-caption"
+    },
+    "td-has-header": {
+      "id": "td-has-header",
+      "description": "Ensure that each non-empty data cell in a <table> larger than 3\n          by 3 has one or more table headers",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "experimental",
+        "wcag2a",
+        "wcag131",
+        "section508",
+        "section508.22.g",
+        "TTv5",
+        "TT14.b",
+        "EN-301-549",
+        "EN-9.1.3.1",
+        "RGAAv4",
+        "RGAA-5.7.4"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/td-has-header"
+    },
+    "aria-roledescription": {
+      "id": "aria-roledescription",
+      "description": "Ensure aria-roledescription is only used on elements with an implicit\n          or explicit role",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag412",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "deprecated"
+      ],
+      "actRule": null,
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-roledescription"
+    },
+    "audio-caption": {
+      "id": "audio-caption",
+      "description": "Ensure <audio> elements have captions",
+      "impact": "critical",
+      "categories": [],
+      "standards": [
+        "wcag2a",
+        "wcag121",
+        "EN-301-549",
+        "EN-9.1.2.1",
+        "section508",
+        "section508.22.a",
+        "deprecated"
+      ],
+      "actRule": "2eb176",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/audio-caption"
+    },
+    "duplicate-id-active": {
+      "id": "duplicate-id-active",
+      "description": "Ensure every id attribute value of active elements is unique",
+      "impact": "serious",
+      "categories": [],
+      "standards": [
+        "wcag2a-obsolete",
+        "wcag411",
+        "deprecated"
+      ],
+      "actRule": "3ea0c8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/duplicate-id-active"
+    },
+    "duplicate-id": {
+      "id": "duplicate-id",
+      "description": "Ensure every id attribute value is unique",
+      "impact": "minor",
+      "categories": [],
+      "standards": [
+        "wcag2a-obsolete",
+        "wcag411",
+        "deprecated"
+      ],
+      "actRule": "3ea0c8",
+      "source": "axe-core 4.11",
+      "sourceUrl": "https://dequeuniversity.com/rules/axe/4.11/duplicate-id"
+    }
+  }
+}

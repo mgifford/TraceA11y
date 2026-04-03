@@ -80,7 +80,6 @@ async function classifyWithGitHubModels(issue, token) {
       },
       { role: "user", content: buildPrompt(issue) }
     ],
-    response_format: { type: "json_object" }
   };
 
   const response = await fetch(endpoint, {

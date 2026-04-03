@@ -1,5 +1,54 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "patterns": []
+  "updatedAt": "2026-04-03T02:42:12.887Z",
+  "patterns": [
+    {
+      "id": "cand-20260403022346-2",
+      "owner": "Developer",
+      "source": "attribute-engine",
+      "confidence": 0.768,
+      "ruleHints": [
+        "aria-required-children"
+      ],
+      "selectorPatterns": [
+        {
+          "source": ".image-content-queue",
+          "flags": "i"
+        },
+        {
+          "source": ".view-content",
+          "flags": "i"
+        },
+        {
+          "source": ".slick-dots",
+          "flags": "i"
+        },
+        {
+          "source": "<ul>",
+          "flags": "i"
+        }
+      ],
+      "firstSeenAt": "2026-04-03T02:23:46.130Z",
+      "promotedAt": "2026-04-03T02:42:04.732Z",
+      "promotedBy": "manual-review"
+    },
+    {
+      "id": "cand-20260403022459-3",
+      "owner": "Developer",
+      "source": "attribute-engine",
+      "confidence": 0,
+      "ruleHints": [
+        "valid-lang"
+      ],
+      "selectorPatterns": [
+        {
+          "source": "<span>",
+          "flags": "i"
+        }
+      ],
+      "firstSeenAt": "2026-04-03T02:24:59.340Z",
+      "promotedAt": "2026-04-03T02:42:12.886Z",
+      "promotedBy": "manual-review"
+    }
+  ]
 }

@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-03T02:23:46.130Z",
+  "updatedAt": "2026-04-03T02:42:55.803Z",
   "candidates": [
     {
       "id": "cand-20260403022159-1",
       "key": "custom-unknown-rule::.mystery-widget::Ambiguous",
-      "status": "candidate",
+      "status": "rejected",
       "source": "attribute-engine",
       "owner": "Ambiguous",
       "confidence": 0,
@@ -22,12 +22,13 @@
         "https://example.com/unknown"
       ],
       "falsePositiveCount": 0,
-      "truePositiveCount": 0
+      "truePositiveCount": 0,
+      "rejectedAt": "2026-04-03T02:40:20.141Z"
     },
     {
       "id": "cand-20260403022346-2",
       "key": "aria-required-children::.image-content-queue::Developer",
-      "status": "candidate",
+      "status": "promoted",
       "source": "attribute-engine",
       "owner": "Developer",
       "confidence": 0.768,
@@ -44,6 +45,52 @@
       "matchCount": 1,
       "exampleUrls": [
         "https://www.uscis.gov/"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0,
+      "promotedAt": "2026-04-03T02:42:04.732Z",
+      "promotedOwner": "Developer"
+    },
+    {
+      "id": "cand-20260403022459-3",
+      "key": "valid-lang::<span>::Ambiguous",
+      "status": "promoted",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "valid-lang",
+      "selectors": [
+        "<span>"
+      ],
+      "rationale": "AI classification failed: GitHub Models request failed with status 400",
+      "firstSeenAt": "2026-04-03T02:24:59.340Z",
+      "lastSeenAt": "2026-04-03T02:24:59.340Z",
+      "matchCount": 1,
+      "exampleUrls": [
+        "https://cms.gov/data-research/monitoring-programs/improper-payment-measurement-programs/exchange-improper-payment-measurement-eipm/improper-payment-findings"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0,
+      "promotedAt": "2026-04-03T02:42:12.887Z",
+      "promotedOwner": "Developer"
+    },
+    {
+      "id": "cand-20260403024255-4",
+      "key": "valid-lang::<span>::Developer",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Developer",
+      "confidence": 0.784,
+      "ruleId": "valid-lang",
+      "selectors": [
+        "<span>"
+      ],
+      "rationale": "Weighted match: heuristics=rule:valid-lang; wcag-spine-support=1 (bonus=0.30)",
+      "firstSeenAt": "2026-04-03T02:42:55.803Z",
+      "lastSeenAt": "2026-04-03T02:42:55.803Z",
+      "matchCount": 1,
+      "exampleUrls": [
+        "https://example.com/test2"
       ],
       "falsePositiveCount": 0,
       "truePositiveCount": 0

@@ -1,5 +1,30 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "decisions": []
+  "updatedAt": "2026-04-03T02:42:12.887Z",
+  "decisions": [
+    {
+      "id": "decision-1775184020141",
+      "candidateId": "cand-20260403022159-1",
+      "action": "reject",
+      "owner": "Ambiguous",
+      "timestamp": "2026-04-03T02:40:20.141Z",
+      "note": "Unknown rule ID from test case - not a real axe rule"
+    },
+    {
+      "id": "decision-1775184124732",
+      "candidateId": "cand-20260403022346-2",
+      "action": "promote",
+      "owner": "Developer",
+      "timestamp": "2026-04-03T02:42:04.732Z",
+      "note": "Promoted candidate to trusted pattern library"
+    },
+    {
+      "id": "decision-1775184132887",
+      "candidateId": "cand-20260403022459-3",
+      "action": "promote",
+      "owner": "Developer",
+      "timestamp": "2026-04-03T02:42:12.887Z",
+      "note": "Promoted candidate to trusted pattern library"
+    }
+  ]
 }
