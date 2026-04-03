@@ -1,0 +1,23 @@
+[
+  {
+    "url": "https://fdic.gov",
+    "ruleId": "aria-allowed-attr",
+    "xpath": "div.field__item > div.paragraph > div.tabs-container > input#consumers",
+    "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"consumers\" checked=\"checked\" aria-expanded=\"false\" data-once=\"tab-click\">",
+    "error": "ARIA attribute is not allowed: aria-expanded=\"false\""
+  },
+  {
+    "url": "https://fdic.gov",
+    "ruleId": "aria-allowed-attr",
+    "xpath": "div.field__item > div.paragraph > div.tabs-container > input#bankers",
+    "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"bankers\" aria-expanded=\"false\" data-once=\"tab-click\">",
+    "error": "ARIA attribute is not allowed: aria-expanded=\"false\""
+  },
+  {
+    "url": "https://fdic.gov",
+    "ruleId": "aria-allowed-attr",
+    "xpath": "div.field__item > div.paragraph > div.tabs-container > input#analysts",
+    "snippet": "<input class=\"radiotab\" name=\"tabs\" type=\"radio\" id=\"analysts\" aria-expanded=\"false\" data-once=\"tab-click\">",
+    "error": "ARIA attribute is not allowed: aria-expanded=\"false\""
+  }
+]
