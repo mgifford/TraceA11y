@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T13:24:58.751Z",
+  "generatedAt": "2026-04-03T13:32:37.932Z",
   "arrm": {
     "source": "./data/reference/arrm-all-tasks.csv",
     "loadedTaskCount": 264
@@ -13,31 +13,32 @@
   },
   "learning": {
     "trustedPatternsLoaded": 2,
-    "learningCandidateCount": 0,
+    "learningCandidateCount": 21,
     "candidateStore": "./data/learning/candidate-patterns.json",
     "trustedStore": "./data/learning/trusted-patterns.json",
     "decisionLogStore": "./data/learning/decision-log.json"
   },
   "totals": {
-    "totalIssues": 4,
+    "totalIssues": 34,
     "byOwner": {
       "Content Author": 1,
       "Site Builder": 0,
-      "Themer / Visual Designer": 0,
+      "Themer / Visual Designer": 9,
       "Developer": 3,
-      "Ambiguous": 0
+      "Ambiguous": 21
     }
   },
   "platformDetection": {
     "mode": "issue-level",
     "byPlatform": {
-      "Unknown": 4
+      "Unknown": 34
     }
   },
   "attributionUncertainty": {
     "byFlag": {}
   },
   "inputs": [
+    "reports/realworld-scale-2026-04-03.json",
     "reports/sample-report.json",
     "reports/workflow-sample-report.json"
   ],
@@ -170,7 +171,1304 @@
       }
     ],
     "Site Builder": [],
-    "Themer / Visual Designer": [],
+    "Themer / Visual Designer": [
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+        "snippet": "<p>",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+        "snippet": "<span class=\"label\">",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+        "snippet": "<p>",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+        "snippet": "<span class=\"label\">",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+        "snippet": "<p>",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+        "snippet": "<span class=\"label\">",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+        "snippet": "<p>",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+        "snippet": "<span class=\"label\">",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "color-contrast",
+        "xpath": "div.hds-nasa-live-main > div.grid-container > div.w-full > div.hds-live-tag",
+        "snippet": "<div class=\"hds-live-tag label bg-nasa-red color-spacesuit-white padding-left-105 padd…\">",
+        "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.66 (foreground color: #ffffff, background color: #f64137, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Themer / Visual Designer",
+        "confidence": 0.9279999999999999,
+        "ownerProbabilities": [
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.339
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.289
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.124
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Themer / Visual Designer",
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "usedAiFallback": false,
+        "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 41,
+          "Content Author": 5,
+          "Developer": 19
+        },
+        "wcagSpineOwnerSignals": {
+          "Themer / Visual Designer": 2
+        },
+        "wcagSc": [
+          "1.4.3",
+          "1.4.6"
+        ],
+        "wcagSpineManualRoles": [
+          "Visual Design"
+        ],
+        "trustedTesterSteps": [
+          "1.4.3.A - Text Contrast Ratio 4.5:1",
+          "1.4.3.B - Large Text Contrast Ratio 3:1",
+          "1.4.6.A - Text Contrast Ratio 7:1",
+          "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+        ],
+        "arrmTaskIds": [
+          "CSS-001",
+          "CSS-004",
+          "CSS-006",
+          "CSS-007",
+          "CSS-008"
+        ],
+        "arrmReferences": [
+          {
+            "id": "CSS-001",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Icon fonts used to convey information are provided with a text equivalent.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "CSS-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Background images identified as decorative are implemented as such.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-006",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "CSS-007",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Visual Design"
+          },
+          {
+            "id": "CSS-008",
+            "wcagSc": "1.3.4",
+            "level": "AA",
+            "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "1.4.3",
+            "title": "Contrast (Minimum)",
+            "level": "AA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          },
+          {
+            "sc": "1.4.6",
+            "title": "Contrast (Enhanced)",
+            "level": "AAA",
+            "principle": "Perceivable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+            "manualRoles": [
+              "Visual Design"
+            ]
+          }
+        ]
+      }
+    ],
     "Developer": [
       {
         "url": "https://fdic.gov",
@@ -569,7 +1867,1304 @@
         ]
       }
     ],
-    "Ambiguous": []
+    "Ambiguous": [
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "button-name",
+        "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button#global-navigation-trigger--mobile",
+        "snippet": "<button id=\"global-navigation-trigger--mobile\" class=\"hds-global-menu-toggle menu-toggle menu-mobile-toggle\" aria-expanded=\"false\" data-menu-action=\"open\" data-menu-location=\"left\">",
+        "error": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.333
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.333
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.333
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer",
+          "Developer",
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {
+          "Developer": 1
+        },
+        "wcagSc": [
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": [
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "button-name",
+        "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button.hds-search-panel-mobile-trigger",
+        "snippet": "<button class=\"hds-search-panel-mobile-trigger search-mobile color-carbon-20 menu-toggle\" data-menu-action=\"open\" data-menu-location=\"right\">",
+        "error": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.333
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.333
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.333
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer",
+          "Developer",
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {
+          "Developer": 1
+        },
+        "wcagSc": [
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": [
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "link-name",
+        "xpath": "div.slick-track > div.hds-meet-the-card > div.hds-meet-the-inner > a.hds-meet-the-image",
+        "snippet": "<a href=\"https://plus.nasa.gov/scheduled-events/\" target=\"_blank\" class=\"hds-meet-the-image padding-right-3\" rel=\"noopener\" tabindex=\"0\">",
+        "error": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.219
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.219
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.219
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.187
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.156
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer",
+          "Developer",
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 52,
+          "Content Author": 12,
+          "Developer": 17
+        },
+        "wcagSpineOwnerSignals": {
+          "Content Author": 1,
+          "Developer": 2
+        },
+        "wcagSc": [
+          "2.4.4",
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "2.4.4.A - Link Purpose from Text",
+          "2.4.4.B - Link Purpose from Context",
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [
+          "NAV-001",
+          "NAV-002",
+          "NAV-003",
+          "NAV-004",
+          "NAV-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "NAV-001",
+            "wcagSc": "1.3.1",
+            "level": "A",
+            "task": "Active objects and other calls to action are visually identifiable as such.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "none"
+          },
+          {
+            "id": "NAV-002",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Instructions are conveyed through more than shape, size, position, or sound alone.",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "NAV-003",
+            "wcagSc": "1.4.1",
+            "level": "A",
+            "task": "Additional visual and/or textual cues are provided when color is used to convey information.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design "
+          },
+          {
+            "id": "NAV-004",
+            "wcagSc": "2.2.1",
+            "level": "A",
+            "task": "Users are notified when time limits are about to expire.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Business"
+          },
+          {
+            "id": "NAV-005",
+            "wcagSc": "2.2.1",
+            "level": "A",
+            "task": "Options to extend, or even turn off time limits are provided.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Business"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "2.4.4",
+            "title": "Link Purpose (In Context)",
+            "level": "A",
+            "principle": "Operable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+            "manualRoles": [
+              "Content Authoring",
+              "Front-End Development"
+            ]
+          },
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "link-name",
+        "xpath": "div.grid-row > div.grid-col-12 > div.hds-image-download-wrapper > a.hds-image-download-link",
+        "snippet": "<a class=\"hds-image-download-link\" href=\"https://www.nasa.gov/wp-content/uploads/2026/04/55182924516-9d78d1e3ef-o.j…\">",
+        "error": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Developer",
+            "probability": 0.219
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.219
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.219
+          },
+          {
+            "owner": "Content Author",
+            "probability": 0.187
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.156
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Developer",
+          "Developer",
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 52,
+          "Content Author": 12,
+          "Developer": 17
+        },
+        "wcagSpineOwnerSignals": {
+          "Content Author": 1,
+          "Developer": 2
+        },
+        "wcagSc": [
+          "2.4.4",
+          "4.1.2"
+        ],
+        "wcagSpineManualRoles": [
+          "Content Authoring",
+          "Front-End Development"
+        ],
+        "trustedTesterSteps": [
+          "2.4.4.A - Link Purpose from Text",
+          "2.4.4.B - Link Purpose from Context",
+          "4.1.2.A - Accessible Name and Description",
+          "4.1.2.B - Role Assignment",
+          "4.1.2.C - State, Property and Value",
+          "4.1.2.D - Custom Controls"
+        ],
+        "arrmTaskIds": [
+          "NAV-001",
+          "NAV-002",
+          "NAV-003",
+          "NAV-004",
+          "NAV-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "NAV-001",
+            "wcagSc": "1.3.1",
+            "level": "A",
+            "task": "Active objects and other calls to action are visually identifiable as such.",
+            "mainRole": "Design",
+            "primaryOwnership": "Visual Design",
+            "secondaryOwnership": "none"
+          },
+          {
+            "id": "NAV-002",
+            "wcagSc": "1.3.3",
+            "level": "A",
+            "task": "Instructions are conveyed through more than shape, size, position, or sound alone.",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "NAV-003",
+            "wcagSc": "1.4.1",
+            "level": "A",
+            "task": "Additional visual and/or textual cues are provided when color is used to convey information.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Visual Design "
+          },
+          {
+            "id": "NAV-004",
+            "wcagSc": "2.2.1",
+            "level": "A",
+            "task": "Users are notified when time limits are about to expire.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Business"
+          },
+          {
+            "id": "NAV-005",
+            "wcagSc": "2.2.1",
+            "level": "A",
+            "task": "Options to extend, or even turn off time limits are provided.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Business"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "2.4.4",
+            "title": "Link Purpose (In Context)",
+            "level": "A",
+            "principle": "Operable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+            "manualRoles": [
+              "Content Authoring",
+              "Front-End Development"
+            ]
+          },
+          {
+            "sc": "4.1.2",
+            "title": "Name, Role, Value",
+            "level": "A",
+            "principle": "Robust",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+            "manualRoles": [
+              "Front-End Development"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "label-content-name-mismatch",
+        "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+        "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-ori…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+        "error": "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Content Author",
+            "probability": 0.207
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.207
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.207
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.207
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.172
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Content Author",
+          "Developer",
+          "Developer",
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 51,
+          "Developer": 51,
+          "Content Author": 6
+        },
+        "wcagSpineOwnerSignals": {
+          "Developer": 1,
+          "Content Author": 1
+        },
+        "wcagSc": [
+          "2.5.3"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development",
+          "Content Authoring"
+        ],
+        "trustedTesterSteps": [
+          "2.5.3.A - Visible Label Included in Accessible Name"
+        ],
+        "arrmTaskIds": [
+          "INP-001",
+          "INP-002",
+          "INP-003",
+          "INP-004",
+          "INP-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "INP-001",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-002",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-003",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-004",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All actionable elements can be reached, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "INP-005",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All active elements can be triggered, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "2.5.3",
+            "title": "Label in Name",
+            "level": "A",
+            "principle": "Operable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+            "manualRoles": [
+              "Front-End Development",
+              "Content Authoring"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://nasa.gov",
+        "ruleId": "label-content-name-mismatch",
+        "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+        "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-cre…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+        "error": "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Content Author",
+            "probability": 0.207
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.207
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.207
+          },
+          {
+            "owner": "Developer",
+            "probability": 0.207
+          },
+          {
+            "owner": "Themer / Visual Designer",
+            "probability": 0.172
+          },
+          {
+            "owner": "Site Builder",
+            "probability": 0
+          }
+        ],
+        "contributingOwners": [
+          "Content Author",
+          "Developer",
+          "Developer",
+          "Developer"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {
+          "Themer / Visual Designer": 51,
+          "Developer": 51,
+          "Content Author": 6
+        },
+        "wcagSpineOwnerSignals": {
+          "Developer": 1,
+          "Content Author": 1
+        },
+        "wcagSc": [
+          "2.5.3"
+        ],
+        "wcagSpineManualRoles": [
+          "Front-End Development",
+          "Content Authoring"
+        ],
+        "trustedTesterSteps": [
+          "2.5.3.A - Visible Label Included in Accessible Name"
+        ],
+        "arrmTaskIds": [
+          "INP-001",
+          "INP-002",
+          "INP-003",
+          "INP-004",
+          "INP-005"
+        ],
+        "arrmReferences": [
+          {
+            "id": "INP-001",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-002",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-003",
+            "wcagSc": "1.4.13",
+            "level": "AA",
+            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+            "mainRole": "Design",
+            "primaryOwnership": "User Experience (UX) Design",
+            "secondaryOwnership": "Front-End Development"
+          },
+          {
+            "id": "INP-004",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All actionable elements can be reached, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          },
+          {
+            "id": "INP-005",
+            "wcagSc": "2.1.1",
+            "level": "A",
+            "task": "All active elements can be triggered, using only the keyboard.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "User Experience (UX) Design"
+          }
+        ],
+        "wcagSpineReferences": [
+          {
+            "sc": "2.5.3",
+            "title": "Label in Name",
+            "level": "A",
+            "principle": "Operable",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+            "manualRoles": [
+              "Front-End Development",
+              "Content Authoring"
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://labor.maryland.gov/",
+        "ruleId": "region",
+        "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+        "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNav__logo",
+        "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNavList",
+        "snippet": "<ul class=\"mdgov-entNavList\">",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/",
+        "ruleId": "region",
+        "xpath": ".col-md-12",
+        "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/",
+        "ruleId": "region",
+        "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+        "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNav__logo",
+        "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNavList",
+        "snippet": "<ul class=\"mdgov-entNavList\">",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/",
+        "ruleId": "region",
+        "xpath": ".col-md-12",
+        "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+        "ruleId": "region",
+        "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+        "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNav__logo",
+        "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNavList",
+        "snippet": "<ul class=\"mdgov-entNavList\">",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+        "ruleId": "region",
+        "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+        "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNav__logo",
+        "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+        "ruleId": "region",
+        "xpath": ".mdgov-entNavList",
+        "snippet": "<ul class=\"mdgov-entNavList\">",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      },
+      {
+        "url": "https://labor.maryland.gov/aboutdllr/privacystatement.shtml",
+        "ruleId": "region",
+        "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+        "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+        "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+        "sourceFile": "reports/realworld-scale-2026-04-03.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Ambiguous",
+        "confidence": 0,
+        "ownerProbabilities": [
+          {
+            "owner": "Ambiguous",
+            "probability": 0
+          },
+          {
+            "owner": "Ambiguous",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Ambiguous"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "AI classification failed: GitHub Models request failed with status 401",
+        "usedAiFallback": true,
+        "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
+        "wcagSc": [],
+        "wcagSpineManualRoles": [],
+        "trustedTesterSteps": [],
+        "arrmTaskIds": [],
+        "arrmReferences": [],
+        "wcagSpineReferences": []
+      }
+    ]
   },
   "remediationPaths": [
     {
@@ -585,7 +3180,7 @@
     {
       "owner": "Themer / Visual Designer",
       "path": "Theme and design system layer (global CSS/components)",
-      "count": 0
+      "count": 9
     },
     {
       "owner": "Developer",
@@ -595,10 +3190,2602 @@
     {
       "owner": "Ambiguous",
       "path": "Manual triage needed (run AI classifier or human review)",
-      "count": 0
+      "count": 21
     }
   ],
   "issues": [
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "button-name",
+      "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button#global-navigation-trigger--mobile",
+      "snippet": "<button id=\"global-navigation-trigger--mobile\" class=\"hds-global-menu-toggle menu-toggle menu-mobile-toggle\" aria-expanded=\"false\" data-menu-action=\"open\" data-menu-location=\"left\">",
+      "error": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.333
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.333
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.333
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer",
+        "Developer",
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {
+        "Developer": 1
+      },
+      "wcagSc": [
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": [
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "button-name",
+      "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button.hds-search-panel-mobile-trigger",
+      "snippet": "<button class=\"hds-search-panel-mobile-trigger search-mobile color-carbon-20 menu-toggle\" data-menu-action=\"open\" data-menu-location=\"right\">",
+      "error": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\"",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.333
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.333
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.333
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer",
+        "Developer",
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {
+        "Developer": 1
+      },
+      "wcagSc": [
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": [
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+      "snippet": "<p>",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+      "snippet": "<span class=\"label\">",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+      "snippet": "<p>",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+      "snippet": "<span class=\"label\">",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+      "snippet": "<p>",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+      "snippet": "<span class=\"label\">",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > p",
+      "snippet": "<p>",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 2.97 (foreground color: #288bff, background color: #0b3d91, font size: 36.0pt (48px), font weight: normal). Expected contrast ratio of 3:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.margin-bottom-2 > div.countdown-item > div.countdown-item-inner > span.label",
+      "snippet": "<span class=\"label\">",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.36 (foreground color: #959599, background color: #0b3d91, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "color-contrast",
+      "xpath": "div.hds-nasa-live-main > div.grid-container > div.w-full > div.hds-live-tag",
+      "snippet": "<div class=\"hds-live-tag label bg-nasa-red color-spacesuit-white padding-left-105 padd…\">",
+      "error": "Fix any of the following:\n  Element has insufficient color contrast of 3.66 (foreground color: #ffffff, background color: #f64137, font size: 8.4pt (11.2px), font weight: normal). Expected contrast ratio of 4.5:1",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Themer / Visual Designer",
+      "confidence": 0.9279999999999999,
+      "ownerProbabilities": [
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.339
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.289
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.124
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Themer / Visual Designer",
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Weighted match: heuristics=rule:color-contrast; arrm-support=41 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "usedAiFallback": false,
+      "suggestedFixLocation": "Theme and design system layer (global CSS/components)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 41,
+        "Content Author": 5,
+        "Developer": 19
+      },
+      "wcagSpineOwnerSignals": {
+        "Themer / Visual Designer": 2
+      },
+      "wcagSc": [
+        "1.4.3",
+        "1.4.6"
+      ],
+      "wcagSpineManualRoles": [
+        "Visual Design"
+      ],
+      "trustedTesterSteps": [
+        "1.4.3.A - Text Contrast Ratio 4.5:1",
+        "1.4.3.B - Large Text Contrast Ratio 3:1",
+        "1.4.6.A - Text Contrast Ratio 7:1",
+        "1.4.6.B - Large Text Contrast Ratio 4.5:1"
+      ],
+      "arrmTaskIds": [
+        "CSS-001",
+        "CSS-004",
+        "CSS-006",
+        "CSS-007",
+        "CSS-008"
+      ],
+      "arrmReferences": [
+        {
+          "id": "CSS-001",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Icon fonts used to convey information are provided with a text equivalent.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "CSS-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Background images identified as decorative are implemented as such.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-006",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Shape and location are never used as the only way to convey information and relationships between page components.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "CSS-007",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Users relying on High Contrast themes don't lose information as a result of doing so.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Visual Design"
+        },
+        {
+          "id": "CSS-008",
+          "wcagSc": "1.3.4",
+          "level": "AA",
+          "task": "Content is viewable in both portrait and landscape orientation, unless a particular orientation is essential.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "1.4.3",
+          "title": "Contrast (Minimum)",
+          "level": "AA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        },
+        {
+          "sc": "1.4.6",
+          "title": "Contrast (Enhanced)",
+          "level": "AAA",
+          "principle": "Perceivable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html",
+          "manualRoles": [
+            "Visual Design"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "link-name",
+      "xpath": "div.slick-track > div.hds-meet-the-card > div.hds-meet-the-inner > a.hds-meet-the-image",
+      "snippet": "<a href=\"https://plus.nasa.gov/scheduled-events/\" target=\"_blank\" class=\"hds-meet-the-image padding-right-3\" rel=\"noopener\" tabindex=\"0\">",
+      "error": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.219
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.219
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.219
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.187
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.156
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer",
+        "Developer",
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 52,
+        "Content Author": 12,
+        "Developer": 17
+      },
+      "wcagSpineOwnerSignals": {
+        "Content Author": 1,
+        "Developer": 2
+      },
+      "wcagSc": [
+        "2.4.4",
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Content Authoring",
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "2.4.4.A - Link Purpose from Text",
+        "2.4.4.B - Link Purpose from Context",
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [
+        "NAV-001",
+        "NAV-002",
+        "NAV-003",
+        "NAV-004",
+        "NAV-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "NAV-001",
+          "wcagSc": "1.3.1",
+          "level": "A",
+          "task": "Active objects and other calls to action are visually identifiable as such.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "none"
+        },
+        {
+          "id": "NAV-002",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Instructions are conveyed through more than shape, size, position, or sound alone.",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "NAV-003",
+          "wcagSc": "1.4.1",
+          "level": "A",
+          "task": "Additional visual and/or textual cues are provided when color is used to convey information.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design "
+        },
+        {
+          "id": "NAV-004",
+          "wcagSc": "2.2.1",
+          "level": "A",
+          "task": "Users are notified when time limits are about to expire.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Business"
+        },
+        {
+          "id": "NAV-005",
+          "wcagSc": "2.2.1",
+          "level": "A",
+          "task": "Options to extend, or even turn off time limits are provided.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Business"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "2.4.4",
+          "title": "Link Purpose (In Context)",
+          "level": "A",
+          "principle": "Operable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+          "manualRoles": [
+            "Content Authoring",
+            "Front-End Development"
+          ]
+        },
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "link-name",
+      "xpath": "div.grid-row > div.grid-col-12 > div.hds-image-download-wrapper > a.hds-image-download-link",
+      "snippet": "<a class=\"hds-image-download-link\" href=\"https://www.nasa.gov/wp-content/uploads/2026/04/55182924516-9d78d1e3ef-o.j…\">",
+      "error": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Developer",
+          "probability": 0.219
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.219
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.219
+        },
+        {
+          "owner": "Content Author",
+          "probability": 0.187
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.156
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Developer",
+        "Developer",
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 52,
+        "Content Author": 12,
+        "Developer": 17
+      },
+      "wcagSpineOwnerSignals": {
+        "Content Author": 1,
+        "Developer": 2
+      },
+      "wcagSc": [
+        "2.4.4",
+        "4.1.2"
+      ],
+      "wcagSpineManualRoles": [
+        "Content Authoring",
+        "Front-End Development"
+      ],
+      "trustedTesterSteps": [
+        "2.4.4.A - Link Purpose from Text",
+        "2.4.4.B - Link Purpose from Context",
+        "4.1.2.A - Accessible Name and Description",
+        "4.1.2.B - Role Assignment",
+        "4.1.2.C - State, Property and Value",
+        "4.1.2.D - Custom Controls"
+      ],
+      "arrmTaskIds": [
+        "NAV-001",
+        "NAV-002",
+        "NAV-003",
+        "NAV-004",
+        "NAV-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "NAV-001",
+          "wcagSc": "1.3.1",
+          "level": "A",
+          "task": "Active objects and other calls to action are visually identifiable as such.",
+          "mainRole": "Design",
+          "primaryOwnership": "Visual Design",
+          "secondaryOwnership": "none"
+        },
+        {
+          "id": "NAV-002",
+          "wcagSc": "1.3.3",
+          "level": "A",
+          "task": "Instructions are conveyed through more than shape, size, position, or sound alone.",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "NAV-003",
+          "wcagSc": "1.4.1",
+          "level": "A",
+          "task": "Additional visual and/or textual cues are provided when color is used to convey information.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Visual Design "
+        },
+        {
+          "id": "NAV-004",
+          "wcagSc": "2.2.1",
+          "level": "A",
+          "task": "Users are notified when time limits are about to expire.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Business"
+        },
+        {
+          "id": "NAV-005",
+          "wcagSc": "2.2.1",
+          "level": "A",
+          "task": "Options to extend, or even turn off time limits are provided.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Business"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "2.4.4",
+          "title": "Link Purpose (In Context)",
+          "level": "A",
+          "principle": "Operable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html",
+          "manualRoles": [
+            "Content Authoring",
+            "Front-End Development"
+          ]
+        },
+        {
+          "sc": "4.1.2",
+          "title": "Name, Role, Value",
+          "level": "A",
+          "principle": "Robust",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
+          "manualRoles": [
+            "Front-End Development"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "label-content-name-mismatch",
+      "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+      "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-ori…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+      "error": "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Content Author",
+          "probability": 0.207
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.207
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.207
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.207
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.172
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Content Author",
+        "Developer",
+        "Developer",
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 51,
+        "Developer": 51,
+        "Content Author": 6
+      },
+      "wcagSpineOwnerSignals": {
+        "Developer": 1,
+        "Content Author": 1
+      },
+      "wcagSc": [
+        "2.5.3"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development",
+        "Content Authoring"
+      ],
+      "trustedTesterSteps": [
+        "2.5.3.A - Visible Label Included in Accessible Name"
+      ],
+      "arrmTaskIds": [
+        "INP-001",
+        "INP-002",
+        "INP-003",
+        "INP-004",
+        "INP-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "INP-001",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-002",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-003",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-004",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All actionable elements can be reached, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "INP-005",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All active elements can be triggered, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "2.5.3",
+          "title": "Label in Name",
+          "level": "A",
+          "principle": "Operable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+          "manualRoles": [
+            "Front-End Development",
+            "Content Authoring"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://nasa.gov",
+      "ruleId": "label-content-name-mismatch",
+      "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+      "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-cre…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+      "error": "Fix any of the following:\n  Text inside the element is not included in the accessible name",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Content Author",
+          "probability": 0.207
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.207
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.207
+        },
+        {
+          "owner": "Developer",
+          "probability": 0.207
+        },
+        {
+          "owner": "Themer / Visual Designer",
+          "probability": 0.172
+        },
+        {
+          "owner": "Site Builder",
+          "probability": 0
+        }
+      ],
+      "contributingOwners": [
+        "Content Author",
+        "Developer",
+        "Developer",
+        "Developer"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {
+        "Themer / Visual Designer": 51,
+        "Developer": 51,
+        "Content Author": 6
+      },
+      "wcagSpineOwnerSignals": {
+        "Developer": 1,
+        "Content Author": 1
+      },
+      "wcagSc": [
+        "2.5.3"
+      ],
+      "wcagSpineManualRoles": [
+        "Front-End Development",
+        "Content Authoring"
+      ],
+      "trustedTesterSteps": [
+        "2.5.3.A - Visible Label Included in Accessible Name"
+      ],
+      "arrmTaskIds": [
+        "INP-001",
+        "INP-002",
+        "INP-003",
+        "INP-004",
+        "INP-005"
+      ],
+      "arrmReferences": [
+        {
+          "id": "INP-001",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-002",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-003",
+          "wcagSc": "1.4.13",
+          "level": "AA",
+          "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
+          "mainRole": "Design",
+          "primaryOwnership": "User Experience (UX) Design",
+          "secondaryOwnership": "Front-End Development"
+        },
+        {
+          "id": "INP-004",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All actionable elements can be reached, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        },
+        {
+          "id": "INP-005",
+          "wcagSc": "2.1.1",
+          "level": "A",
+          "task": "All active elements can be triggered, using only the keyboard.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "User Experience (UX) Design"
+        }
+      ],
+      "wcagSpineReferences": [
+        {
+          "sc": "2.5.3",
+          "title": "Label in Name",
+          "level": "A",
+          "principle": "Operable",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html",
+          "manualRoles": [
+            "Front-End Development",
+            "Content Authoring"
+          ]
+        }
+      ]
+    },
+    {
+      "url": "https://labor.maryland.gov/",
+      "ruleId": "region",
+      "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+      "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNav__logo",
+      "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNavList",
+      "snippet": "<ul class=\"mdgov-entNavList\">",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/",
+      "ruleId": "region",
+      "xpath": ".col-md-12",
+      "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/",
+      "ruleId": "region",
+      "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+      "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNav__logo",
+      "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNavList",
+      "snippet": "<ul class=\"mdgov-entNavList\">",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/",
+      "ruleId": "region",
+      "xpath": ".col-md-12",
+      "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+      "ruleId": "region",
+      "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+      "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNav__logo",
+      "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNavList",
+      "snippet": "<ul class=\"mdgov-entNavList\">",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+      "ruleId": "region",
+      "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+      "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNav__logo",
+      "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+      "ruleId": "region",
+      "xpath": ".mdgov-entNavList",
+      "snippet": "<ul class=\"mdgov-entNavList\">",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
+    {
+      "url": "https://labor.maryland.gov/aboutdllr/privacystatement.shtml",
+      "ruleId": "region",
+      "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+      "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+      "error": "Fix any of the following:\n  Some page content is not contained by landmarks",
+      "sourceFile": "reports/realworld-scale-2026-04-03.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ownerProbabilities": [
+        {
+          "owner": "Ambiguous",
+          "probability": 0
+        },
+        {
+          "owner": "Ambiguous",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Ambiguous"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "AI classification failed: GitHub Models request failed with status 401",
+      "usedAiFallback": true,
+      "suggestedFixLocation": "Manual triage needed (run AI classifier or human review)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
+      "wcagSc": [],
+      "wcagSpineManualRoles": [],
+      "trustedTesterSteps": [],
+      "arrmTaskIds": [],
+      "arrmReferences": [],
+      "wcagSpineReferences": []
+    },
     {
       "url": "https://example.com/node/123",
       "xpath": "/html/body/div[1]/main/article/div/div[2]/p/img",
