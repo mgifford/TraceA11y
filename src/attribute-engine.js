@@ -76,11 +76,66 @@ function applyStepOneOverride(issue) {
   return null;
 }
 
+function buildOwnerProbabilities(scoredRoles) {
+  const positive = scoredRoles.map((item) => ({
+    owner: item.owner,
+    score: Math.max(Number(item.score || 0), 0)
+  }));
+  const total = positive.reduce((sum, item) => sum + item.score, 0);
+
+  if (total <= 0) {
+    return [];
+  }
+
+  return positive
+    .map((item) => ({
+      owner: item.owner,
+      probability: Number((item.score / total).toFixed(3))
+    }))
+    .sort((a, b) => b.probability - a.probability);
+}
+
+function detectAttributionUncertainty(issue) {
+  const url = String(issue?.url || "");
+  const xpath = String(issue?.xpath || "");
+  const snippet = String(issue?.snippet || "");
+  const haystack = `${url} ${xpath} ${snippet}`.toLowerCase();
+  const flags = [];
+
+  if (
+    /accessibe|accessi\.be|userway|equalweb|audioeye|reciteme|facil-iti|maxaccess|allaccessibility/i.test(
+      haystack
+    )
+  ) {
+    flags.push("known-accessibility-overlay");
+  }
+
+  if (/accessibility\s*(toolbar|widget)|a11y\s*widget|widget[-_ ]trigger/i.test(haystack)) {
+    flags.push("accessibility-widget-detected");
+  }
+
+  if (/script\b[^>]+src=["']https?:\/\//i.test(snippet) || /iframe\b[^>]+src=["']https?:\/\//i.test(snippet)) {
+    flags.push("third-party-embed-detected");
+  }
+
+  return [...new Set(flags)];
+}
+
 async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
   const platformProfile = detectSitePlatformForIssue(issue);
+  const uncertaintyFlags = detectAttributionUncertainty(issue);
+  const uncertaintyPenalty = uncertaintyFlags.length > 0 ? 0.08 : 0;
   const override = applyStepOneOverride(issue);
   if (override) {
-    return { ...override, usedAiFallback: false, platformProfile };
+    return {
+      ...override,
+      confidence: Math.max(0, Number((override.confidence - uncertaintyPenalty).toFixed(3))),
+      ownerProbabilities: [{ owner: override.owner, probability: 1 }],
+      contributingOwners: [override.owner],
+      uncertaintyFlags,
+      usedAiFallback: false,
+      platformProfile
+    };
   }
 
   const arrmOwnerSignals = getArrmOwnerSignals(issue, arrmTasks);
@@ -111,16 +166,35 @@ async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
   });
 
   scoredRoles.sort((a, b) => b.score - a.score);
+  const ownerProbabilities = buildOwnerProbabilities(scoredRoles);
+  const contributingOwners = ownerProbabilities
+    .filter((entry) => entry.probability >= 0.2)
+    .map((entry) => entry.owner);
   const top = scoredRoles[0];
   const second = scoredRoles[1];
   const tied = second && Math.abs(top.score - second.score) < 0.01;
 
   if (!top || top.score === 0 || tied) {
     const aiResult = await classifyAmbiguousWithAi(issue);
+    const fallbackProbabilities =
+      ownerProbabilities.length > 0
+        ? ownerProbabilities
+        : [
+            { owner: aiResult.owner, probability: Number(aiResult.confidence.toFixed(3)) },
+            { owner: "Ambiguous", probability: Number((1 - aiResult.confidence).toFixed(3)) }
+          ];
     return {
       owner: aiResult.owner,
-      confidence: aiResult.confidence,
+      confidence: Math.max(0, Number((aiResult.confidence - uncertaintyPenalty).toFixed(3))),
       rationale: aiResult.rationale,
+      ownerProbabilities: fallbackProbabilities,
+      contributingOwners:
+        contributingOwners.length > 0
+          ? contributingOwners
+          : fallbackProbabilities
+              .filter((entry) => entry.probability >= 0.2)
+              .map((entry) => entry.owner),
+      uncertaintyFlags,
       arrmOwnerSignals,
       wcagSpineOwnerSignals,
       usedAiFallback: true,
@@ -128,7 +202,7 @@ async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
     };
   }
 
-  const confidence = Math.min(0.6 + top.score * 0.08, 0.95);
+  const confidence = Math.max(0, Math.min(0.6 + top.score * 0.08, 0.95) - uncertaintyPenalty);
   const signalSummary = [
     top.matchedSignals.length > 0 ? `heuristics=${top.matchedSignals.join("|")}` : null,
     top.arrmSignalCount > 0
@@ -145,6 +219,9 @@ async function classifyIssue(issue, signatures, arrmTasks, wcagSpineData) {
     owner: top.owner,
     confidence,
     rationale: `Weighted match: ${signalSummary || "signature score"}`,
+    ownerProbabilities,
+    contributingOwners,
+    uncertaintyFlags,
     arrmOwnerSignals,
     wcagSpineOwnerSignals,
     usedAiFallback: false,
@@ -216,6 +293,9 @@ async function main() {
         platformSignals: attribution.platformProfile?.signals || [],
         owner,
         confidence: attribution.confidence,
+        ownerProbabilities: attribution.ownerProbabilities || [],
+        contributingOwners: attribution.contributingOwners || [owner],
+        uncertaintyFlags: attribution.uncertaintyFlags || [],
         rationale: attribution.rationale,
         usedAiFallback: attribution.usedAiFallback,
         suggestedFixLocation: mapFixLocation(owner),
@@ -300,6 +380,16 @@ async function main() {
         allAttributedIssues.reduce((accumulator, issue) => {
           const key = issue.platform || "Unknown";
           accumulator.set(key, (accumulator.get(key) || 0) + 1);
+          return accumulator;
+        }, new Map())
+      )
+    },
+    attributionUncertainty: {
+      byFlag: Object.fromEntries(
+        allAttributedIssues.reduce((accumulator, issue) => {
+          for (const flag of issue.uncertaintyFlags || []) {
+            accumulator.set(flag, (accumulator.get(flag) || 0) + 1);
+          }
           return accumulator;
         }, new Map())
       )

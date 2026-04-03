@@ -54,6 +54,8 @@
             <thead class="bg-slate-50">
               <tr>
                 <th class="px-3 py-2 text-left font-semibold">Owner</th>
+                <th class="px-3 py-2 text-left font-semibold">Owner Probabilities</th>
+                <th class="px-3 py-2 text-left font-semibold">Uncertainty Flags</th>
                 <th class="px-3 py-2 text-left font-semibold">Rule</th>
                 <th class="px-3 py-2 text-left font-semibold">WCAG SC</th>
                 <th class="px-3 py-2 text-left font-semibold">XPath</th>
@@ -152,6 +154,8 @@
         if ((/\/article\b/i.test(xpath) || /<article\b/i.test(snippet)) && ruleId === "image-alt") {
           return {
             owner: "Content Author",
+            ownerProbabilities: [{ owner: "Content Author", probability: 1 }],
+            uncertaintyFlags: [],
             rationale: "Step 1 override: image-alt inside article context"
           };
         }
@@ -170,10 +174,31 @@
         }).sort((a, b) => b.score - a.score);
 
         if (!scored[0] || scored[0].score === 0) {
-          return { owner: "Ambiguous", rationale: "No signature match" };
+          return {
+            owner: "Ambiguous",
+            ownerProbabilities: [{ owner: "Ambiguous", probability: 1 }],
+            uncertaintyFlags: [],
+            rationale: "No signature match"
+          };
         }
 
-        return { owner: scored[0].owner, rationale: "Client-side signature match" };
+        const total = scored.reduce((sum, entry) => sum + entry.score, 0);
+        const ownerProbabilities =
+          total > 0
+            ? scored
+                .filter((entry) => entry.score > 0)
+                .map((entry) => ({
+                  owner: entry.owner,
+                  probability: Number((entry.score / total).toFixed(3))
+                }))
+            : [{ owner: scored[0].owner, probability: 1 }];
+
+        return {
+          owner: scored[0].owner,
+          ownerProbabilities,
+          uncertaintyFlags: [],
+          rationale: "Client-side signature match"
+        };
       }
 
       function normalizeRawIssues(rawIssues) {
@@ -185,6 +210,13 @@
             snippet: issue.snippet || "",
             ruleId: issue.ruleId || "",
             owner: classification.owner,
+            ownerProbabilities: classification.ownerProbabilities || [
+              { owner: classification.owner || "Ambiguous", probability: 1 }
+            ],
+            contributingOwners: (classification.ownerProbabilities || [])
+              .filter((entry) => Number(entry.probability || 0) >= 0.2)
+              .map((entry) => entry.owner),
+            uncertaintyFlags: classification.uncertaintyFlags || [],
             rationale: classification.rationale,
             suggestedFixLocation: ROLE_REMEDIATION_PATHS[classification.owner] || ROLE_REMEDIATION_PATHS.Ambiguous,
             arrmTaskIds: issue.arrmTaskIds || []
@@ -252,6 +284,17 @@
         const tbody = document.getElementById("issuesTable");
         tbody.innerHTML = "";
 
+        const formatProbabilities = (entries) => {
+          const list = Array.isArray(entries) ? entries : [];
+          if (list.length === 0) {
+            return "-";
+          }
+          return list
+            .slice(0, 3)
+            .map((entry) => `${entry.owner}:${Math.round(Number(entry.probability || 0) * 100)}%`)
+            .join(" | ");
+        };
+
         issues
           .filter((issue) => filterValue === "All" || issue.owner === filterValue)
           .forEach((issue) => {
@@ -259,6 +302,8 @@
 
             const cells = [
               issue.owner || "Ambiguous",
+              formatProbabilities(issue.ownerProbabilities),
+              (issue.uncertaintyFlags || []).join(" | ") || "-",
               issue.ruleId || "",
               (issue.wcagSc || []).join(", ") || "-",
               issue.xpath || "",

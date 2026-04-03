@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-03T02:42:55.806Z",
+  "generatedAt": "2026-04-03T13:19:53.084Z",
   "arrm": {
     "source": "./data/reference/arrm-all-tasks.csv",
     "loadedTaskCount": 264
@@ -13,134 +13,145 @@
   },
   "learning": {
     "trustedPatternsLoaded": 2,
-    "learningCandidateCount": 1,
+    "learningCandidateCount": 0,
     "candidateStore": "./data/learning/candidate-patterns.json",
     "trustedStore": "./data/learning/trusted-patterns.json",
     "decisionLogStore": "./data/learning/decision-log.json"
   },
   "totals": {
-    "totalIssues": 2,
+    "totalIssues": 1,
     "byOwner": {
-      "Content Author": 0,
+      "Content Author": 1,
       "Site Builder": 0,
       "Themer / Visual Designer": 0,
-      "Developer": 2,
+      "Developer": 0,
       "Ambiguous": 0
     }
   },
+  "platformDetection": {
+    "mode": "issue-level",
+    "byPlatform": {
+      "Unknown": 1
+    }
+  },
+  "attributionUncertainty": {
+    "byFlag": {}
+  },
   "inputs": [
-    "/tmp/test-learning-integration.json"
+    "reports/sample-report.json"
   ],
   "byOwner": {
-    "Content Author": [],
-    "Site Builder": [],
-    "Themer / Visual Designer": [],
-    "Developer": [
+    "Content Author": [
       {
-        "url": "https://example.com/test",
-        "xpath": "div.slick-dots > li[role='tabpanel']",
-        "snippet": "<li class=\"slick-slide\" role=\"tabpanel\">",
-        "ruleId": "aria-required-children",
-        "impact": "critical",
-        "sourceFile": "/tmp/test-learning-integration.json",
-        "owner": "Developer",
+        "url": "https://example.com/node/123",
+        "xpath": "/html/body/div[1]/main/article/div/div[2]/p/img",
+        "snippet": "<img src='photo.jpg'>",
+        "ruleId": "image-alt",
+        "sourceFile": "reports/sample-report.json",
+        "platform": "Unknown",
+        "platformConfidence": 0,
+        "platformSignals": [],
+        "owner": "Content Author",
         "confidence": 0.95,
-        "rationale": "Weighted match: heuristics=pattern:/.slick-dots/i|rule:aria-required-children; arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+        "ownerProbabilities": [
+          {
+            "owner": "Content Author",
+            "probability": 1
+          }
+        ],
+        "contributingOwners": [
+          "Content Author"
+        ],
+        "uncertaintyFlags": [],
+        "rationale": "Step 1 override: image-alt inside article context maps to Content Author",
         "usedAiFallback": false,
-        "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
-        "arrmOwnerSignals": {
-          "Themer / Visual Designer": 51,
-          "Developer": 51,
-          "Content Author": 6
-        },
-        "wcagSpineOwnerSignals": {
-          "Developer": 2,
-          "Content Author": 1,
-          "Themer / Visual Designer": 1
-        },
+        "suggestedFixLocation": "CMS content editing workflow (node/paragraph/field content)",
+        "arrmOwnerSignals": {},
+        "wcagSpineOwnerSignals": {},
         "wcagSc": [
-          "1.3.1",
+          "1.1.1",
           "4.1.2"
         ],
         "wcagSpineManualRoles": [
-          "Front-End Development",
           "Content Authoring",
+          "Front-End Development",
           "UX Design"
         ],
         "trustedTesterSteps": [
-          "1.3.1.A - Meaningful Sequence in Code",
-          "1.3.1.B - Data Table Structure",
-          "1.3.1.C - List Structure",
-          "1.3.1.D - Headings and Labels",
+          "1.1.1.A - Image: Meaningful",
+          "1.1.1.B - Image: Decorative",
+          "1.1.1.C - Image: Functional",
+          "1.1.1.D - Image: Text",
+          "1.1.1.E - Audio/Video Alternative",
           "4.1.2.A - Accessible Name and Description",
           "4.1.2.B - Role Assignment",
           "4.1.2.C - State, Property and Value",
           "4.1.2.D - Custom Controls"
         ],
         "arrmTaskIds": [
-          "INP-001",
-          "INP-002",
-          "INP-003",
-          "INP-004",
-          "INP-005"
+          "IMG-001",
+          "IMG-002",
+          "IMG-003",
+          "IMG-004",
+          "IMG-006"
         ],
         "arrmReferences": [
           {
-            "id": "INP-001",
-            "wcagSc": "1.4.13",
-            "level": "AA",
-            "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
-            "mainRole": "Design",
-            "primaryOwnership": "User Experience (UX) Design",
-            "secondaryOwnership": "Front-End Development"
-          },
-          {
-            "id": "INP-002",
-            "wcagSc": "1.4.13",
-            "level": "AA",
-            "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
-            "mainRole": "Design",
-            "primaryOwnership": "User Experience (UX) Design",
-            "secondaryOwnership": "Front-End Development"
-          },
-          {
-            "id": "INP-003",
-            "wcagSc": "1.4.13",
-            "level": "AA",
-            "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
-            "mainRole": "Design",
-            "primaryOwnership": "User Experience (UX) Design",
-            "secondaryOwnership": "Front-End Development"
-          },
-          {
-            "id": "INP-004",
-            "wcagSc": "2.1.1",
+            "id": "IMG-001",
+            "wcagSc": "1.1.1",
             "level": "A",
-            "task": "All actionable elements can be reached, using only the keyboard.",
-            "mainRole": "Development",
-            "primaryOwnership": "Front-End Development",
+            "task": "Informative alternate text is provided for images (i.e. not \"spacer\" or image file name).",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
             "secondaryOwnership": "User Experience (UX) Design"
           },
           {
-            "id": "INP-005",
-            "wcagSc": "2.1.1",
+            "id": "IMG-002",
+            "wcagSc": "1.1.1",
             "level": "A",
-            "task": "All active elements can be triggered, using only the keyboard.",
+            "task": "Informative images are described with a clear and meaningful text equivalent (alt attribute or other equivalent means).",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "none"
+          },
+          {
+            "id": "IMG-003",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Purely decorative images are provided with null alt attribute values (or other equivalent means).",
             "mainRole": "Development",
             "primaryOwnership": "Front-End Development",
-            "secondaryOwnership": "User Experience (UX) Design"
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "IMG-004",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Null alt attribute values are used for images that are already described in text in adjacent page content.",
+            "mainRole": "Development",
+            "primaryOwnership": "Front-End Development",
+            "secondaryOwnership": "Content Authoring"
+          },
+          {
+            "id": "IMG-006",
+            "wcagSc": "1.1.1",
+            "level": "A",
+            "task": "Alt text used for images of text include all relevant text found in the image.",
+            "mainRole": "Author",
+            "primaryOwnership": "Content Authoring",
+            "secondaryOwnership": "none"
           }
         ],
         "wcagSpineReferences": [
           {
-            "sc": "1.3.1",
-            "title": "Info and Relationships",
+            "sc": "1.1.1",
+            "title": "Non-text Content",
             "level": "A",
             "principle": "Perceivable",
-            "url": "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html",
+            "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
             "manualRoles": [
-              "Front-End Development",
               "Content Authoring",
+              "Front-End Development",
               "UX Design"
             ]
           },
@@ -155,58 +166,18 @@
             ]
           }
         ]
-      },
-      {
-        "url": "https://example.com/test2",
-        "xpath": "span[lang='X-NONE']",
-        "snippet": "<span lang='X-NONE'>[1]</span>",
-        "ruleId": "valid-lang",
-        "impact": "minor",
-        "sourceFile": "/tmp/test-learning-integration.json",
-        "owner": "Developer",
-        "confidence": 0.784,
-        "rationale": "Weighted match: heuristics=rule:valid-lang; wcag-spine-support=1 (bonus=0.30)",
-        "usedAiFallback": false,
-        "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
-        "arrmOwnerSignals": {},
-        "wcagSpineOwnerSignals": {
-          "Content Author": 1,
-          "Developer": 1
-        },
-        "wcagSc": [
-          "3.1.2"
-        ],
-        "wcagSpineManualRoles": [
-          "Content Authoring",
-          "Front-End Development"
-        ],
-        "trustedTesterSteps": [
-          "3.1.2.A - Language Change Attribute"
-        ],
-        "arrmTaskIds": [],
-        "arrmReferences": [],
-        "wcagSpineReferences": [
-          {
-            "sc": "3.1.2",
-            "title": "Language of Parts",
-            "level": "AA",
-            "principle": "Understandable",
-            "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
-            "manualRoles": [
-              "Content Authoring",
-              "Front-End Development"
-            ]
-          }
-        ]
       }
     ],
+    "Site Builder": [],
+    "Themer / Visual Designer": [],
+    "Developer": [],
     "Ambiguous": []
   },
   "remediationPaths": [
     {
       "owner": "Content Author",
       "path": "CMS content editing workflow (node/paragraph/field content)",
-      "count": 0
+      "count": 1
     },
     {
       "owner": "Site Builder",
@@ -221,7 +192,7 @@
     {
       "owner": "Developer",
       "path": "Custom code/module fixes (templates, JS, backend forms)",
-      "count": 2
+      "count": 0
     },
     {
       "owner": "Ambiguous",
@@ -231,110 +202,115 @@
   ],
   "issues": [
     {
-      "url": "https://example.com/test",
-      "xpath": "div.slick-dots > li[role='tabpanel']",
-      "snippet": "<li class=\"slick-slide\" role=\"tabpanel\">",
-      "ruleId": "aria-required-children",
-      "impact": "critical",
-      "sourceFile": "/tmp/test-learning-integration.json",
-      "owner": "Developer",
+      "url": "https://example.com/node/123",
+      "xpath": "/html/body/div[1]/main/article/div/div[2]/p/img",
+      "snippet": "<img src='photo.jpg'>",
+      "ruleId": "image-alt",
+      "sourceFile": "reports/sample-report.json",
+      "platform": "Unknown",
+      "platformConfidence": 0,
+      "platformSignals": [],
+      "owner": "Content Author",
       "confidence": 0.95,
-      "rationale": "Weighted match: heuristics=pattern:/.slick-dots/i|rule:aria-required-children; arrm-support=51 (bonus=1.50); wcag-spine-support=2 (bonus=0.60)",
+      "ownerProbabilities": [
+        {
+          "owner": "Content Author",
+          "probability": 1
+        }
+      ],
+      "contributingOwners": [
+        "Content Author"
+      ],
+      "uncertaintyFlags": [],
+      "rationale": "Step 1 override: image-alt inside article context maps to Content Author",
       "usedAiFallback": false,
-      "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
-      "arrmOwnerSignals": {
-        "Themer / Visual Designer": 51,
-        "Developer": 51,
-        "Content Author": 6
-      },
-      "wcagSpineOwnerSignals": {
-        "Developer": 2,
-        "Content Author": 1,
-        "Themer / Visual Designer": 1
-      },
+      "suggestedFixLocation": "CMS content editing workflow (node/paragraph/field content)",
+      "arrmOwnerSignals": {},
+      "wcagSpineOwnerSignals": {},
       "wcagSc": [
-        "1.3.1",
+        "1.1.1",
         "4.1.2"
       ],
       "wcagSpineManualRoles": [
-        "Front-End Development",
         "Content Authoring",
+        "Front-End Development",
         "UX Design"
       ],
       "trustedTesterSteps": [
-        "1.3.1.A - Meaningful Sequence in Code",
-        "1.3.1.B - Data Table Structure",
-        "1.3.1.C - List Structure",
-        "1.3.1.D - Headings and Labels",
+        "1.1.1.A - Image: Meaningful",
+        "1.1.1.B - Image: Decorative",
+        "1.1.1.C - Image: Functional",
+        "1.1.1.D - Image: Text",
+        "1.1.1.E - Audio/Video Alternative",
         "4.1.2.A - Accessible Name and Description",
         "4.1.2.B - Role Assignment",
         "4.1.2.C - State, Property and Value",
         "4.1.2.D - Custom Controls"
       ],
       "arrmTaskIds": [
-        "INP-001",
-        "INP-002",
-        "INP-003",
-        "INP-004",
-        "INP-005"
+        "IMG-001",
+        "IMG-002",
+        "IMG-003",
+        "IMG-004",
+        "IMG-006"
       ],
       "arrmReferences": [
         {
-          "id": "INP-001",
-          "wcagSc": "1.4.13",
-          "level": "AA",
-          "task": "Additional content triggered by focus or hover that covers other information can be dismissed by the user.",
-          "mainRole": "Design",
-          "primaryOwnership": "User Experience (UX) Design",
-          "secondaryOwnership": "Front-End Development"
-        },
-        {
-          "id": "INP-002",
-          "wcagSc": "1.4.13",
-          "level": "AA",
-          "task": "Additional content triggered by pointer hover does not disappear when trying to move the pointer over it.",
-          "mainRole": "Design",
-          "primaryOwnership": "User Experience (UX) Design",
-          "secondaryOwnership": "Front-End Development"
-        },
-        {
-          "id": "INP-003",
-          "wcagSc": "1.4.13",
-          "level": "AA",
-          "task": "Additional content triggered by hover or focus stays visible until purposefully un-triggered, dismissed, or is no longer valid.",
-          "mainRole": "Design",
-          "primaryOwnership": "User Experience (UX) Design",
-          "secondaryOwnership": "Front-End Development"
-        },
-        {
-          "id": "INP-004",
-          "wcagSc": "2.1.1",
+          "id": "IMG-001",
+          "wcagSc": "1.1.1",
           "level": "A",
-          "task": "All actionable elements can be reached, using only the keyboard.",
-          "mainRole": "Development",
-          "primaryOwnership": "Front-End Development",
+          "task": "Informative alternate text is provided for images (i.e. not \"spacer\" or image file name).",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
           "secondaryOwnership": "User Experience (UX) Design"
         },
         {
-          "id": "INP-005",
-          "wcagSc": "2.1.1",
+          "id": "IMG-002",
+          "wcagSc": "1.1.1",
           "level": "A",
-          "task": "All active elements can be triggered, using only the keyboard.",
+          "task": "Informative images are described with a clear and meaningful text equivalent (alt attribute or other equivalent means).",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "none"
+        },
+        {
+          "id": "IMG-003",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Purely decorative images are provided with null alt attribute values (or other equivalent means).",
           "mainRole": "Development",
           "primaryOwnership": "Front-End Development",
-          "secondaryOwnership": "User Experience (UX) Design"
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "IMG-004",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Null alt attribute values are used for images that are already described in text in adjacent page content.",
+          "mainRole": "Development",
+          "primaryOwnership": "Front-End Development",
+          "secondaryOwnership": "Content Authoring"
+        },
+        {
+          "id": "IMG-006",
+          "wcagSc": "1.1.1",
+          "level": "A",
+          "task": "Alt text used for images of text include all relevant text found in the image.",
+          "mainRole": "Author",
+          "primaryOwnership": "Content Authoring",
+          "secondaryOwnership": "none"
         }
       ],
       "wcagSpineReferences": [
         {
-          "sc": "1.3.1",
-          "title": "Info and Relationships",
+          "sc": "1.1.1",
+          "title": "Non-text Content",
           "level": "A",
           "principle": "Perceivable",
-          "url": "https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html",
+          "url": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html",
           "manualRoles": [
-            "Front-End Development",
             "Content Authoring",
+            "Front-End Development",
             "UX Design"
           ]
         },
@@ -345,49 +321,6 @@
           "principle": "Robust",
           "url": "https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html",
           "manualRoles": [
-            "Front-End Development"
-          ]
-        }
-      ]
-    },
-    {
-      "url": "https://example.com/test2",
-      "xpath": "span[lang='X-NONE']",
-      "snippet": "<span lang='X-NONE'>[1]</span>",
-      "ruleId": "valid-lang",
-      "impact": "minor",
-      "sourceFile": "/tmp/test-learning-integration.json",
-      "owner": "Developer",
-      "confidence": 0.784,
-      "rationale": "Weighted match: heuristics=rule:valid-lang; wcag-spine-support=1 (bonus=0.30)",
-      "usedAiFallback": false,
-      "suggestedFixLocation": "Custom code/module fixes (templates, JS, backend forms)",
-      "arrmOwnerSignals": {},
-      "wcagSpineOwnerSignals": {
-        "Content Author": 1,
-        "Developer": 1
-      },
-      "wcagSc": [
-        "3.1.2"
-      ],
-      "wcagSpineManualRoles": [
-        "Content Authoring",
-        "Front-End Development"
-      ],
-      "trustedTesterSteps": [
-        "3.1.2.A - Language Change Attribute"
-      ],
-      "arrmTaskIds": [],
-      "arrmReferences": [],
-      "wcagSpineReferences": [
-        {
-          "sc": "3.1.2",
-          "title": "Language of Parts",
-          "level": "AA",
-          "principle": "Understandable",
-          "url": "https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts.html",
-          "manualRoles": [
-            "Content Authoring",
             "Front-End Development"
           ]
         }
