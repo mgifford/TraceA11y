@@ -1,0 +1,145 @@
+{
+  "generatedAt": "2026-04-09T16:08:52.573Z",
+  "provider": "manual",
+  "batches": [
+    {
+      "batchNumber": 1,
+      "issueCount": 22,
+      "prompt": "Classify each accessibility issue owner into one of:\n\nContent Author, Site Builder, Themer / Visual Designer, Developer.\n\nReturn strict JSON as an array of objects with this shape:\n\n[{\"index\": number, \"owner\": string, \"confidence\": number, \"rationale\": string}]\n\nUse the provided issue index values in your response.\n\nConsider Drupal context and ARRM/FAS role boundaries.\n\nIssue 0:\nURL: https://mgifford.github.io/TraceA11y/\nXPath: button#sample\nSnippet: <button id='sample'></button>\nRule ID: button-name\n\nIssue 1:\nURL: https://nasa.gov\nXPath: header.hds-nasa-header > div.usa-nav-container > div.grid-col > button#global-navigation-trigger--mobile\nSnippet: <button id=\"global-navigation-trigger--mobile\" class=\"hds-global-menu-toggle menu-toggle menu-mobile-toggle\" aria-expanded=\"false\" data-menu-action=\"open\" data-menu-location=\"left\">\nRule ID: button-name\n\nIssue 2:\nURL: https://nasa.gov\nXPath: header.hds-nasa-header > div.usa-nav-container > div.grid-col > button.hds-search-panel-mobile-trigger\nSnippet: <button class=\"hds-search-panel-mobile-trigger search-mobile color-carbon-20 menu-toggle\" data-menu-action=\"open\" data-menu-location=\"right\">\nRule ID: button-name\n\nIssue 3:\nURL: https://nasa.gov\nXPath: div.slick-track > div.hds-meet-the-card > div.hds-meet-the-inner > a.hds-meet-the-image\nSnippet: <a href=\"https://plus.nasa.gov/scheduled-events/\" target=\"_blank\" class=\"hds-meet-the-image padding-right-3\" rel=\"noopener\" tabindex=\"0\">\nRule ID: link-name\n\nIssue 4:\nURL: https://nasa.gov\nXPath: div.grid-row > div.grid-col-12 > div.hds-image-download-wrapper > a.hds-image-download-link\nSnippet: <a class=\"hds-image-download-link\" href=\"https://www.nasa.gov/wp-content/uploads/2026/04/55182924516-9d78d1e3ef-o.j…\">\nRule ID: link-name\n\nIssue 5:\nURL: https://nasa.gov\nXPath: ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a\nSnippet: <a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-ori…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">\nRule ID: label-content-name-mismatch\n\nIssue 6:\nURL: https://nasa.gov\nXPath: ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a\nSnippet: <a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-cre…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">\nRule ID: label-content-name-mismatch\n\nIssue 7:\nURL: https://labor.maryland.gov/\nXPath: .sr-only-focusable.show-on-focus.sr-only:nth-child(2)\nSnippet: <a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>\nRule ID: region\n\nIssue 8:\nURL: https://labor.maryland.gov/\nXPath: .mdgov-entNav__logo\nSnippet: <a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>\nRule ID: region\n\nIssue 9:\nURL: https://labor.maryland.gov/\nXPath: .mdgov-entNavList\nSnippet: <ul class=\"mdgov-entNavList\">\nRule ID: region\n\nIssue 10:\nURL: https://labor.maryland.gov/\nXPath: .col-md-12\nSnippet: <div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">\nRule ID: region\n\nIssue 11:\nURL: https://labor.maryland.gov/aboutdllr/\nXPath: .sr-only-focusable.show-on-focus.sr-only:nth-child(2)\nSnippet: <a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>\nRule ID: region\n\nIssue 12:\nURL: https://labor.maryland.gov/aboutdllr/\nXPath: .mdgov-entNav__logo\nSnippet: <a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>\nRule ID: region\n\nIssue 13:\nURL: https://labor.maryland.gov/aboutdllr/\nXPath: .mdgov-entNavList\nSnippet: <ul class=\"mdgov-entNavList\">\nRule ID: region\n\nIssue 14:\nURL: https://labor.maryland.gov/aboutdllr/\nXPath: .col-md-12\nSnippet: <div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">\nRule ID: region\n\nIssue 15:\nURL: https://labor.maryland.gov/aboutdllr/mdbusexp.shtml\nXPath: .sr-only-focusable.show-on-focus.sr-only:nth-child(2)\nSnippet: <a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>\nRule ID: region\n\nIssue 16:\nURL: https://labor.maryland.gov/aboutdllr/mdbusexp.shtml\nXPath: .mdgov-entNav__logo\nSnippet: <a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>\nRule ID: region\n\nIssue 17:\nURL: https://labor.maryland.gov/aboutdllr/mdbusexp.shtml\nXPath: .mdgov-entNavList\nSnippet: <ul class=\"mdgov-entNavList\">\nRule ID: region\n\nIssue 18:\nURL: https://labor.maryland.gov/aboutdllr/mpia.shtml\nXPath: .sr-only-focusable.show-on-focus.sr-only:nth-child(2)\nSnippet: <a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>\nRule ID: region\n\nIssue 19:\nURL: https://labor.maryland.gov/aboutdllr/mpia.shtml\nXPath: .mdgov-entNav__logo\nSnippet: <a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>\nRule ID: region\n\nIssue 20:\nURL: https://labor.maryland.gov/aboutdllr/mpia.shtml\nXPath: .mdgov-entNavList\nSnippet: <ul class=\"mdgov-entNavList\">\nRule ID: region\n\nIssue 21:\nURL: https://labor.maryland.gov/aboutdllr/privacystatement.shtml\nXPath: .sr-only-focusable.show-on-focus.sr-only:nth-child(2)\nSnippet: <a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>\nRule ID: region",
+      "issues": [
+        {
+          "url": "https://mgifford.github.io/TraceA11y/",
+          "xpath": "button#sample",
+          "snippet": "<button id='sample'></button>",
+          "ruleId": "button-name"
+        },
+        {
+          "url": "https://nasa.gov",
+          "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button#global-navigation-trigger--mobile",
+          "snippet": "<button id=\"global-navigation-trigger--mobile\" class=\"hds-global-menu-toggle menu-toggle menu-mobile-toggle\" aria-expanded=\"false\" data-menu-action=\"open\" data-menu-location=\"left\">",
+          "ruleId": "button-name"
+        },
+        {
+          "url": "https://nasa.gov",
+          "xpath": "header.hds-nasa-header > div.usa-nav-container > div.grid-col > button.hds-search-panel-mobile-trigger",
+          "snippet": "<button class=\"hds-search-panel-mobile-trigger search-mobile color-carbon-20 menu-toggle\" data-menu-action=\"open\" data-menu-location=\"right\">",
+          "ruleId": "button-name"
+        },
+        {
+          "url": "https://nasa.gov",
+          "xpath": "div.slick-track > div.hds-meet-the-card > div.hds-meet-the-inner > a.hds-meet-the-image",
+          "snippet": "<a href=\"https://plus.nasa.gov/scheduled-events/\" target=\"_blank\" class=\"hds-meet-the-image padding-right-3\" rel=\"noopener\" tabindex=\"0\">",
+          "ruleId": "link-name"
+        },
+        {
+          "url": "https://nasa.gov",
+          "xpath": "div.grid-row > div.grid-col-12 > div.hds-image-download-wrapper > a.hds-image-download-link",
+          "snippet": "<a class=\"hds-image-download-link\" href=\"https://www.nasa.gov/wp-content/uploads/2026/04/55182924516-9d78d1e3ef-o.j…\">",
+          "ruleId": "link-name"
+        },
+        {
+          "url": "https://nasa.gov",
+          "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+          "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-ori…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+          "ruleId": "label-content-name-mismatch"
+        },
+        {
+          "url": "https://nasa.gov",
+          "xpath": "ul.hds-live-updates-items > li.hds-live-update-item > div.hds-live-update-item-inner > a",
+          "snippet": "<a href=\"https://www.nasa.gov/blogs/missions/2026/04/02/artemis-ii-flight-day-2-cre…\" aria-label=\"link\" aria-description=\"Link to blog post\" tabindex=\"0\" target=\"_blank\">",
+          "ruleId": "label-content-name-mismatch"
+        },
+        {
+          "url": "https://labor.maryland.gov/",
+          "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+          "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/",
+          "xpath": ".mdgov-entNav__logo",
+          "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/",
+          "xpath": ".mdgov-entNavList",
+          "snippet": "<ul class=\"mdgov-entNavList\">",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/",
+          "xpath": ".col-md-12",
+          "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/",
+          "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+          "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/",
+          "xpath": ".mdgov-entNav__logo",
+          "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/",
+          "xpath": ".mdgov-entNavList",
+          "snippet": "<ul class=\"mdgov-entNavList\">",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/",
+          "xpath": ".col-md-12",
+          "snippet": "<div class=\"col-md-12 col-xl-3 p-3 p-lg-4 bg-gray\">",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+          "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+          "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+          "xpath": ".mdgov-entNav__logo",
+          "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+          "xpath": ".mdgov-entNavList",
+          "snippet": "<ul class=\"mdgov-entNavList\">",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+          "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+          "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+          "xpath": ".mdgov-entNav__logo",
+          "snippet": "<a class=\"mdgov-entNav__logo\" href=\"https://www.maryland.gov/\">\n        <img src=\"https://egov.maryland.gov/doit/ewf/widgets/header/v2/img/mdgov-logo-2018-black.png\" alt=\"Maryland.gov\">\n    </a>",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+          "xpath": ".mdgov-entNavList",
+          "snippet": "<ul class=\"mdgov-entNavList\">",
+          "ruleId": "region"
+        },
+        {
+          "url": "https://labor.maryland.gov/aboutdllr/privacystatement.shtml",
+          "xpath": ".sr-only-focusable.show-on-focus.sr-only:nth-child(2)",
+          "snippet": "<a href=\"http://www.maryland.gov/pages/accessibility.aspx\" class=\"sr-only sr-only-focusable show-on-focus\" target=\"_blank\">Accessibility Information</a>",
+          "ruleId": "region"
+        }
+      ]
+    }
+  ]
+}

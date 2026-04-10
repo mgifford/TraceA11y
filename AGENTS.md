@@ -33,7 +33,7 @@ You are an **Expert Accessibility Architect** and **Sustainable Software Enginee
 2. **Heuristic Layer (Primary):** Use RegEx to match Drupal signatures in XPaths.
 3. **AI Layer (Secondary):** Only for "Cold Cases" where heuristics fail to identify an owner.
 4. **Aggregation:** Group errors by **Role** and **Remediation Path**.
-5. **Static Export:** Write to a `dist/data.json` file for the GitHub Pages dashboard.
+5. **Static Export:** Write to `dist/data/attributed-report.json` for the GitHub Pages dashboard and keep the data organized by role first, then URL.
 
 ### The Drupal "DNA" Map (Priority Logic)
 Assign ownership based on these specific code signatures:
@@ -47,14 +47,14 @@ Assign ownership based on these specific code signatures:
 ## 4. Operational Instructions for the AI Agent
 
 ### Phase 1: Scripting the Engine (Node.js)
-* Create a modular Node.js script `engine/process.js`.
+* Maintain a modular Node.js script centered on `src/attribute-engine.js`.
 * Avoid `npm` dependencies where possible; use the Node.js standard library.
 * Implement a `signatures.js` file to hold the RegEx patterns for easy updating by the user.
 
 ### Phase 2: GitHub Actions Workflow
-* Create `.github/workflows/forensics.yml`.
+* Maintain `.github/workflows/attribution-engine.yml`.
 * Ensure it triggers on `workflow_dispatch` and `push` to the `/reports` directory.
-* Set up the workflow to commit the processed `data.json` back to the repository for GitHub Pages consumption.
+* Set up the workflow to commit the processed attribution data back to the repository for GitHub Pages consumption.
 
 ### Phase 3: The Sustainable Dashboard
 * Create a single `index.html` using Tailwind CSS (via CDN or minimal build).
@@ -70,3 +70,10 @@ Assign ownership based on these specific code signatures:
 - [ ] The dashboard passes a manual keyboard-navigation test.
 - [ ] The output JSON is structured by Role first, then URL.
 - [ ] Computational "Green" check: No excessive loops or duplicate data processing.
+
+## 6. AI disclosure and operational boundaries
+
+- Any AI-assisted attribution must be disclosed in `README.md`.
+- AI should only be used after heuristic and standards-based matching fail to identify a confident owner.
+- AI review should be batched wherever possible.
+- Manual, browser-assisted AI review is an acceptable fallback when API quotas are limited.

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-03T02:42:55.803Z",
+  "updatedAt": "2026-04-09T16:08:52.571Z",
   "candidates": [
     {
       "id": "cand-20260403022159-1",
@@ -91,6 +91,230 @@
       "matchCount": 1,
       "exampleUrls": [
         "https://example.com/test2"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-5",
+      "key": "button-name::<button>::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "button-name",
+      "selectors": [
+        "<button>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 2,
+      "exampleUrls": [
+        "https://mgifford.github.io/TraceA11y/"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-6",
+      "key": "button-name::.hds-nasa-header::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "button-name",
+      "selectors": [
+        ".hds-nasa-header",
+        ".usa-nav-container",
+        ".grid-col",
+        "<button>",
+        "aria-expanded"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 4,
+      "exampleUrls": [
+        "https://nasa.gov"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-7",
+      "key": "link-name::.slick-track::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "link-name",
+      "selectors": [
+        ".slick-track",
+        ".hds-meet-the-card",
+        ".hds-meet-the-inner",
+        ".hds-meet-the-image",
+        "<a>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 2,
+      "exampleUrls": [
+        "https://nasa.gov"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-8",
+      "key": "link-name::.grid-row::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "link-name",
+      "selectors": [
+        ".grid-row",
+        ".grid-col-12",
+        ".hds-image-download-wrapper",
+        ".hds-image-download-link",
+        "<a>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 2,
+      "exampleUrls": [
+        "https://nasa.gov"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-9",
+      "key": "label-content-name-mismatch::.hds-live-updates-items::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "label-content-name-mismatch",
+      "selectors": [
+        ".hds-live-updates-items",
+        ".hds-live-update-item",
+        ".hds-live-update-item-inner",
+        "<a>",
+        "aria-label",
+        "aria-description"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 4,
+      "exampleUrls": [
+        "https://nasa.gov"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-10",
+      "key": "region::.sr-only-focusable::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "region",
+      "selectors": [
+        ".sr-only-focusable",
+        ".show-on-focus",
+        ".sr-only",
+        "<a>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 10,
+      "exampleUrls": [
+        "https://labor.maryland.gov/",
+        "https://labor.maryland.gov/aboutdllr/",
+        "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+        "https://labor.maryland.gov/aboutdllr/mpia.shtml",
+        "https://labor.maryland.gov/aboutdllr/privacystatement.shtml"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-11",
+      "key": "region::.mdgov-entNav__logo::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "region",
+      "selectors": [
+        ".mdgov-entNav__logo",
+        "<a>",
+        "<img>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 8,
+      "exampleUrls": [
+        "https://labor.maryland.gov/",
+        "https://labor.maryland.gov/aboutdllr/",
+        "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+        "https://labor.maryland.gov/aboutdllr/mpia.shtml"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-12",
+      "key": "region::.mdgov-entNavList::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "region",
+      "selectors": [
+        ".mdgov-entNavList",
+        "<ul>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 8,
+      "exampleUrls": [
+        "https://labor.maryland.gov/",
+        "https://labor.maryland.gov/aboutdllr/",
+        "https://labor.maryland.gov/aboutdllr/mdbusexp.shtml",
+        "https://labor.maryland.gov/aboutdllr/mpia.shtml"
+      ],
+      "falsePositiveCount": 0,
+      "truePositiveCount": 0
+    },
+    {
+      "id": "cand-20260409155440-13",
+      "key": "region::.col-md-12::Ambiguous",
+      "status": "candidate",
+      "source": "attribute-engine",
+      "owner": "Ambiguous",
+      "confidence": 0,
+      "ruleId": "region",
+      "selectors": [
+        ".col-md-12",
+        "<div>"
+      ],
+      "rationale": "No AI credentials configured",
+      "firstSeenAt": "2026-04-09T15:54:40.227Z",
+      "lastSeenAt": "2026-04-09T16:08:52.571Z",
+      "matchCount": 4,
+      "exampleUrls": [
+        "https://labor.maryland.gov/",
+        "https://labor.maryland.gov/aboutdllr/"
       ],
       "falsePositiveCount": 0,
       "truePositiveCount": 0
