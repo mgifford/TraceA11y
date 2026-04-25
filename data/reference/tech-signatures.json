@@ -1,0 +1,91 @@
+[
+  {
+    "technology": "Drupal",
+    "category": "CMS",
+    "minimumScore": 1.1,
+    "rules": [
+      { "weight": 0.95, "reason": "data-drupal-selector", "pattern": "data-drupal-selector", "flags": "i" },
+      { "weight": 0.95, "reason": "drupal settings payload", "pattern": "drupal-settings-json|drupalsettings|window\\.drupal", "flags": "i" },
+      { "weight": 0.75, "reason": "field class naming", "pattern": "\\.field--name-[a-z0-9_-]+", "flags": "i" },
+      { "weight": 0.7, "reason": "views class naming", "pattern": "\\.view-id-|\\.view-display-id-", "flags": "i" },
+      { "weight": 0.65, "reason": "layout builder classes", "pattern": "\\.layout-builder|\\.block-system-main-block", "flags": "i" },
+      { "weight": 0.6, "reason": "node path", "pattern": "\\/node\\/[0-9]+", "flags": "i" },
+      { "weight": 0.55, "reason": "Drupal files path", "pattern": "\\/sites\\/default\\/files\\/", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "WordPress",
+    "category": "CMS",
+    "minimumScore": 1,
+    "rules": [
+      { "weight": 0.9, "reason": "wp-content path", "pattern": "\\/wp-content\\/", "flags": "i" },
+      { "weight": 0.9, "reason": "wp-includes path", "pattern": "\\/wp-includes\\/", "flags": "i" },
+      { "weight": 0.8, "reason": "wp-json API", "pattern": "\\/wp-json\\/", "flags": "i" },
+      { "weight": 0.7, "reason": "WordPress class naming", "pattern": "\\bwp-block-|\\bpost-type-archive\\b", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "Joomla",
+    "category": "CMS",
+    "minimumScore": 0.9,
+    "rules": [
+      { "weight": 0.9, "reason": "Joomla component route", "pattern": "index\\.php\\?option=com_", "flags": "i" },
+      { "weight": 0.75, "reason": "Joomla templates folder", "pattern": "\\/templates\\/[a-z0-9_-]+\\/", "flags": "i" },
+      { "weight": 0.65, "reason": "Joomla language route", "pattern": "\\/language\\/[a-z]{2}-[a-z]{2}\\/", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "Shopify",
+    "category": "Commerce",
+    "minimumScore": 0.8,
+    "rules": [
+      { "weight": 0.9, "reason": "Shopify CDN", "pattern": "cdn\\.shopify\\.com|myshopify\\.com", "flags": "i" },
+      { "weight": 0.7, "reason": "Shopify class naming", "pattern": "shopify-section|shopify-payment-button", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "Bootstrap",
+    "category": "Frontend",
+    "minimumScore": 0.8,
+    "rules": [
+      { "weight": 0.9, "reason": "Bootstrap asset", "pattern": "bootstrap(\\.min)?\\.(css|js)", "flags": "i" },
+      { "weight": 0.45, "reason": "Bootstrap grid classes", "pattern": "\\bcontainer(-fluid)?\\b|\\brow\\b|\\bcol-(sm|md|lg|xl)-", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "Tailwind CSS",
+    "category": "Frontend",
+    "minimumScore": 0.75,
+    "rules": [
+      { "weight": 0.85, "reason": "Tailwind CDN", "pattern": "cdn\\.tailwindcss\\.com", "flags": "i" },
+      { "weight": 0.45, "reason": "Tailwind utility classes", "pattern": "\\b(bg|text|p|m|grid|flex|items|justify)-[a-z0-9\\[\\]-]+", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "React",
+    "category": "Frontend",
+    "minimumScore": 0.8,
+    "rules": [
+      { "weight": 0.9, "reason": "React root id", "pattern": "id=[\"']root[\"']", "flags": "i" },
+      { "weight": 0.8, "reason": "React data attributes", "pattern": "data-reactroot|__react", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "Vue",
+    "category": "Frontend",
+    "minimumScore": 0.8,
+    "rules": [
+      { "weight": 0.9, "reason": "Vue app id", "pattern": "id=[\"']app[\"']", "flags": "i" },
+      { "weight": 0.75, "reason": "Vue data attributes", "pattern": "data-v-[a-f0-9]+", "flags": "i" }
+    ]
+  },
+  {
+    "technology": "jQuery",
+    "category": "Frontend",
+    "minimumScore": 0.75,
+    "rules": [
+      { "weight": 0.8, "reason": "jQuery asset", "pattern": "jquery(\\.min)?\\.js", "flags": "i" },
+      { "weight": 0.5, "reason": "jQuery usage", "pattern": "\\$\\(|jQuery\\(", "flags": "i" }
+    ]
+  }
+]

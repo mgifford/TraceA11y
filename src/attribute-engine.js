@@ -332,12 +332,16 @@ function buildRemediationHint(issue, owner) {
 
 function mergeAiAttribution(heuristicAttribution, aiResult) {
   const normalizedOwner = aiResult.owner || "Ambiguous";
-  const confidence = Math.max(0, Number((Number(aiResult.confidence || 0)).toFixed(3)));
+  const rawConfidence = Number(aiResult.confidence);
+  const boundedConfidence = Number.isFinite(rawConfidence)
+    ? Math.min(1, Math.max(0, rawConfidence))
+    : 0;
+  const confidence = Number(boundedConfidence.toFixed(3));
   const ownerProbabilities =
     normalizedOwner !== "Ambiguous" && confidence > 0
       ? [
           { owner: normalizedOwner, probability: confidence },
-          { owner: "Ambiguous", probability: Number((1 - confidence).toFixed(3)) }
+          { owner: "Ambiguous", probability: Number((Math.max(0, 1 - confidence)).toFixed(3)) }
         ]
       : heuristicAttribution.ownerProbabilities || [{ owner: "Ambiguous", probability: 1 }];
   const contributingOwners = ownerProbabilities

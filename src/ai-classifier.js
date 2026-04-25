@@ -2,6 +2,15 @@ const DEFAULT_GEMINI_MODEL = "gemini-1.5-flash";
 const DEFAULT_GITHUB_MODEL = "openai/gpt-4o-mini";
 const DEFAULT_BATCH_SIZE = 25;
 
+function normalizeConfidence(value, fallback = 0.5) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) {
+    return fallback;
+  }
+
+  return Math.min(1, Math.max(0, numeric));
+}
+
 function clampBatchSize(value) {
   const parsed = Number.parseInt(value, 10);
   if (!Number.isFinite(parsed) || parsed < 1) {
@@ -65,7 +74,7 @@ function normalizeResult(parsed) {
 
   return {
     owner,
-    confidence: Number(parsed.confidence) || 0.5,
+    confidence: normalizeConfidence(parsed?.confidence, 0.5),
     rationale: parsed.rationale || "Classified by LLM"
   };
 }

@@ -22,33 +22,57 @@
       <header class="mb-8 rounded-2xl border border-slate-200 bg-gradient-to-r from-[#0b1f3a] via-[#1f4f99] to-[#3178c6] p-6 text-white shadow-lg">
         <h1 class="text-2xl font-bold tracking-tight">TraceA11y Responsibility Heatmap</h1>
         <p class="mt-2 text-sm text-slate-100">
-          Upload JSON, YAML, or labeled text reports, or use the bundled attribution data.
+          Upload an accessibility scan and get a fast autopsy with owner mapping and platform clues.
         </p>
       </header>
 
       <section class="mb-8 rounded-2xl border border-sky-200 bg-white/95 p-6 shadow-sm ring-1 ring-sky-100">
         <h2 class="text-lg font-semibold text-slate-900">Data Source</h2>
         <p class="mt-1 text-sm text-slate-700">
-          Supported formats: attributed report JSON, raw JSON arrays, YAML issue lists, or labeled text issue blocks with fields such as URL, XPath, Snippet, and Rule ID.
+          Drag and drop a scan report to start. Supported formats: attributed JSON, raw JSON arrays, YAML issue lists, and labeled text issue blocks.
         </p>
+        <div
+          id="dropZone"
+          class="mt-4 rounded-xl border-2 border-dashed border-sky-300 bg-sky-50/60 p-6 text-center transition-colors"
+          role="button"
+          tabindex="0"
+          aria-label="Drop an accessibility report here, or press Enter to browse files"
+        >
+          <p class="text-sm font-semibold text-slate-900">Drop report here</p>
+          <p class="mt-1 text-sm text-slate-700">or press Enter/Space to browse your files</p>
+          <input id="jsonUpload" type="file" accept="application/json,.json,.yaml,.yml,.txt,text/plain" class="sr-only" />
+        </div>
         <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <label class="inline-flex cursor-pointer items-center rounded-md bg-[#1f4f99] px-4 py-2 text-sm font-medium text-white shadow hover:bg-[#173f7f]">
-            Upload report
-            <input id="jsonUpload" type="file" accept="application/json,.json,.yaml,.yml,.txt,text/plain" class="sr-only" />
-          </label>
-          <button id="useBundled" class="rounded-md border border-[#1f4f99] bg-white px-4 py-2 text-sm font-medium text-[#1f4f99] hover:bg-blue-50">
-            Use Bundled Data
+          <button id="browseButton" class="rounded-md bg-[#1f4f99] px-4 py-2 text-sm font-medium text-white shadow hover:bg-[#173f7f]">
+            Browse Report
           </button>
+          <button id="useBundled" class="rounded-md border border-[#1f4f99] bg-white px-4 py-2 text-sm font-medium text-[#1f4f99] hover:bg-blue-50">
+            Try Demo Data
+          </button>
+          <label class="inline-flex items-center gap-2 text-sm text-slate-700">
+            <input id="showCharts" type="checkbox" class="h-4 w-4 rounded border-slate-300" />
+            Show charts
+          </label>
           <span id="dataStatus" class="text-sm text-slate-600" aria-live="polite">Waiting for data source.</span>
         </div>
       </section>
 
-      <section class="mb-8 rounded-2xl border border-blue-200 bg-white/95 p-6 shadow-sm ring-1 ring-blue-100">
+      <section id="emptyState" class="mb-8 rounded-2xl border border-amber-200 bg-white/95 p-6 shadow-sm ring-1 ring-amber-100">
+        <h2 class="text-lg font-semibold text-slate-900">Share-first workflow</h2>
+        <p class="mt-2 text-sm text-slate-700">
+          Upload your latest scan report to generate an autopsy view you can share with content, design, and development teams.
+        </p>
+        <p class="mt-2 text-sm text-slate-700">
+          Charts stay off by default so the first experience focuses on report sharing and remediation details.
+        </p>
+      </section>
+
+      <section id="ownerChartSection" class="mb-8 rounded-2xl border border-blue-200 bg-white/95 p-6 shadow-sm ring-1 ring-blue-100" hidden>
         <h2 class="mb-4 text-lg font-semibold text-slate-900">Errors by Role</h2>
         <canvas id="ownerChart" aria-label="Errors by role chart" role="img"></canvas>
       </section>
 
-      <section class="mb-8 rounded-2xl border border-amber-200 bg-white/95 p-6 shadow-sm ring-1 ring-amber-100">
+      <section id="sharedChartSection" class="mb-8 rounded-2xl border border-amber-200 bg-white/95 p-6 shadow-sm ring-1 ring-amber-100" hidden>
         <h2 class="mb-1 text-lg font-semibold text-slate-900">Shared Ownership Load</h2>
         <p class="mb-4 text-sm text-slate-700">
           Fractional counts based on per-issue owner probabilities. This surfaces co-ownership across teams.
@@ -56,31 +80,59 @@
         <canvas id="sharedOwnerChart" aria-label="Shared ownership load chart" role="img"></canvas>
       </section>
 
-      <section class="rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-sm ring-1 ring-slate-200">
+      <section id="platformAutopsySection" class="mb-8 rounded-2xl border border-cyan-200 bg-white/95 p-6 shadow-sm ring-1 ring-cyan-100" hidden>
+        <h2 class="text-lg font-semibold text-slate-900">Open-source technology clues</h2>
+        <p class="mt-1 text-sm text-slate-700">
+          Open-source signature matching inferred from report evidence only (URL, XPath, snippet). No live crawling or extra network scans.
+        </p>
+        <p class="mt-1 text-xs text-slate-600">Registry source: data/reference/tech-signatures.json</p>
+        <p id="platformSummary" class="mt-3 text-sm text-slate-800"></p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="min-w-full divide-y divide-slate-200 text-sm">
+            <thead class="bg-gradient-to-r from-cyan-50 to-sky-50">
+              <tr>
+                <th scope="col" class="px-3 py-2 text-left font-semibold">Technology</th>
+                <th scope="col" class="px-3 py-2 text-left font-semibold">Category</th>
+                <th scope="col" class="px-3 py-2 text-left font-semibold">Issue count</th>
+                <th scope="col" class="px-3 py-2 text-left font-semibold">Confidence (avg)</th>
+                <th scope="col" class="px-3 py-2 text-left font-semibold">Signals</th>
+              </tr>
+            </thead>
+            <tbody id="platformTable" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="findingsSection" class="rounded-2xl border border-slate-200 bg-white/95 p-6 shadow-sm ring-1 ring-slate-200" hidden>
         <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 class="text-lg font-semibold text-slate-900">Attributed Findings</h2>
-          <label class="text-sm font-medium text-slate-700">
-            Filter by owner
-            <select id="ownerFilter" class="ml-2 rounded-md border border-slate-300 bg-white px-2 py-1">
-              <option value="All">All</option>
-            </select>
-          </label>
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+            <button id="copySummary" class="rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-800 hover:bg-slate-50">
+              Copy Autopsy Summary
+            </button>
+            <label class="text-sm font-medium text-slate-700">
+              Filter by owner
+              <select id="ownerFilter" class="ml-2 rounded-md border border-slate-300 bg-white px-2 py-1">
+                <option value="All">All</option>
+              </select>
+            </label>
+          </div>
         </div>
 
         <div class="overflow-x-auto">
           <table class="min-w-full divide-y divide-slate-200 text-sm">
             <thead class="bg-gradient-to-r from-blue-50 to-amber-50">
               <tr>
-                <th class="px-3 py-2 text-left font-semibold">Owner</th>
-                <th class="px-3 py-2 text-left font-semibold">Owner Probabilities</th>
-                <th class="px-3 py-2 text-left font-semibold">Uncertainty Flags</th>
-                <th class="px-3 py-2 text-left font-semibold">Rule</th>
-                <th class="px-3 py-2 text-left font-semibold">WCAG SC</th>
-                <th class="px-3 py-2 text-left font-semibold">XPath</th>
-                <th class="px-3 py-2 text-left font-semibold">Trusted Tester Steps</th>
-                <th class="px-3 py-2 text-left font-semibold">ARRM Tasks</th>
-                <th class="px-3 py-2 text-left font-semibold">Suggested Fix Action</th>
-                <th class="px-3 py-2 text-left font-semibold">Suggested Fix Location</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Owner</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Owner Probabilities</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Uncertainty Flags</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Rule</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">WCAG SC</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">XPath</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Trusted Tester Steps</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">ARRM Tasks</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Suggested Fix Action</th>
+                  <th scope="col" class="px-3 py-2 text-left font-semibold">Suggested Fix Location</th>
               </tr>
             </thead>
             <tbody id="issuesTable" class="divide-y divide-slate-100"></tbody>
@@ -91,6 +143,7 @@
 
     <script>
       const DATA_PATH = "./dist/data/attributed-report.json";
+      const TECH_SIGNATURES_PATH = "./data/reference/tech-signatures.json";
       const OWNER_ORDER = [
         "Content Author",
         "Site Builder",
@@ -144,11 +197,27 @@
       let chartInstance = null;
       let sharedChartInstance = null;
       let allIssues = [];
+      let currentOwnerCounts = initializeOwnerCounts();
+      let currentSharedLoad = initializeOwnerCounts();
+      let techSignatures = [];
 
       function setStatus(message, isError = false) {
         const el = document.getElementById("dataStatus");
         el.textContent = message;
         el.className = isError ? "text-sm text-rose-700" : "text-sm text-slate-600";
+      }
+
+      function setDropZoneActive(isActive) {
+        const dropZone = document.getElementById("dropZone");
+        if (!dropZone) {
+          return;
+        }
+
+        if (isActive) {
+          dropZone.classList.add("border-[#1f4f99]", "bg-blue-100/70");
+        } else {
+          dropZone.classList.remove("border-[#1f4f99]", "bg-blue-100/70");
+        }
       }
 
       function initializeOwnerCounts() {
@@ -296,7 +365,14 @@
         const trimmed = text.trim();
 
         if (lowerName.endsWith(".json") || trimmed.startsWith("{") || trimmed.startsWith("[")) {
-          return normalizeAttributedIssues(JSON.parse(text));
+          const parsed = JSON.parse(text);
+          const attributed = normalizeAttributedIssues(parsed);
+          if (attributed.length > 0) {
+            return attributed;
+          }
+
+          const normalized = normalizeRecord(parsed);
+          return normalized ? [normalized] : [];
         }
 
         if (
@@ -402,6 +478,104 @@
           uncertaintyFlags: [],
           rationale: "Client-side signature match"
         };
+      }
+
+      function normalizeText(value) {
+        return String(value || "").toLowerCase();
+      }
+
+      function compileTechSignatures(rawSignatures) {
+        if (!Array.isArray(rawSignatures)) {
+          return [];
+        }
+
+        return rawSignatures
+          .map((signature) => {
+            const compiledRules = (signature?.rules || [])
+              .map((rule) => {
+                try {
+                  return {
+                    weight: Number(rule?.weight || 0),
+                    reason: String(rule?.reason || "").trim(),
+                    pattern: new RegExp(String(rule?.pattern || ""), String(rule?.flags || "i"))
+                  };
+                } catch {
+                  return null;
+                }
+              })
+              .filter(Boolean);
+
+            if (!signature?.technology || compiledRules.length === 0) {
+              return null;
+            }
+
+            return {
+              technology: String(signature.technology),
+              category: String(signature.category || "Other"),
+              minimumScore: Math.max(0, Number(signature.minimumScore || 0)),
+              rules: compiledRules
+            };
+          })
+          .filter(Boolean);
+      }
+
+      async function loadTechSignatures() {
+        try {
+          const response = await fetch(TECH_SIGNATURES_PATH);
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${TECH_SIGNATURES_PATH} (${response.status})`);
+          }
+
+          const raw = await response.json();
+          const compiled = compileTechSignatures(raw);
+          techSignatures = compiled;
+
+          if (compiled.length === 0) {
+            throw new Error("Technology signature registry is empty");
+          }
+        } catch (error) {
+          techSignatures = [];
+          console.warn(`Technology signature load failed: ${error.message}`);
+        }
+      }
+
+      function detectTechnologiesFromIssue(issue) {
+        const haystack = [issue?.url, issue?.xpath, issue?.snippet].map(normalizeText).join(" ");
+        const matches = [];
+
+        for (const signature of techSignatures) {
+          let score = 0;
+          const signals = [];
+
+          for (const rule of signature.rules) {
+            if (rule.pattern.test(haystack)) {
+              score += Number(rule.weight || 0);
+              signals.push(rule.reason);
+            }
+          }
+
+          if (score >= signature.minimumScore) {
+            matches.push({
+              technology: signature.technology,
+              category: signature.category,
+              confidence: Math.min(score / 2, 0.99),
+              signals
+            });
+          }
+        }
+
+        if (matches.length === 0) {
+          return [
+            {
+              technology: "Unknown",
+              category: "Unclassified",
+              confidence: 0,
+              signals: []
+            }
+          ];
+        }
+
+        return matches.sort((a, b) => b.confidence - a.confidence);
       }
 
       function normalizeRawIssues(rawIssues) {
@@ -531,6 +705,191 @@
             }
           }
         });
+      }
+
+      function updateChartsVisibility() {
+        const showCharts = document.getElementById("showCharts").checked && allIssues.length > 0;
+        const ownerChartSection = document.getElementById("ownerChartSection");
+        const sharedChartSection = document.getElementById("sharedChartSection");
+
+        ownerChartSection.hidden = !showCharts;
+        sharedChartSection.hidden = !showCharts;
+
+        if (showCharts) {
+          renderChart(currentOwnerCounts);
+          renderSharedOwnershipChart(currentSharedLoad);
+          return;
+        }
+
+        if (chartInstance) {
+          chartInstance.destroy();
+          chartInstance = null;
+        }
+
+        if (sharedChartInstance) {
+          sharedChartInstance.destroy();
+          sharedChartInstance = null;
+        }
+      }
+
+      function buildTechnologyRollup(issues) {
+        const byTechnology = new Map();
+
+        issues.forEach((issue) => {
+          const matches = detectTechnologiesFromIssue(issue);
+
+          for (const match of matches) {
+            const key = `${match.technology}::${match.category}`;
+            if (!byTechnology.has(key)) {
+              byTechnology.set(key, {
+                technology: match.technology,
+                category: match.category,
+                count: 0,
+                confidenceTotal: 0,
+                signals: new Map()
+              });
+            }
+
+            const bucket = byTechnology.get(key);
+            bucket.count += 1;
+            bucket.confidenceTotal += Number(match.confidence || 0);
+
+            for (const signal of match.signals || []) {
+              bucket.signals.set(signal, (bucket.signals.get(signal) || 0) + 1);
+            }
+          }
+        });
+
+        return [...byTechnology.values()].sort((a, b) => b.count - a.count);
+      }
+
+      function buildAutopsySummary(issues) {
+        const totalIssues = issues.length;
+        const ownerRows = Object.entries(currentOwnerCounts)
+          .filter(([, count]) => Number(count) > 0)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 5);
+        const ruleCounts = issues.reduce((acc, issue) => {
+          const ruleId = String(issue?.ruleId || "Unknown").trim() || "Unknown";
+          acc[ruleId] = (acc[ruleId] || 0) + 1;
+          return acc;
+        }, {});
+        const ruleRows = Object.entries(ruleCounts)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 5);
+        const technologyRows = buildTechnologyRollup(issues).slice(0, 5);
+
+        const lines = [
+          "# TraceA11y Autopsy Summary",
+          `Generated: ${new Date().toISOString()}`,
+          `Total issues: ${totalIssues}`,
+          "",
+          "## Top owners"
+        ];
+
+        if (ownerRows.length === 0) {
+          lines.push("- None");
+        } else {
+          ownerRows.forEach(([owner, count]) => {
+            lines.push(`- ${owner}: ${count}`);
+          });
+        }
+
+        lines.push("", "## Top rules");
+        if (ruleRows.length === 0) {
+          lines.push("- None");
+        } else {
+          ruleRows.forEach(([ruleId, count]) => {
+            lines.push(`- ${ruleId}: ${count}`);
+          });
+        }
+
+        lines.push("", "## Top technology clues");
+        if (technologyRows.length === 0) {
+          lines.push("- Unknown");
+        } else {
+          technologyRows.forEach((row) => {
+            const avgConfidence = row.count > 0 ? row.confidenceTotal / row.count : 0;
+            lines.push(`- ${row.technology} (${row.category}): ${row.count} issues, ${Math.round(avgConfidence * 100)}% avg confidence`);
+          });
+        }
+
+        return lines.join("\n");
+      }
+
+      async function copyAutopsySummary() {
+        if (!Array.isArray(allIssues) || allIssues.length === 0) {
+          setStatus("Load a report first, then copy the autopsy summary.", true);
+          return;
+        }
+
+        const summary = buildAutopsySummary(allIssues);
+
+        try {
+          await navigator.clipboard.writeText(summary);
+          setStatus("Copied autopsy summary to clipboard.");
+        } catch {
+          const blob = new Blob([summary], { type: "text/plain;charset=utf-8" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "tracea11y-autopsy-summary.md";
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          setStatus("Downloaded autopsy summary as tracea11y-autopsy-summary.md.");
+        }
+      }
+
+      function renderPlatformAutopsy(issues) {
+        const section = document.getElementById("platformAutopsySection");
+        const summary = document.getElementById("platformSummary");
+        const tbody = document.getElementById("platformTable");
+        tbody.innerHTML = "";
+
+        if (!Array.isArray(issues) || issues.length === 0) {
+          section.hidden = true;
+          return;
+        }
+
+        const rows = buildTechnologyRollup(issues);
+        const totalIssues = issues.length;
+        const top = rows[0];
+        const percentage = top ? Math.round((top.count / Math.max(totalIssues, 1)) * 100) : 0;
+
+        summary.textContent = top
+          ? `Top technology clue: ${top.technology} (${top.category}) in ${top.count}/${totalIssues} issues (${percentage}%).`
+          : "No technology clues detected.";
+
+        rows.forEach((row) => {
+          const tr = document.createElement("tr");
+          const avgConfidence = row.count > 0 ? row.confidenceTotal / row.count : 0;
+          const topSignals = [...row.signals.entries()]
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 3)
+            .map(([signal, count]) => `${signal} (${count})`)
+            .join(" | ");
+
+          const cells = [
+            row.technology,
+            row.category,
+            String(row.count),
+            `${Math.round(avgConfidence * 100)}%`,
+            topSignals || "-"
+          ];
+
+          cells.forEach((value) => {
+            const td = document.createElement("td");
+            td.className = "px-3 py-2";
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+
+          tbody.appendChild(tr);
+        });
+
+        section.hidden = false;
       }
 
       function appendFilterOptions(ownerCounts) {
@@ -712,12 +1071,14 @@
 
       function renderDataset(issues) {
         allIssues = issues;
-        const ownerCounts = buildDatasetFromIssues(issues);
-        const sharedLoad = buildFractionalOwnerLoad(issues);
-        renderChart(ownerCounts);
-        renderSharedOwnershipChart(sharedLoad);
-        appendFilterOptions(ownerCounts);
+        currentOwnerCounts = buildDatasetFromIssues(issues);
+        currentSharedLoad = buildFractionalOwnerLoad(issues);
+        appendFilterOptions(currentOwnerCounts);
         renderTable(issues);
+        renderPlatformAutopsy(issues);
+        updateChartsVisibility();
+        document.getElementById("emptyState").hidden = true;
+        document.getElementById("findingsSection").hidden = false;
         document.getElementById("ownerFilter").value = "All";
       }
 
@@ -743,29 +1104,86 @@
         const hasOwner = normalized.some((item) => typeof item?.owner === "string" && item.owner.length > 0);
         const issues = hasOwner ? normalized : normalizeRawIssues(normalized);
         renderDataset(issues);
-        setStatus(`Loaded ${file.name} (${issues.length} issues).`);
+        setStatus(
+          hasOwner
+            ? `Loaded ${file.name} (${issues.length} issues).`
+            : `Loaded ${file.name} (${issues.length} issues) with browser-side heuristic attribution.`
+        );
+      }
+
+      async function handleSelectedFile(file) {
+        if (!file) {
+          return;
+        }
+
+        try {
+          await loadUploadedFile(file);
+        } catch (error) {
+          setStatus(`Could not load ${file.name}: ${error.message}`, true);
+        }
       }
 
       async function main() {
         const filter = document.getElementById("ownerFilter");
         const uploader = document.getElementById("jsonUpload");
+        const browseButton = document.getElementById("browseButton");
+        const copySummaryButton = document.getElementById("copySummary");
+        const dropZone = document.getElementById("dropZone");
+        const showCharts = document.getElementById("showCharts");
         const useBundledButton = document.getElementById("useBundled");
 
         filter.addEventListener("change", () => {
           renderTable(allIssues, filter.value);
         });
 
+        showCharts.addEventListener("change", () => {
+          updateChartsVisibility();
+        });
+
+        copySummaryButton.addEventListener("click", async () => {
+          await copyAutopsySummary();
+        });
+
+        browseButton.addEventListener("click", () => {
+          uploader.click();
+        });
+
+        dropZone.addEventListener("click", () => {
+          uploader.click();
+        });
+
+        dropZone.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            uploader.click();
+          }
+        });
+
+        dropZone.addEventListener("dragenter", (event) => {
+          event.preventDefault();
+          setDropZoneActive(true);
+        });
+
+        dropZone.addEventListener("dragover", (event) => {
+          event.preventDefault();
+          setDropZoneActive(true);
+        });
+
+        dropZone.addEventListener("dragleave", (event) => {
+          event.preventDefault();
+          setDropZoneActive(false);
+        });
+
+        dropZone.addEventListener("drop", async (event) => {
+          event.preventDefault();
+          setDropZoneActive(false);
+          const file = event.dataTransfer?.files?.[0];
+          await handleSelectedFile(file);
+        });
+
         uploader.addEventListener("change", async (event) => {
           const file = event.target.files && event.target.files[0];
-          if (!file) {
-            return;
-          }
-
-          try {
-            await loadUploadedFile(file);
-          } catch (error) {
-            setStatus(`Could not load ${file.name}: ${error.message}`, true);
-          }
+          await handleSelectedFile(file);
         });
 
         useBundledButton.addEventListener("click", async () => {
@@ -776,10 +1194,11 @@
           }
         });
 
-        try {
-          await loadBundledData();
-        } catch (error) {
-          setStatus(`Could not auto-load bundled data: ${error.message}. Upload a JSON file to continue.`, true);
+        await loadTechSignatures();
+        if (techSignatures.length > 0) {
+          setStatus(`Drop a scan report to begin autopsy. Loaded ${techSignatures.length} technology signatures.`);
+        } else {
+          setStatus("Drop a scan report to begin autopsy. Technology signature registry could not be loaded.", true);
         }
       }
 
